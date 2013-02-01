@@ -5,10 +5,12 @@ class User_controller{
 
 	}
 
-	function home(){ 
-		//echo Views::instance()->render(index.html)
-		$view=new View(); 
-		echo $view->render('home.html'); 	
+	function get(){ 
+
+	}
+
+	function post(){
+		
 	}
 
 	function __destruct(){
