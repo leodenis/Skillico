@@ -4,7 +4,7 @@
  *
  * @package 1.0
  */
-class views extends View{
+class Views extends View{
 
  
   /** 
