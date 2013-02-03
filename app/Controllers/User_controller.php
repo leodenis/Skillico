@@ -22,6 +22,7 @@ class User_controller{
 	    else{	
 	    	echo 'OK';
 	    	//Ajout dans la base de donnée
+	    	
 			$image=new DB\SQL\Mapper(F3::get('dB'),'image'); // Connexion à la table image
 			$image->copyFrom('POST'); // on récupère le POST
 			$image->save(); // on sauvegarde
@@ -31,7 +32,9 @@ class User_controller{
 	}
 
 	function delete(){
-		
+		$image=new DB\SQL\Mapper(F3::get('dB'),'image');
+		$image->load(array('id_image=1'));
+		$image->erase();
 	}
 
 	function __destruct(){
