@@ -6,6 +6,12 @@ class User_controller{
 	}
 
 	function get(){ 
+     $User=new User();
+     $info=$User->InfoDetails();
+   	 // F3::set('info',$info->afind());
+     F3::set('info',$info);
+ 	 echo Views::instance()->render('user.php');
+
 
 	}
 
