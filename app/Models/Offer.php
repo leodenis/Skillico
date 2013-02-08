@@ -1,6 +1,6 @@
 <?php
 
-class Offer
+class Offer extends Prefab
 {
 	
 	function __construct()
@@ -29,6 +29,56 @@ class Offer
 	/*
 	*	POSTE D'UNE OFFRE
 	*/
+        
+        function postOffer(){
+            F3::set('errorMsg',null);
+	    $check=array(
+                    'title'=>'required',
+                    'description'=>'required',
+                    'price'=>'required',
+                    'lat'=>'required',
+                    'lng'=>'required',
+                    'fk_id_offer_duration'=>'required',
+                    'fk_id_offer_cat'=>'required',
+                    'fk_id_users_post'=>'required'
+            );
+	    $error=Datas::instance()->check(F3::get('POST'),$check);
+	    if($error){
+	      F3::set('errorMsg',$error);
+	    }
+	    else{	
+                $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+                $offer->copyFrom('POST'); 
+                $offer->save();
+	    	echo 'OK'; 
+	    }
+        }
+        
+        /*
+         *      UPDATE DE L'OFFRE
+         */
+        
+        function updateOffer(){
+            F3::set('errorMsg',null);	
+            $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $offer->load('id_offer = '.$_POST['id_offer']);
+            $offer->copyFrom('POST');
+            $offer->update();
+        }
+
+
+        /*
+	*	DELETE D'UNE OFFRE ( CHANGEMENT D'ÉTAT DE L'ENABLE)
+	*/
+        
+       function deleteOffer(){
+            F3::set('errorMsg',null);	
+            $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $offer->load('id_offer = '.$_POST['id_offer']);
+            $offer->copyFrom('POST');
+            $offer->update();
+       }
+        
 }
 
 ?>
