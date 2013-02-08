@@ -13,8 +13,9 @@ class Offer extends Prefab
 	*/
 
 	function getOfferListe(){
-	    $offer = F3::get('dB')->exec('SELECT * FROM offer');
-	    return Views::instance()->toJson($offer,array('title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
+            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $offerList = $offer->find();
+	    return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
 	}
 
 	/*
@@ -25,8 +26,28 @@ class Offer extends Prefab
 	    $offer = F3::get('dB')->exec('SELECT * FROM offer WHERE id_offer = ' . $idOffer);
 	    return Views::instance()->toJson($offer,array('title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
 	}
+        
+        /*
+         * RECUPERATION DES DURATIONS DES OFFRES
+         */
+        
+        function getDurationList(){
+            $offerDuration = new DB/SQL/Mapper(F3::get('dB'),'offer_duration');
+            $durationList = $offerDuration->find();
+            return Views::instance()->toJson($durationList,array('id_offer_duration'=>'id_offer_duration','title'=>'title','description'=>'desccription'));
+        }
+        
+        /*
+         * RECUPERATION DES DURATIONS DES OFFRES
+         */
+        
+        function getCategoryList(){
+            $offerDuration = new DB/SQL/Mapper(F3::get('dB'),'offer_cat');
+            $durationList = $offerDuration->find();
+            return Views::instance()->toJson($durationList,array('id_offer_cat'=>'id_offer_cat','title'=>'title','description'=>'desccription','fk_id_image'=>'fk_id_image'));
+        }
 
-	/*
+        /*
 	*	POSTE D'UNE OFFRE
 	*/
         
@@ -46,7 +67,7 @@ class Offer extends Prefab
 	    if($error){
 	      F3::set('errorMsg',$error);
 	    }
-	    else{	
+	    else{
                 $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
                 $offer->copyFrom('POST'); 
                 $offer->save();
