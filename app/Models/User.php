@@ -12,6 +12,13 @@ class User{
 
 	}
 
+	function post(){
+ 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+ 			$users->password=md5('test');
+			$users->copyFrom('POST'); // on récupère le POST
+			$users->save(); // on sauvegarde
+	}
+
 	function __destruct(){
 
 	}
