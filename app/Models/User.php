@@ -34,7 +34,8 @@ class User{
 
 	function infoUserCo($login){
 			return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
-
+			// return $infoUserCo = F3::get('dB')->exec("SELECT * FROM offer WHERE fk_id_users_post = '".$id."'");
+			
 	}
 	function __destruct(){
 
