@@ -12,13 +12,30 @@ class User{
 
 	}
 
-	function post(){
+	function inscription($password){
  			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
- 			$users->password=md5('test');
-			$users->copyFrom('POST'); // on récupère le POST
+ 			$users->copyFrom('POST'); // on récupère le POST
+ 			$users->password=md5($password);
 			$users->save(); // on sauvegarde
 	}
 
+	function connexion($login,$password){
+			 $connexion = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."' AND password ='".$password."'");
+			 if (count($connexion) == 0) {
+				$connexion=false;			 	
+			 	return $connexion;
+			 }
+			 else{
+			 	$connexion=true;			 	
+			 	return $connexion;
+			 }
+
+	}
+
+	function infoUserCo($login){
+			return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
+
+	}
 	function __destruct(){
 
 	}
