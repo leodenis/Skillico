@@ -16,23 +16,40 @@ class User_controller{
 	}
 
 	function post(){
-		 F3::set('errorMsg',null);
 	    $check=array(
+	      'login'=>'required',
+   	      'password'=>'required',
+   	      'password2' => 'required',
+	      'email'=>'required',
 	      'name'=>'required',
-	      'extension'=>'required'
+	      'firstname'=>'required',
+	      'adress'=>'required',
+	      'phone'=>'required',
+	      'date_creation'=>'required',
+	      'last_connection'=>'required',
+	      'level'=>'required'
+	     
 	    );
+	    if ($_POST['password'] != $_POST['password2']) {
+	    	echo "Les mots de passes doivent être identiques! Veuillez recommercer";
+	    	return;
+	    }
+
 	    $error=Datas::instance()->check(F3::get('POST'),$check);
 	    if($error){
 	      F3::set('errorMsg',$error);
+	      echo Views::instance()->render('user.php');
+	      return;
 	    }
 	    else{	
-	    	echo 'OK';
+	    	echo 'Merci, votre inscription a bien été prise en compte!';
 	    	//Ajout dans la base de donnée
-	    	
-			$image=new DB\SQL\Mapper(F3::get('dB'),'image'); // Connexion à la table image
-			$image->copyFrom('POST'); // on récupère le POST
-			$image->save(); // on sauvegarde
-	      //$user=new App;
+   			$user=new User;
+   			$user->post();
+			// $image=new DB\SQL\Mapper(F3::get('dB'),'image'); // Connexion à la table image
+			// $image->copyFrom('POST'); // on récupère le POST
+			// $image->save(); // on sauvegarde
+	      //
 	      //$user->record();
 	    }
 	}
