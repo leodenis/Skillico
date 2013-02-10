@@ -38,7 +38,7 @@ class Offer extends Prefab
         }
         
         /*
-         * RECUPERATION DES DURATIONS DES OFFRES
+         * RECUPERATION DES CATEGORY DES OFFRES
          */
         
         function getCategoryList(){
