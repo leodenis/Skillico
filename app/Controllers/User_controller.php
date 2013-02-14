@@ -13,13 +13,19 @@ class User_controller{
  	 echo Views::instance()->render('user.php');
 
  	 if(empty($_SESSION['user'])){
- 	 	
+
  	 }
  	 else{
  	     $login=$_SESSION['user'];
- 	 	 $User=new User();
-    	 $infoUserCo=$User->infoUserCo($login);
-    	 F3::set('infoUserCo',$infoUserCo);
+ 	     //récupération infoUser
+ 	     $recupIdUser = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
+ 	     $id=$recupIdUser[0]['id_users'];
+ 	     //récupération offre relative à l'user
+ 	     $User=new User();
+    	 $infoUserCo=$User->infoUserCo($id);
+    	 $InfoUserOffer=array_merge($recupIdUser,$infoUserCo);
+
+    	 F3::set('InfoUserOffer',$InfoUserOffer);
  	 	 echo Views::instance()->render('user.php');
 
  	 }
