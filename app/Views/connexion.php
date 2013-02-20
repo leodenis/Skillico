@@ -2,7 +2,6 @@
        <span class="error"></span>
         <input type="text" name="login" placeholder="login" value=""/>
         <input type="text" name="password" placeholder="password" value=""/>
-
         <input type="submit" value="save"/>
      </form>
 

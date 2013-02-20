@@ -1,5 +1,5 @@
 <?php 
-class User{
+class User extends Prefab{
 	function __construct(){
 
 	}
@@ -13,30 +13,85 @@ class User{
 	}
 
 	function inscription($password){
+		   $img=Web::instance()->receive();
+				    if($img){
+				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
+				      $image->name=$img[0];
+				      $image->extension='.jpg';
+				      $image->save();
+				    }else{
+				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
+				      $image->name='photodebase.jpg';
+				      $image->extension='.jpg';
+				      $image->save();
+				    }
+ 			
  			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
  			$users->copyFrom('POST'); // on récupère le POST
  			$users->password=md5($password);
+ 			$users->fk_id_image='2';
 			$users->save(); // on sauvegarde
+
+			
+	}
+
+	function inscriptionfb($password){
+
+ 			$date_creation=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+ 			$last_connection=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+ 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+ 			$users->login='fb1';
+ 			$users->email='fb';
+ 			$users->password=md5($password);
+ 			$users->name='fb';
+ 			$users->firstname='fb';
+ 			$users->adress='fb';
+ 			$users->phone='fb';
+ 			$users->date_creation=$date_creation;
+ 			$users->last_connection=$last_connection;
+ 			$users->level='2';
+ 			$users->fk_id_image='10';
+			$users->save(); // on sauvegarde
+
+			
+	}
+
+	function forgetpassword($login,$password){
+			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+	 		$users->load(array('login=?',$login));
+	 		$users->password=md5($password); // on récupère le POST
+			$users->update(); // on sauvegarde
+
+			return $log = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
+
+			F3::reroute('/user');
 	}
 
 	function connexion($login,$password){
-			 $connexion = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."' AND password ='".$password."'");
-			 if (count($connexion) == 0) {
-				$connexion=false;			 	
-			 	return $connexion;
-			 }
-			 else{
-			 	$connexion=true;			 	
-			 	return $connexion;
-			 }
+			
+
 
 	}
 
 	function infoUserCo($id){
-			// return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$id."'");
-			// $id=$infoUserCo[0][id];
-			return $infoUserCo = F3::get('dB')->exec("SELECT * FROM offer WHERE fk_id_users_post = '".$id."'");
-			
+			// return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE id_users = '".$id."'");
+			return $infoUserCo = F3::get('dB')->exec("SELECT U.id_users, U.login,U.name,U.firstname,U.email,U.adress,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.id_image,I.name, I.extension FROM users U, image I WHERE U.fk_id_image = I.id_image AND U.id_users ='".$id."'");
+
+	}
+	function EditInfoUser($id,$id_image){
+			$img=Web::instance()->receive();
+			    if($img){
+			      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
+			      $image->load(array('id_image=?',$id_image));
+			      $image->name=$img[0];
+			      $image->update();
+			    }
+
+			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+	 		$users->load(array('id_users=?',$id));
+	 		$users->copyFrom('POST'); // on récupère le POST
+			$users->update(); // on sauvegarde
+			F3::reroute('/user/edit');
 	}
 	function __destruct(){
 
