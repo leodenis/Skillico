@@ -64,4 +64,9 @@ class Test_controller{
             F3::set('results',$test->results());
             echo Views::instance()->render('test.html');
         }
+        
+        function offerUser(){
+            $offerUser = Offer::instance()->getOfferByUSerId(2);
+            print_r($offerUser);
+        }
 }

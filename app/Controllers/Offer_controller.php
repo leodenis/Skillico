@@ -7,8 +7,9 @@ class Offer_controller{
 	}
 
 	function get(){ 
-           $offerListe = Offer::instance()->getOfferListe();
-            print_r($offerListe);
+           $offers = Offer::instance()->getOfferListe();
+            F3::set('offers',$offers);
+            echo Views::instance()->render('annonces.html');
 	}
 
 	function post(){ 
