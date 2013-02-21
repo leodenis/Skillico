@@ -15,7 +15,7 @@ class Offer_controller{
            }else{
                 $offers = Offer::instance()->getOfferListe();
                 F3::set('offers',$offers);
-                echo Views::instance()->render('annonces.html');  
+                echo Views::instance()->render('annonces.php');  
            }
            
 	}
@@ -31,4 +31,13 @@ class Offer_controller{
 	function delete(){ 
             Offer::instance()->deleteOffer();
 	}
+
+  function search(){
+    $search=F3::get('PARAMS.search');
+    $Offer=new Offer();
+    $offer=$Offer->Search($search);
+    F3::set('offer',$offer);
+    echo Views::instance()->render('search.php');
+
+  }
 }

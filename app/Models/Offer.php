@@ -116,6 +116,38 @@ class Offer extends Prefab
 	    return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
         
+
+        function Search($search){
+        //Explosion de la chaine au caractère -
+            $chaineExplode =  explode('-', $search);
+            $firstRequest = $chaineExplode[0];
+            $SecondRequest = $chaineExplode[1];
+            $price1=$chaineExplode[2]; 
+            $price2=$chaineExplode[3]; 
+            $requete='';
+
+            //Créatop, des requêtes dynamiquement en fonction de ce que nous recevons
+            
+            if(isset($chaineExplode[4]) && isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7])){
+                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR '$chaineExplode[7]')";
+            }
+            else if(isset($chaineExplode[4]) && isset($chaineExplode[5]) && isset($chaineExplode[6])){
+                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]' OR C.title = '$chaineExplode[6]')";
+            }
+            else if(isset($chaineExplode[4]) && isset($chaineExplode[5])){
+                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]')";
+            }
+            else if(isset($chaineExplode[4])){
+                 $requete="AND C.title ='$chaineExplode[4]'";
+            }
+
+            else{
+                $requete='';
+            }
+
+            return $test = F3::get('dB')->exec("SELECT O.title, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+
+        }
        /*
         * Recuperation pour creer les marqueurs
         */
