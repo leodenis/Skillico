@@ -8,7 +8,7 @@ class App_controller{
 	function home(){ 
 		//echo Views::instance()->render(index.html)
 		$view=new View(); 
-		echo $view->render('home.html'); 	
+		echo $view->render('index.html'); 	
 	}
 
 	function __destruct(){

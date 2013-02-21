@@ -23,7 +23,7 @@ class Offer extends Prefab
 
 	function getOfferDetails($idOffer){
 	    $offer = F3::get('dB')->exec('SELECT * FROM offer WHERE id_offer = ' . $idOffer);
-	    return Views::instance()->toJson($offer,array('title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
+	    return $offer;
 	}
         
         /*
@@ -115,11 +115,14 @@ class Offer extends Prefab
             $offerList = $offer->find($filter,$option);
 	    return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
-       
-       /*
-        *       RECUPERATION DES OFFRES D'UN UTILISATEUR
-        */
         
+       /*
+        * Recuperation pour creer les marqueurs
+        */
+       
+       function reqLatLng(){
+           
+       }
 }
 
 ?>

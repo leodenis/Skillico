@@ -7,9 +7,17 @@ class Offer_controller{
 	}
 
 	function get(){ 
-           $offers = Offer::instance()->getOfferListe();
-            F3::set('offers',$offers);
-            echo Views::instance()->render('annonces.html');
+           $id=F3::get('PARAMS.id');
+           if($id){
+                $offer = Offer::instance()->getOfferDetails($id);
+                F3::set('offer',$offer);
+                echo Views::instance()->render('annonces_detail.html');  // A FINIR AVEC L'INTE
+           }else{
+                $offers = Offer::instance()->getOfferListe();
+                F3::set('offers',$offers);
+                echo Views::instance()->render('annonces.html');  
+           }
+           
 	}
 
 	function post(){ 
