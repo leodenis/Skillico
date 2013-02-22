@@ -58,6 +58,23 @@
 
 	<script src="public/js/AjaxRequete.js"></script>	
 
+	<script type="text/javascript">
+
+	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
+
+		$(document).ready(function() {
+			$("#deposer_annonce").fancybox({
+				'width'				: '60%',
+				'height'			: '100%',
+				'autoScale'			: false,
+				'transitionIn'		: 'true',
+				'transitionOut'		: 'true',
+				'type'				: 'iframe'
+			});
+	
+		});		
+	</script>
+
 </head>
 <body>
 
@@ -94,7 +111,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a href="#"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
