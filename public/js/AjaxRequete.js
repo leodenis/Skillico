@@ -46,9 +46,9 @@
 
 
 				function ajaxSearch(elem1,elem2) {
-			
 					
 					//Récupération des données
+					var searchBarre = $('#search2').val();
 					var search1 = $('#search').val();
 					var searchin = $('input[type=radio][name=searchin]:checked').attr('value');
 					//Récupération des checkbox
@@ -110,7 +110,7 @@
 					}
 					espaceSearch = a;
 
-					search = search1+espaceSearch;
+					search = search1+text+searchBarre+espaceSearch;
 					console.log(search);
 					
 

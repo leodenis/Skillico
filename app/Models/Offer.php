@@ -121,31 +121,32 @@ class Offer extends Prefab
         //Explosion de la chaine au caractère -
             $chaineExplode =  explode('-', $search);
             $firstRequest = $chaineExplode[0];
-            $SecondRequest = $chaineExplode[1];
-            $price1=$chaineExplode[2]; 
-            $price2=$chaineExplode[3]; 
+            $SecondeSearch = $chaineExplode[1];
+            $SecondRequest = $chaineExplode[2];
+            $price1=$chaineExplode[3]; 
+            $price2=$chaineExplode[4]; 
             $requete='';
 
             //Créatop, des requêtes dynamiquement en fonction de ce que nous recevons
             
-            if(isset($chaineExplode[4]) && isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7])){
-                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR '$chaineExplode[7]')";
+            if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7]) && isset($chaineExplode[8])){
+                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR C.title = '$chaineExplode[7]' OR '$chaineExplode[8]')";
             }
-            else if(isset($chaineExplode[4]) && isset($chaineExplode[5]) && isset($chaineExplode[6])){
-                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]' OR C.title = '$chaineExplode[6]')";
+            else if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7])){
+                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR C.title = '$chaineExplode[7]')";
             }
-            else if(isset($chaineExplode[4]) && isset($chaineExplode[5])){
-                $requete="AND (C.title ='$chaineExplode[4]' OR C.title = '$chaineExplode[5]')";
+            else if(isset($chaineExplode[5]) && isset($chaineExplode[6])){
+                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]')";
             }
-            else if(isset($chaineExplode[4])){
-                 $requete="AND C.title ='$chaineExplode[4]'";
+            else if(isset($chaineExplode[5])){
+                 $requete="AND C.title ='$chaineExplode[5]'";
             }
 
             else{
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*
