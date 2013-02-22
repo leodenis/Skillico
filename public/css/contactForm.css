@@ -1,0 +1,103 @@
+
+            .box 
+            {
+            	margin: 0px auto;
+            	width:auto;
+            	background-color:#ffffff;
+            	text-align:left;
+              
+            }
+            fieldset h4{
+                  color:#1794d5;
+                  border-bottom: 1px dotted grey;
+                  float: left;
+            }
+            #connexion{
+                  float: right;
+            }
+
+            
+            .content
+            {
+             	padding:10px 30px;
+            }
+            #contactFormContainer
+            {
+            
+            }
+            #contactForm
+            {
+            	width:auto;
+            	background-color: #3d3d3d;
+            	display:none;
+                  position: absolute;
+                  z-index: 50;
+            }
+            #contactForm fieldset
+            {
+                  padding: 10px 35px 10px 15px;
+                  border:none;
+            }      
+            #contactForm label
+            {
+            	display:block;
+            	color:white;
+            }      
+            #contactForm input[type=text]
+            {
+            	display:block;
+            	border:solid 1px #4d3a24;
+            	width:auto;
+            	margin-bottom:10px;
+                  margin-right: 10px;
+
+            }  
+
+            #part_connect input{
+                  padding: 5px;
+            }
+            #contactForm textarea
+            {
+            	display:block;
+            	border:solid 1px #4d3a24;
+            	width:100%;
+            	margin-bottom:10px;
+            }  
+            #contactForm input[type=submit]
+            {
+            	background-color:#1794d5;
+            	border:solid 1px #23150c;
+            	color:white;
+            	padding:5px;
+            }                
+            #contactLink
+            {
+                  padding-top: 5px;
+                  border: 0;
+                  font-size: 100%;
+                  font: inherit;
+                  vertical-align: baseline;
+            	display:block;
+            	cursor:pointer;
+            }
+            #connectLink{
+                  margin: 0;
+                  padding: 0;
+                  border: 0;
+                  font-size: 100%;
+                  font: inherit;
+                  vertical-align: baseline;
+                  display:block;
+                  cursor:pointer;
+            }
+
+            div#part_connect{
+            display: inline-block;
+            float: left;
+            border-right: 1px dotted black;
+            }
+
+            div#part_identify{
+            display: inline-block;
+            float: right;
+            }
