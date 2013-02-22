@@ -49,11 +49,11 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
 	<link rel="stylesheet" href="public/css/contactForm.css" />
-	<script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
 	<script src="public/js/AjaxRequete.js"></script>	
@@ -89,13 +89,13 @@
 			<!--start navigation-->
 			<nav>
 				<ul class="menu" > 
-					<li>
+					<li class="selected">
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
 						<a href="#"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
-					<li class="selected">
+					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>							  
 					<li>
@@ -108,9 +108,9 @@
 					
 						
 				</ul>
-				<div id="contactLink" class="boutonId">
+					<div id="contactLink" class="boutonId">
 						<span id="creerCompte" ><a>Créer un compte</a></span><br>
-						<span ><a><img src="public/images/menu/seConnecter.png" href="#">Se connecter</a></span>
+						<span ><a href="#"><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 					</div>
 					<div class="langue">
 						<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
@@ -120,7 +120,7 @@
 			<!--end navigation-->	
 		</div>
 
-				<div class="grid_12 centered margintop15">
+		<div class="grid_12 centered margintop15">
 			<div class="grid_5 nomargin" id="connexion">
 				<div class="box">
 				    <div id="contactFormContainer">
