@@ -53,6 +53,7 @@
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
 	<script src="public/js/AjaxRequete.js"></script>	
+
 </head>
 <body>
 
@@ -150,7 +151,9 @@
 				<ul class="menuOffre" style="background-color:white;">
 					<li>Filtrer les annonces</li>
 					<li><p>Localisation</p><input type="text" id="search" name="search" onKeyUp="ajaxSearch();"/></li>
-					<li><p>Diamètre d'action</p><input style="width:90%;" alt="LEO FAUT CALER TON PLUGGIN ICI :)"/></li>
+					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value=""/></li>
+					<div id="slider-range-max"></div>
+
 					<li><p for="amout">Rémunération</p><input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" value=""/>
 										
 					<div id="slider-range"></div>
@@ -179,7 +182,7 @@
 					<div class="description">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer->title ?></h3><br>
-						<p><?php echo $offer->description ?></p>
+						<p><?php echo $offer->desciption ?></p>
 					</div>
 					<div class="info">
 						<ul>

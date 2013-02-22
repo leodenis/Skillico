@@ -1,3 +1,19 @@
+		  $(function() {
+		    $( "#slider-range-max" ).slider({
+		      range: "max",
+		      min: 1,
+		      max: 150,
+		      value: 2,
+		      slide: function( event, ui ) {
+		        $( "#amount_diam" ).val( ui.value );
+		      }
+		    });
+		    $( "#amount_diam" ).val( $( "#slider-range-max" ).slider( "value" ) );
+		  });
+
+
+
+
 		 var price = "";
 		  $(function() {
 		    $( "#slider-range" ).slider({
@@ -115,7 +131,7 @@
 	                        if (data) {
 	                            var obj = jQuery.parseJSON(data);
 	                            for (var i = 0; i < obj.length; i++) {
-									$("#donneesAnnonces").append('<div class="grid_8 nomargin part_right"><img src="public/images/list/achat_immediat.jpg"><div class="description"><img src="public/images/dummies/img.png"><h3>' + obj[i].title + '</3></br><p>'+ obj[i].desciption + '</p></div><div class="info"><ul><li><img src="public/images/dummies/price.png"><p>' + obj[i].price + '</p></li><li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li><li><img src="public/images/dummies/event.png"><p>'+obj[i].ending+'</p></li></ul><input type="button" value="Postuler" class="postuler"></div></div>');
+									$("#donneesAnnonces").append('<div class="grid_8 nomargin part_right"><img src="public/images/list/achat_immediat.jpg"><div class="description"><img src="public/images/dummies/img.png"><h3>'+obj[i].title+'</h3></br><p>'+obj[i].desciption+'</p></div><div class="info"><ul><li><img src="public/images/dummies/price.png"><p>' + obj[i].price + '</p></li><li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li><li><img src="public/images/dummies/event.png"><p>'+obj[i].ending+'</p></li></ul><input type="button" value="Postuler" class="postuler"></div></div>');
 		                            }
 		                        };        	                             
 		                    }

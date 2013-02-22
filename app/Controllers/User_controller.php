@@ -83,6 +83,9 @@ class User_controller extends Prefab{
 	}
 
 	function inscriptionfb(){
+
+		
+
 		//génére aléatoirement un mot de passe
 		$string = "";
 		$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
@@ -93,12 +96,12 @@ class User_controller extends Prefab{
 
 
 		//Envoie du mot de passe
-		$headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-	    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-	    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-	    $headers .='Content-Transfer-Encoding: 8bit'; 
-        $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
-		mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
+		// $headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
+	 //    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
+	 //    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
+	 //    $headers .='Content-Transfer-Encoding: 8bit'; 
+  //       $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
+		// mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
 
 		$password=$string;
 		$user=new User;

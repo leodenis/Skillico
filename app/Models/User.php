@@ -31,8 +31,6 @@ class User extends Prefab{
  			$users->password=md5($password);
  			$users->fk_id_image='2';
 			$users->save(); // on sauvegarde
-
-			
 	}
 
 	function inscriptionfb($password){
