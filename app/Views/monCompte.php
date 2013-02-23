@@ -101,7 +101,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a href="#"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -190,10 +190,10 @@
 			<div id="info3">
 				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
 				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
-				<label><span>Civilité :</span>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
+				<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
 				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
 				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
-				<label><span>Adresse complete :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
+				<label><span>Adresse complète :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
 				<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
 				<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
 			</div>
@@ -245,6 +245,7 @@
 
 
 	<div id="tabs-3">
+
 		<h2>Mes avis</h2>
 		<div class="tab_part_right">
 			<div class="description2">
