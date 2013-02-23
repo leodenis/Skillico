@@ -11,8 +11,15 @@ class App_controller{
 		echo $view->render('index.html'); 	
 	}
 
+	function renduPage(){
+		$view=new View(); 
+		echo $view->render('monCompte.html');
+	}
+
 	function __destruct(){
 
 	}
+
+
 
 }

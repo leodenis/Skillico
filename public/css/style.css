@@ -237,9 +237,28 @@ span.fb-like {
     display: inline-block;
     background-color: white;
     float: left;
-    height: 550px;
     border: 1px solid #c8c9ca;
 
+}
+
+.menuCompte li:hover:first-child{
+	background-color: white;
+}
+
+.menuCompte li:hover{
+	background-color: #88cdf0;
+}
+
+.menuCompte li:hover a{
+	color: white;
+}
+
+.menuCompte li:first-child{
+	padding: 6px 0px 6px 0px;
+	color: #1794d5;
+	font-size: 2em;
+	border-bottom: 1px solid #c8c9ca;
+	text-align: center;
 }
 
 .part_right{
@@ -254,7 +273,74 @@ span.fb-like {
 
 .part_right>img{
 	float: left;
+	position: relative;
 	margin: auto;
+}
+
+.ui-corner-left{
+	font-size: 1.3em;
+	width: 100%;
+	padding: 5px 0px 5px 15px;
+	
+}
+
+.ui-corner-left:last-child{
+	border:none;
+}
+
+.ui-corner-left h4{
+	color:white;
+}
+.ui-tabs-vertical .ui-tabs-nav li{
+	clear: left;
+	width: 100%;
+	border-bottom-width: 1px !important;
+	border-right-width: 0 !important;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a{
+	display:block;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active{
+	padding-right: .1em;
+	border-right-width: 1px;
+	border-right-width: 1px; }
+
+.part_info{
+	float:right;
+}
+
+.tab_part_right{
+	float: left;
+	width: 99%;
+	margin-bottom: 5px;
+	border: 1px solid #c8c9ca;
+	max-height: 131px;
+}
+
+.tab_part_right img{
+	float:left;
+}
+
+.menuCompte{
+
+	text-align: left;
+}
+
+div.description2{
+	display: inline-block;
+	width: 75%;
+	float: left;
+	margin-right: 20px;
+	padding-top: 10px;
+}
+div.info2{
+	display: inline-block;
+	float: left;
+	padding-top: 5px;
+	width: 18%;
+	border: none;
 }
 
 div.description{
