@@ -190,7 +190,7 @@
 			<div id="info3">
 				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
 				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
-				<label><span>Civilité :</span><input type="text" value=""></input></label>
+				<label><span>Civilité :</span>  Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
 				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
 				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
 				<label><span>Adresse complete :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
