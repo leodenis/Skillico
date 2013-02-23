@@ -190,7 +190,7 @@
 			<div id="info3">
 				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
 				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
-				<label><span>Civilité :</span>  Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
+				<label><span>Civilité :</span>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
 				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
 				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
 				<label><span>Adresse complete :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
@@ -245,9 +245,47 @@
 
 
 	<div id="tabs-3">
-		<h2>Content heading 3</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+		<h2>Mes avis</h2>
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Super</h3>
+				<p>Super moment avec léo, ponctuel et efficace, il a su déboucher mes toilettes en un clin d'oeil</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>18/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Bien</h3>
+				<p>Merci à Arthur d'avoir porter mes courses, il aura fait il un bon esclave dans Django</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>15/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Mauvais</h3>
+				<p>Simon ne m'a pas livré mon mac do à l'heure prévue...</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>4/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+
 	</div>
 	<div id="tabs-4">
 		<h2>Content heading 4</h2>

@@ -365,6 +365,11 @@ div#info3 label{
 	padding-bottom: 10px;
 }
 
+.description2 h3{
+	margin: 0 0 5px 0;
+
+}
+
 .box2{
 	background-color: #ffffff;
 	text-align: left;
