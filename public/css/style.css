@@ -280,7 +280,6 @@ span.fb-like {
 .ui-corner-left{
 	font-size: 1.3em;
 	width: 100%;
-	border-bottom: 1px solid #c8c9ca;
 	padding: 5px 0px 5px 15px;
 	
 }
@@ -312,9 +311,36 @@ span.fb-like {
 	float:right;
 }
 
+.tab_part_right{
+	float: left;
+	width: 99%;
+	margin-bottom: 5px;
+	border: 1px solid #c8c9ca;
+	max-height: 131px;
+}
+
+.tab_part_right img{
+	float:left;
+}
+
 .menuCompte{
 
 	text-align: left;
+}
+
+div.description2{
+	display: inline-block;
+	width: 75%;
+	float: left;
+	margin-right: 20px;
+	padding-top: 10px;
+}
+div.info2{
+	display: inline-block;
+	float: left;
+	padding-top: 5px;
+	width: 18%;
+	border: none;
 }
 
 div.description{
