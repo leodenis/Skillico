@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -65,6 +64,7 @@
 		$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 	});
 	</script>
+	
 </head>
 <body>
 
@@ -177,10 +177,35 @@
 				</ul>
 			</div>
 			
-			<div class="grid_8 nomargin part_info"><div id="tabs-1">
-		<h2>Content heading 1</h2>
-		<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+			<div class="grid_8 nomargin part_info">
+	<div id="tabs-1">
+
+		<h2>Mon profil</h2>
+		<form>
+		<div class="box2">
+			<div id="profil-pic">
+			<label id="upload"><span>Photo de profil </span><br/><br/><img src="https://graph.facebook.com/" /><br/><br/><input id="normal" type="file"></input></label><br/>
+			</div>
+
+			<div id="info3">
+				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
+				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
+				<label><span>Civilité :</span><input type="text" value=""></input></label>
+				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
+				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
+				<label><span>Adresse complete :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
+				<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
+				<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
+			</div>
+			<div id="BoutonAction">
+				<label id="envoyer"><input type="submit" value="Envoyer" class="postuler"></input></label>
+			</div>
+		</div>
+		</form>
+
 	</div>
+
+
 	<div id="tabs-2">
 		<h2>Mes services effectués</h2>
 
@@ -217,6 +242,8 @@
 		</div>
 
 	</div>
+
+
 	<div id="tabs-3">
 		<h2>Content heading 3</h2>
 		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>

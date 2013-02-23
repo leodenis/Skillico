@@ -317,6 +317,19 @@ span.fb-like {
 	margin-bottom: 5px;
 	border: 1px solid #c8c9ca;
 	max-height: 131px;
+	background-color: white;
+}
+
+div#profil-pic{
+	display: inline-block;
+	float: left;
+	padding-left: 15px;
+	padding-top: 10px;
+}
+
+div#boutonAction{
+	text-align: center;
+	padding-bottom: 10px;
 }
 
 .tab_part_right img{
@@ -343,6 +356,21 @@ div.info2{
 	border: none;
 }
 
+div>label>span{
+	color: #1794d5;
+	font-size: 1.2em;
+	padding-bottom: 3px;
+}
+div#info3 label{
+	padding-bottom: 10px;
+}
+
+.box2{
+	background-color: #ffffff;
+	text-align: left;
+	border: 1px solid #c8c9ca;
+}
+
 div.description{
 	display: inline-block;
 	width: 80%;
@@ -367,6 +395,13 @@ div.description{
 	margin: 0;
 	text-align: justify;
 	padding-top: 5px;
+}
+
+#info3{
+	display: inline-block;
+	padding-left: 30px;
+	width: 55%;
+	padding-top: 10px;
 }
 
 .info {
@@ -760,7 +795,10 @@ section#rechercher {
 	background-color: #9dd8f6;
 	padding:20px 0px;
 }
-
+section#monCompte {
+	background-color: #ededed;
+	padding: 20px 0px;
+}
 #position{
 	margin-left: 45%;
 	margin-top: -130px;
