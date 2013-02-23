@@ -155,7 +155,7 @@
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 		<form id="position" class="form-wrapper">
-			<input type="text" id="search2" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();"/>
+			<input type="text" id="search2" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
