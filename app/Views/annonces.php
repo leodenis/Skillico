@@ -58,6 +58,23 @@
 
 	<script src="public/js/AjaxRequete.js"></script>	
 
+	<script type="text/javascript">
+
+	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
+
+		$(document).ready(function() {
+			$("#deposer_annonce").fancybox({
+				'width'				: '60%',
+				'height'			: '100%',
+				'autoScale'			: false,
+				'transitionIn'		: 'true',
+				'transitionOut'		: 'true',
+				'type'				: 'iframe'
+			});
+	
+		});		
+	</script>
+
 </head>
 <body>
 
@@ -94,13 +111,13 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a href="#"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>							  
 					<li>
-						<a href="#"><img src="public/images/menu/MonCompte2.png">Mon Compte</a>
+						<a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a>
 				
 					</li>
 					<li>
@@ -163,13 +180,13 @@
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin">
-				<p>.</p>
+				
 			</div>
 			<div class="grid_8 nomargin" id="tri_top">
 				<span class="tri_bot"><p>Trier par :</p>
-						<input type="checkbox" name="service" value="service">Distance
-						<input type="checkbox" name="plomberie" value="plomberie">Rémunération
-						<input type="checkbox" name="menuiserie" value="menuiserie">Durée
+						<input type="checkbox" name="distance" value="distance">Distance
+						<input type="checkbox" name="remuneration" value="remuneration">Rémunération
+						<input type="checkbox" name="duree" value="duree">Durée
 				</span>
 
 			</div>

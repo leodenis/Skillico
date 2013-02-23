@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<title>Lightbox</title>
+
+ 	<link rel="stylesheet" href="../../public/css/fancy_style.css" />
+
+</head>
+
+<body id="mon_body">
+<div id="master">
+	<div id="title">
+		<div id="content-title">
+			<h1>Déposer une annonce</h1>
+			<p>Veillez à bien à remplir tous les champs obligatoires pour que votre annonce se publie correctement</p>
+		</div>
+	</div>
+
+	<div id="content">
+		<div id="content-form">
+			<div class="info" id="ma_mission">
+				<h2>Informations sur la mission</h2>
+				<label for="identifiant">Nom de la mission</label><br/>
+				<input id="identifiant" type="text" /><br/><br/>
+				<label for="identifiant">Description de la mission</label><br/>
+				<textarea></textarea><br/><br/>
+				<div class="mon_select">
+					<label for="identifiant">Catégorie de service</label><br/>
+					<select name="categorie">
+						<option value="manutention">Manutention</option>
+						<option value="technologie">Technologie</option>
+						<option value="alimentaire">Alimentaire</option>
+						<option value="prostitution">Prostitution</option>
+					</select><br/><br/>
+				</div>
+				<div class="mon_select">
+					<label for="identifiant">Durée du service</label><br/>
+					<select name="categorie">
+						<option value="manutention">Courte durée</option>
+						<option value="technologie">Moyenne durée</option>
+						<option value="alimentaire">Longue durée</option><br/><br/>
+					</select><br/><br/>
+				</div>
+
+				<label> Type de vente</label><br/>
+				<div class="mon_select">
+					<input style="font-size:1.2em;" type="radio" id="ma_radio" name="type_annonce" value="immediat"><label for="ma_radio">Achat immédiat</label>
+				</div>
+				<div class="mon_select">
+					<input style="font-size:1.2em;" type="radio" id="ma_radio2" name="type_annonce" value="enchere"><label for="ma_radio2">Enchère</label>
+				</div>
+			</div>
+
+			<div class="info">
+				<h2>Adresse du service à rendre</h2>
+				<label for="identifiant">Adresse</label><br/>
+				<input id="identifiant" type="text" /><br/><br/>
+			</div>
+
+			<div class="info">
+				<h2>Rémunération</h2>
+				<label for="identifiant">Montant de la rémunération</label><br/>
+				<input id="identifiant" type="text" /><br/>
+				<p>Le montant de la rémunération comprend les frais fixes pour le service ainsi que le prix de l’achat du produit.
+				<br/>Exemple : vous souhaitez vous faire livrer un Mc Do 5.00 € pour le service + 7.40 € pour le produit = 12.40 €</p><br/><br/>
+			</div>
+
+			<div class="info_mentions">
+				<input type="checkbox" name="conditions" id="ma_mention" value="conditions" /><label for="ma_mention">J’ai lu et j’accepte les conditions générales d’utilisation de <a href="">skillico.fr</a></label>
+			</div>
+
+			<div class="info_button">
+				<input type="button" value="Publier" class="postuler">
+				<input type="button" value="Annuler" id="fancybox-close" class="postuler">
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>
