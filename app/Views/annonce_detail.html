@@ -212,8 +212,13 @@
 
 				<ul class="detailOffreMenu">
 					<li>Achat immédiat</li>
+<<<<<<< HEAD
 					<li><p>Catégories</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration catégorie"><p>Menuiserie</p><span></li>
 					<li><p>Annonceur</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration Annonceur"><p><?php echo $offer[0]['login']; ?></p></span></li>
+=======
+					<li><p id="padding">Catégories</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration catégorie"><p>Menuiserie</p><span></li>
+					<li><p>Annonceur</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration Annonceur"><p>Catherine M.</p></span></li>
+>>>>>>> 566240fd056e9483a66bc67b9a846ac834249e72
 					<li><p>Date</p><span><img src="public/images/dummies/event.png" alt="pictogramme illustration Datr"><p>24/03/13</p></span></li>
 					<li><p>Rémunération</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration rémunération"><p><?php echo $offer[0]['price']; ?></p></span></li>
 					<li><p>Localisation</p><span><img src="public/images/dummies/location.png" alt="pictogramme illustration localisation"><p>Paris 12</p></span></li>
@@ -221,15 +226,17 @@
 				</ul>
 			</div>
 				<div class="grid_8 nomargin detailOffre">
-					<div class="description">
+					<div class="descriptionOffre">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer[0]['title']; ?></h3><br>
 						<h4>Description de l'annonce</h4>
 						<p>
 							<?php echo $offer[0]['desciption']; ?>
+
 						</p>
 						<h4>Localisation</h4>
-						<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
+						<img id="mapDetail" src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
+						<input type="submit" value="Postuler" id="postuler">
 					</div>
 				</div>
         </div>
