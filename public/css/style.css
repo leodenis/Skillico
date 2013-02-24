@@ -343,7 +343,7 @@ div#boutonAction{
 
 div.description2{
 	display: inline-block;
-	width: 75%;
+	width: 65%;
 	float: left;
 	margin-right: 20px;
 	padding-top: 10px;
@@ -368,6 +368,18 @@ div#info3 label{
 .description2 h3{
 	margin: 0 0 5px 0;
 
+}
+
+.grid_4.nomargin.part_info.right{
+	float:right;
+}
+.grid_4.nomargin.part_info.right{
+	float:left;
+}
+
+.grid_4.nomargin.part_info{
+	margin:0px;
+	padding: 0px;
 }
 
 .box2{

@@ -259,13 +259,15 @@
 
 
 	<div id="tabs-3">
-
 		<h2>Mes avis</h2>
+
+		<div class="grid_4 nomargin part_info left">
+			<h2>Donnés</h2>
 		<div class="tab_part_right">
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
 				<h3>Super</h3>
-				<p>Super moment avec léo, ponctuel et efficace, il a su déboucher mes toilettes en un clin d'oeil</p>
+				<p>Super moment avec léo</p>
 			</div>
 			<div class="info2">
 				<ul>
@@ -278,7 +280,7 @@
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
 				<h3>Bien</h3>
-				<p>Merci à Arthur d'avoir porter mes courses, il aura fait il un bon esclave dans Django</p>
+				<p>Merci à Arthur</p>
 			</div>
 			<div class="info2">
 				<ul>
@@ -291,7 +293,7 @@
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
 				<h3>Mauvais</h3>
-				<p>Simon ne m'a pas livré mon mac do à l'heure prévue...</p>
+				<p>Simon est méchant</p>
 			</div>
 			<div class="info2">
 				<ul>
@@ -299,9 +301,51 @@
 				</ul>
 			</div>
 		</div>
-
-
 	</div>
+
+	<div class="grid_4 nomargin part_info right">
+			<h2>Reçu</h2>
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Super</h3>
+				<p>Super moment avec léo</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>18/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Bien</h3>
+				<p>Merci à Arthur</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>15/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Mauvais</h3>
+				<p>Simon est méchant</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>4/20</p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
 	<div id="tabs-4">
 		<h2>Content heading 4</h2>
 		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora, lacus.</p>
