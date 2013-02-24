@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -65,6 +64,7 @@
 		$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 	});
 	</script>
+	
 </head>
 <body>
 
@@ -101,7 +101,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a href="#"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -177,18 +177,116 @@
 				</ul>
 			</div>
 			
-			<div class="grid_8 nomargin part_info"><div id="tabs-1">
-		<h2>Content heading 1</h2>
-		<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+			<div class="grid_8 nomargin part_info">
+	<div id="tabs-1">
+
+		<h2>Mon profil</h2>
+		<form>
+		<div class="box2">
+			<div id="profil-pic">
+			<label id="upload"><span>Photo de profil </span><br/><br/><img src="https://graph.facebook.com/" /><br/><br/><input id="normal" type="file"></input></label><br/>
+			</div>
+
+			<div id="info3">
+				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
+				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
+				<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
+				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
+				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
+				<label><span>Adresse complète :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
+				<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
+				<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
+			</div>
+			<div id="BoutonAction">
+				<label id="envoyer"><input type="submit" value="Envoyer" class="postuler"></input></label>
+			</div>
+		</div>
+		</form>
+
 	</div>
+
+
 	<div id="tabs-2">
-		<h2>Content heading 2</h2>
-		<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+		<h2>Mes services effectués</h2>
+
+		<div class="tab_part_right">
+			<img src="public/images/list/achat_immediat.jpg">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Aide pour aller chercher mes courses</h3><br>
+				<p>dzkozkodzkodzodzkodzkodzkodzokzdokdzokkodzkodzokdzdzokdzko</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
+					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<img src="public/images/list/achat_immediat.jpg">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Aide pour aller chercher mes courses</h3><br>
+				<p>dzkozkodzkodzodzkodzkodzkodzokzdokdzokkodzkodzokdzdzokdzko</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
+					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
+
+
 	<div id="tabs-3">
-		<h2>Content heading 3</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+
+		<h2>Mes avis</h2>
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Super</h3>
+				<p>Super moment avec léo, ponctuel et efficace, il a su déboucher mes toilettes en un clin d'oeil</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>18/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Bien</h3>
+				<p>Merci à Arthur d'avoir porter mes courses, il aura fait il un bon esclave dans Django</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>15/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Mauvais</h3>
+				<p>Simon ne m'a pas livré mon mac do à l'heure prévue...</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><h5>Note:</h5><p>4/20</p></li>
+				</ul>
+			</div>
+		</div>
+
+
 	</div>
 	<div id="tabs-4">
 		<h2>Content heading 4</h2>

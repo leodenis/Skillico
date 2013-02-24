@@ -13,7 +13,7 @@ class App_controller{
 
 	function renduPage(){
 		$view=new View(); 
-		echo $view->render('monCompte.html');
+		echo $view->render('monCompte.php');
 	}
 
 	function __destruct(){
