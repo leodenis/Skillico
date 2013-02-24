@@ -197,69 +197,47 @@
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin">
-				
+					<a href="#" class="retourAnnonce">Retour aux annonces</a>
 			</div>
-			<div class="grid_8 nomargin" id="tri_top">
-				<span class="tri_bot"><p>Trier par :</p>
-						<input type="checkbox" name="distance" value="distance">Distance
-						<input type="checkbox" name="remuneration" value="remuneration">Rémunération
-						<input type="checkbox" name="duree" value="duree">Durée
-				</span>
-
+			<div class="grid_8 nomargin">
+				<h3 class="h3AnnonceDetail">Détails  de l'annonce</h3>
 			</div>
+		
 </section>
 <section id="annonces">
 
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin" id="part_left">
-				<ul class="menuOffre" style="background-color:white;">
-					<li>Filtrer les annonces</li>
-					<li><p>Localisation</p><input type="text" id="search" name="search" onKeyUp="ajaxSearch();"/></li>
-					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value=""/></li>
-					<div id="slider-range-max"></div>
 
-					<li><p for="amout">Rémunération</p><input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" value=""/>
-										
-					<div id="slider-range"></div>
-					</li>		
-					<li><p>Type de vente</p></li>
-					<div><input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" checked onClick="ajaxSearch();"/>Achat immédiat</br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère
-					</div>
-					<li><p>Type d'annonce</p></li>
-					<div>
-						<input type="checkbox" name="chk1" value="course" onClick="ajaxSearch();"/>Service à la personne<br>
-						<input type="checkbox" name="chk2" value="macdo" onClick="ajaxSearch();"/>Plomberie<br>
-						<input type="checkbox" name="chk3" value="jardin" onClick="ajaxSearch();"/>Menuiserie<br>
-						<input type="checkbox" name="chk4" value="alcool" onClick="ajaxSearch();"/>Alimentaire<br>
-					</div>
+				<ul class="detailOffreMenu">
+					<li>Achat immédiat</li>
+					<li><p>Catégories</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration catégorie"><p>Menuiserie</p><span></li>
+					<li><p>Annonceur</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration Annonceur"><p>Catherine M.</p></span></li>
+					<li><p>Date</p><span><img src="public/images/dummies/event.png" alt="pictogramme illustration Datr"><p>24/03/13</p></span></li>
+					<li><p>Rémunération</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration rémunération"><p>50€</p></span></li>
+					<li><p>Localisation</p><span><img src="public/images/dummies/location.png" alt="pictogramme illustration localisation"><p>Paris 12</p></span></li>
 
 				</ul>
 			</div>
-
-
-			<div id="donneesAnnonces">
-				<?php foreach($offers as $offer):?>
-                <?php echo $offer ?>
-				<div class="grid_8 nomargin part_right">
-					<img src="public/images/list/achat_immediat.jpg">
+				<div class="grid_8 nomargin detailOffre">
 					<div class="description">
 						<img src="public/images/dummies/img.png">
-						<h3><?php echo $offer->title ?></h3><br>
-						<p><?php echo $offer->desciption ?></p>
-					</div>
-					<div class="info">
-						<ul>
-							<li><img src="public/images/dummies/price.png"><p><?php echo $offer->price ?></p></li>
-							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
-						</ul>
-						<input type="button" value="Postuler" class="postuler" onclick="self.location.href='offer_detail'">
+						<h3>Travaux de plomberie</h3><br>
+						<h4>Description de l'annonce</h4>
+						<p>
+							Bonjour, je suis actuellement en train de rénover un appartement. Je suis en train de m’attaquer à la salle de bain mais je n’y connais pas grand chose malheureusement.
+							Je suis donc à la recherche d’une personne qui pourrait me venir Bonjour, je suis actuellement en train de rénover un appartement. Je suis en train de m’attaquer à la salle de bain mais je n’y connais pas grand chose malheureusement.
+							Je suis donc à la recherche d’une personne qui pourrait me venir .
+
+							Bonjour, je suis actuellement en train de rénover un appartement. Je suis en train de m’attaquer à la salle de bain mais je n’y connais pas grand chose malheureusement.
+
+							Je suis donc à la recherche d’une personne qui pourrait me venir.
+						</p>
+						<h4>Localisation</h4>
+						<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 					</div>
 				</div>
-                <?php endforeach; ?>
-            </div>
         </div>
 	</div>
 </section>

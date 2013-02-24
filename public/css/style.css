@@ -805,6 +805,48 @@ span.tri_bot p{
 	background-color: #ededed;
 	padding-bottom: 20px;
 }
+.h3AnnonceDetail{
+	color: #1794d5;
+	float:left;
+}
+
+.detailOffre{
+	background-color: white;
+	border: 1px solid #c8c9ca;
+}
+
+.retourAnnonce {
+	-moz-box-shadow:inset 0px 1px 0px 0px #d6d6d6;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #d6d6d6;
+	box-shadow:inset 0px 1px 0px 0px #d6d6d6;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f7f7f7), color-stop(1, #d6d6d6) );
+	background:-moz-linear-gradient( center top, #f7f7f7 5%, #d6d6d6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#d6d6d6');
+	background-color:#f7f7f7;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	border:1px solid #d1d1d1;
+	display:inline-block;
+	color:#999999;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #dbdbdb;
+}.retourAnnonce:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d6d6d6), color-stop(1, #f7f7f7) );
+	background:-moz-linear-gradient( center top, #d6d6d6 5%, #f7f7f7 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#f7f7f7');
+	background-color:#d6d6d6;
+}.retourAnnonce:active {
+	position:relative;
+	top:1px;
+}
+}
+
+
 #content {
 	background-color: #e1ecf0;
 }
@@ -820,6 +862,35 @@ section#monCompte {
 	margin-left: 45%;
 	margin-top: -130px;
 	position: absolute;
+}
+
+.detailOffreMenu li:first-child{
+	background-color: #1794d5;
+	color: white;
+	font-size: 2em;
+	float: left;
+	width: 100%;
+	padding: 5px 0px 5px 15px;
+}
+
+
+.detailOffreMenu li{
+	float: left;
+	width: 100%;
+	text-align: left;
+	font-size: 1.4em;
+	padding-left: 15px;
+	color: #bdbdbd;
+}
+
+.detailOffreMenu li span img {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.detailOffreMenu li span p{
+	color:#a7a7a7;
 }
 .form-wrapper {
 	width: 480px;
