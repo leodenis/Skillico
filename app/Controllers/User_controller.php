@@ -209,10 +209,15 @@ class User_controller extends Prefab{
 	function monCompte(){
 		$id=F3::get('SESSION.user');
 	    $id=$id[0]['id_users'];
+
 		$User=new User();
 		$infoUserCo=$User->infoUserCo($id);
+
+		$Offer=new Offer();
+		$getOfferByUSerId=$Offer->getOfferByUSerId($id);
 		    // print_r($infoUserCo);
 		F3::set('infoUserCo',$infoUserCo);
+		F3::set('getOfferByUSerId',$getOfferByUSerId);
 
 		$view=new View(); 
 		echo $view->render('monCompte.php'); 	
@@ -232,9 +237,11 @@ class User_controller extends Prefab{
 	        F3::reroute('/monCompte');
 	      break;
 	      case 'POST':
-	        $id=F3::get('SESSION.user');
+	        $id = F3::get('SESSION.user');
+	   		$id=$id[0]['id_users'];
 	        $User=new User();
 		    $infoUserCo=$User->infoUserCo($id);
+		    
 		    $id_image=$infoUserCo[0]['id_image'];
 			$User=new User();
 		    $EditInfoUser=$User->EditInfoUser($id,$id_image);

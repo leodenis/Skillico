@@ -24,8 +24,13 @@ class User extends Prefab{
 				      $image->name='photodebase.jpg';
 				      $image->extension='.jpg';
 				      $image->save();
+				      // echo F3::get('DB')->db->lastInsertId($image);
+				      // die();
 				    }
  			
+
+				
+ 		
  			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
  			$users->copyFrom('POST'); // on récupère le POST
  			$users->password=md5($password);

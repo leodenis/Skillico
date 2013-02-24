@@ -194,25 +194,26 @@
 	<div id="tabs-1">
 
 		<h2></h2>
-		<form>
+		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
 			<label id="upload"><span>Photo de profil </span><br/><br/><img src="public/images/<?php echo $infoUserCo[0]['firstname']; ?>/" /><br/><br/><input id="normal" type="file"></input></label><br/>
 			</div>
 
 			<div id="info3">
-				<label><span>Nom :</span><input type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
-				<label><span>Prénom :</span><input type="text" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
-				<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
-				<label><span>Email :</span><input type="text" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
-				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
-				<label><span>Adresse complète :</span><input class="base" type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Adresse"></input></label>
-				<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
-				<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
-			</div>
-			<div id="BoutonAction">
-				<label id="envoyer"><input type="submit" value="Envoyer" class="postuler"></input></label>
-			</div>
+					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
+					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
+					<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
+					<label><span>Email :</span><input type="text" name="email" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
+					<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
+					<label><span>Adresse complète :</span><input class="base" type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Adresse"></input></label>
+					<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
+					<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
+					</div>
+					<div id="BoutonAction">
+						<label id="envoyer"><input type="submit" value="Envoyer" class="postuler"></input></label>
+					</div>
+
 		</div>
 		</form>
 
@@ -226,7 +227,7 @@
 			<img src="public/images/list/achat_immediat.jpg">
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
-				<h3>Aide pour aller chercher mes courses</h3><br>
+				<h3><?php print_r($getOfferByUSerId); ?></h3><br>
 				<p>dzkozkodzkodzodzkodzkodzkodzokzdokdzokkodzkodzokdzdzokdzko</p>
 			</div>
 			<div class="info2">
