@@ -255,7 +255,7 @@
 							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
 							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
 						</ul>
-						<input type="button" value="Postuler" class="postuler" onclick="self.location.href='offer_detail'">
+						<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
 					</div>
 				</div>
                 <?php endforeach; ?>

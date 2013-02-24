@@ -40,4 +40,13 @@ class Offer_controller{
     echo Views::instance()->render('search.php');
 
   }
+
+  function detailsOffer(){
+    $idOffer=F3::get('PARAMS.IdOffer');
+    $Offer=new Offer();
+    $offer=$Offer->getOfferUserDetails($idOffer);
+    F3::set('offer',$offer);
+    echo Views::instance()->render('annonce_detail.html');
+
+  }
 }

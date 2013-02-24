@@ -25,7 +25,11 @@ class Offer extends Prefab
 	    $offer = F3::get('dB')->exec('SELECT * FROM offer WHERE id_offer = ' . $idOffer);
 	    return $offer;
 	}
-        
+
+    function getOfferUserDetails($idOffer){
+        $offer = F3::get('dB')->exec('SELECT * FROM offer O, Users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
+        return $offer;
+    }
         /*
          * RECUPERATION DES DURATIONS DES OFFRES
          */
@@ -145,7 +149,7 @@ class Offer extends Prefab
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*
