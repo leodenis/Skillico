@@ -107,13 +107,13 @@
 			<!--start navigation-->
 						<nav>
 				<ul class="menu" > 
-					<li class="selected">
+					<li>
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
 						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
-					<li>
+					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
 					<?php 

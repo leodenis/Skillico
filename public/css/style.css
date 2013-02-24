@@ -844,7 +844,7 @@ section#monCompte {
 	background-image: linear-gradient(top, #f6f6f6, #eae8e8);
 }
 
-.form-wrapper #search {
+.form-wrapper #search2 {
 	width: 330px;
 	height: 20px;
 	padding: 10px 5px;
@@ -859,7 +859,7 @@ section#monCompte {
 	border-radius: 3px;      
 }
 
-.form-wrapper #search:focus {
+.form-wrapper #search2:focus {
 	outline: 0; 
 	border-color: #aaa;
 	-moz-box-shadow: 0 1px 1px #bbb inset;
@@ -867,12 +867,12 @@ section#monCompte {
 	box-shadow: 0 1px 1px #bbb inset;  
 }
 
-.form-wrapper #search::-webkit-input-placeholder {
+.form-wrapper #search2::-webkit-input-placeholder {
    color: #999;
    font-weight: normal;
 }
 
-.form-wrapper #search:-moz-placeholder {
+.form-wrapper #search2:-moz-placeholder {
 	color: #999;
 	font-weight: normal;
 }

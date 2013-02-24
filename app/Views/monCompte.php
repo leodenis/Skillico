@@ -97,7 +97,7 @@
 			<!--start navigation-->
 			<nav>
 				<ul class="menu" > 
-					<li class="selected">
+					<li>
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
@@ -108,7 +108,7 @@
 					</li>
 					<?php 
 						if(F3::get('SESSION.user')){
-						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
+						 	echo '<li class="selected"><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
 		
