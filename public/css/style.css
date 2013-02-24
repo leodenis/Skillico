@@ -1923,3 +1923,24 @@ blockquote.boxed {
 .demopage .boxed h4 {
 	margin-bottom:0;
 }
+#userConnect{
+	float: left;
+	margin-top:25px;
+	color:white;
+	margin-left:25px;
+	font-family: Tahoma, Arial, sans-serif;
+	color: #909090;
+}
+#userDeco{
+	margin-top:25px;
+	float: left;
+	color:white;
+	margin-left:25px;
+	font-family: Tahoma, Arial, sans-serif;
+	color: #909090;
+}
+
+#userDeco a{
+	font-family: Tahoma, Arial, sans-serif;
+	color: #909090;
+}

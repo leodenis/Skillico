@@ -97,33 +97,46 @@
 			<!--start navigation-->
 			<nav>
 				<ul class="menu" > 
-					<li >
+					<li class="selected">
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
-					</li>							  
-					<li class="selected">
-						<a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a>
-				
 					</li>
+					<?php 
+						if(F3::get('SESSION.user')){
+						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
+						}
+					?>							  
+		
 					<li>
 						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
 					</li>
 					
 						
 				</ul>
-					<div id="contactLink" class="boutonId">
-						<span id="creerCompte" ><a>Créer un compte</a></span><br>
-						<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
-					</div>
-					<div class="langue">
-						<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-						<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-					</div>
+					<?php 
+						if(F3::get('SESSION.user')){
+							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+						}
+						else{
+					?>
+						<div id="contactLink" class="boutonId">
+							<span id="creerCompte" ><a>Créer un compte</a></span><br>
+							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
+						</div>
+						<div class="langue">
+							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
+							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
+						</div>
+					<?php
+						}
+					?>		
+
 			</nav>
 			<!--end navigation-->	
 		</div>
@@ -180,20 +193,20 @@
 			<div class="grid_8 nomargin part_info">
 	<div id="tabs-1">
 
-		<h2>Mon profil</h2>
+		<h2></h2>
 		<form>
 		<div class="box2">
 			<div id="profil-pic">
-			<label id="upload"><span>Photo de profil </span><br/><br/><img src="https://graph.facebook.com/" /><br/><br/><input id="normal" type="file"></input></label><br/>
+			<label id="upload"><span>Photo de profil </span><br/><br/><img src="public/images/<?php echo $infoUserCo[0]['firstname']; ?>/" /><br/><br/><input id="normal" type="file"></input></label><br/>
 			</div>
 
 			<div id="info3">
-				<label><span>Nom :</span><input type="text" value="" placeholder="Nom"></input></label>
-				<label><span>Prénom :</span><input type="text" value="" placeholder="Prénom"></input></label>
+				<label><span>Nom :</span><input type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
+				<label><span>Prénom :</span><input type="text" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
 				<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
-				<label><span>Email :</span><input type="text" value="" placeholder="Adresse e-mail"></input></label>
+				<label><span>Email :</span><input type="text" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
 				<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
-				<label><span>Adresse complète :</span><input class="base" type="text" value="" placeholder="Adresse"></input></label>
+				<label><span>Adresse complète :</span><input class="base" type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Adresse"></input></label>
 				<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
 				<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
 			</div>

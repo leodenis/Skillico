@@ -105,35 +105,48 @@
 
 		<div class="grid_12">
 			<!--start navigation-->
-			<nav>
+						<nav>
 				<ul class="menu" > 
-					<li >
+					<li class="selected">
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
 						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
-					<li class="selected">
-						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
-					</li>							  
 					<li>
-						<a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a>
-				
+						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
+					<?php 
+						if(F3::get('SESSION.user')){
+						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
+						}
+					?>							  
+		
 					<li>
 						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
 					</li>
 					
 						
 				</ul>
-					<div id="contactLink" class="boutonId">
-						<span id="creerCompte" ><a>Créer un compte</a></span><br>
-						<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
-					</div>
-					<div class="langue">
-						<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-						<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-					</div>
+					<?php 
+						if(F3::get('SESSION.user')){
+							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+						}
+						else{
+					?>
+						<div id="contactLink" class="boutonId">
+							<span id="creerCompte" ><a>Créer un compte</a></span><br>
+							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
+						</div>
+						<div class="langue">
+							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
+							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
+						</div>
+					<?php
+						}
+					?>		
+
 			</nav>
 			<!--end navigation-->	
 		</div>
@@ -146,11 +159,15 @@
 				            <fieldset>
 				            	<div id="part_connect">
 				            		<h4>Se Connecter</h4>
-					                <label for="identifiant">Identifiant*</label>
-					                <input id="identifiant" type="text" />
-					                <label for="mdp">Mot de passe*</label>
-					                <input id="mdp" type="text" />
-					                <input id="sendRequest" type="submit" name="submit" onclick="closeForm()" />
+				            		<form action="user/connexion" method="post" enctype="multipart/form-data">
+						                <label for="identifiant">Identifiant*</label>
+						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
+						                <label for="mdp">Mot de passe*</label>
+						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
+						                <input type="submit" value="save"/>
+<!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
+ -->						        </form>
+
 					            </div>
 					            <div id="part_identify">
 					            	<h4>Inscriver vous gratuitement</h4></br>
