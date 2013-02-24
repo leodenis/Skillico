@@ -835,6 +835,7 @@ span.tri_bot p{
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #dbdbdb;
+	padding-bottom: 10px;
 }.retourAnnonce:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d6d6d6), color-stop(1, #f7f7f7) );
 	background:-moz-linear-gradient( center top, #d6d6d6 5%, #f7f7f7 100% );
