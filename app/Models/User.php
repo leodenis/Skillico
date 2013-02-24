@@ -66,8 +66,7 @@ class User extends Prefab{
 	}
 
 	function connexion($login,$password){
-			
-
+			return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."' AND password = '".$password."'");
 
 	}
 
