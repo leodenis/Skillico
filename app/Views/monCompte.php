@@ -186,14 +186,14 @@
 					<li><a href="monCompte#tabs-3">Mes avis</a></li>
 					<li><a href="monCompte#tabs-4">Mes réservations</a></li>
 					<li><a href="monCompte#tabs-5">Mes paiements</a></li>
-					<li><a href="monCompte#tabs-6">Mes réclamations</a></li>
+					<li><a href="monCompte#tabs-6">Réclamations</a></li>
 				</ul>
 			</div>
 			
 			<div class="grid_8 nomargin part_info">
 	<div id="tabs-1">
 
-		<h2></h2>
+		<h2>Mes profil</h2>
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
@@ -227,8 +227,8 @@
 			<img src="public/images/list/achat_immediat.jpg">
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
-				<h3><?php print_r($getOfferByUSerId); ?></h3><br>
-				<p>dzkozkodzkodzodzkodzkodzkodzokzdokdzokkodzkodzokdzdzokdzko</p>
+				<h3>Aide courses</h3><br>
+				<p>J'aurais besoin de quelqu'un pour m'aider à porter mes courses.</p>
 			</div>
 			<div class="info2">
 				<ul>
@@ -244,7 +244,7 @@
 			<div class="description2">
 				<img src="public/images/dummies/img.png">
 				<h3>Aide pour aller chercher mes courses</h3><br>
-				<p>dzkozkodzkodzodzkodzkodzkodzokzdokdzokkodzkodzokdzdzokdzko</p>
+				<p>J'aurais besoin de quelqu'un pour m'aider à porter mes courses.</p>
 			</div>
 			<div class="info2">
 				<ul>
@@ -264,7 +264,7 @@
 		<div class="grid_4 nomargin part_info left">
 			<h2>Donnés</h2>
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Super</h3>
 				<p>Super moment avec léo</p>
@@ -277,7 +277,7 @@
 		</div>
 
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Bien</h3>
 				<p>Merci à Arthur</p>
@@ -290,7 +290,7 @@
 		</div>
 
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Mauvais</h3>
 				<p>Simon est méchant</p>
@@ -301,12 +301,12 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+		</div>
 
-	<div class="grid_4 nomargin part_info right">
+		<div class="grid_4 nomargin part_info right">
 			<h2>Reçu</h2>
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Super</h3>
 				<p>Super moment avec léo</p>
@@ -319,7 +319,7 @@
 		</div>
 
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Bien</h3>
 				<p>Merci à Arthur</p>
@@ -332,7 +332,7 @@
 		</div>
 
 		<div class="tab_part_right">
-			<div class="description2">
+			<div class="avis">
 				<img src="public/images/dummies/img.png">
 				<h3>Mauvais</h3>
 				<p>Simon est méchant</p>
@@ -342,23 +342,77 @@
 					<li><h5>Note:</h5><p>4/20</p></li>
 				</ul>
 			</div>
+		</div>
 		</div>
 	</div>
 
 
 	<div id="tabs-4">
-		<h2>Content heading 4</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora, lacus.</p>
-		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+		<h2>Mes réservations</h2>
+
+		<div class="tab_part_right">
+			<img src="public/images/list/achat_immediat.jpg">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>M'apporter un Mac donald's</h3><br>
+				<p>Me rapporter un mac donald's chez moi, à 21h30. Je voudrais : 1 Menu maxi best of Big Mac, frittes, coca-cola + un Mac fleury au daim sans nappage.</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
+					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab_part_right">
+			<img src="public/images/list/achat_immediat.jpg">
+			<div class="description2">
+				<img src="public/images/dummies/img.png">
+				<h3>Aide pour aller chercher mes courses</h3><br>
+				<p>J'aurais besoin d'aide pour porter mes courses. Rdv à 15h devant le Carrefour Market</p>
+			</div>
+			<div class="info2">
+				<ul>
+					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
+					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div id="tabs-5">
 		<h2>Content heading 5</h2>
 		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad ltra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
 	</div>
 	<div id="tabs-6">
-		<h2>Content heading 6</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-		<p>Duis cursus. Maecenas ligula .</p>
+			<h2>Réclamations</h2>
+		<form action="user/edit" method="post" enctype="multipart/form-data">
+		<div class="box2">
+			<div id="info3">
+					<label><span>E-mail :</span> skillico@contact.fr</label>
+					<label><span>Téléphone :</span> 01 37 60 50 20</label>
+					<label><span>Adresse :</span> 7 rue de la paix</label>
+					<label><span>Ville :</span> Paris</label>
+					<label><span>Code postal:</span> 75002</label>
+					<label><span>Facebook :</span><a href="http://www.facebook.com/skillico?ref=hl"> Skillico</a></label>
+					<label><span>Twitter :</span><a href="https://twitter.com/Skillicohetic"> #Skillico</a></label>
+			</div>
+
+
+
+		</div>
+		</form>
+
+		<div class="contact-form-holder">
+				<h2>Formulaire de contact</h2>
+				<form method="POST" id="contact-form" name="contact-form" action="./php/contact.php">
+					  <input type="text" name="subject" id="subject" placeholder="Entrer l'objet de votre réclamation"/>
+					  <textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
+					  <input type="submit" id="postuler" name="send-btn" value="Envoyer" />
+				</form>
+		    </div>
 	</div>
 				
             </div>

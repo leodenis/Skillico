@@ -350,7 +350,6 @@ div.description2{
 }
 div.info2{
 	display: inline-block;
-	float: left;
 	padding-top: 5px;
 	width: 18%;
 	border: none;
@@ -366,8 +365,12 @@ div#info3 label{
 }
 
 .description2 h3{
-	margin: 0 0 5px 0;
+	margin: 0 0 -10px 0;
 
+}
+
+.contact-form-holder{
+	padding-top: 20px;
 }
 
 .grid_4.nomargin.part_info.right{
@@ -503,6 +506,18 @@ ul.menuOffre li:first-child {
 	border-bottom: 1px solid #c8c9ca;
 }
 
+.avis h3{
+	margin: 5px 0 0 0;
+}
+
+.avis{
+	display: inline-block;
+	width: 65%;
+	float: left;
+	margin-right: 20px;
+	padding-top: 10px;
+}
+
 ul.menuOffre li p{
 	float: left;
 	font-size: 1.5em;
@@ -510,6 +525,10 @@ ul.menuOffre li p{
 	padding-bottom: 0px;
 	width: 100%;
 	text-align: left;
+}
+
+#message{
+	margin-bottom: 10px;
 }
 
 ul.menuOffre div {
