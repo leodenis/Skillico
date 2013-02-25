@@ -600,7 +600,7 @@ ul.menu li a img {
 }
 
 header nav ul li:hover,header nav ul li.selected {
-	border-bottom:5px solid #1794d5;
+	border-bottom:5	px solid #1794d5;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
 						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
 						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
@@ -1133,8 +1133,9 @@ footer {
 	margin: 0px 0 0 0;
 	padding-top: 840px;
 	padding-bottom: 30px;
-	background: #9dd8f6 url('../images/patterns/footer.png') no-repeat center;
+	background: #9dd8f6 url('../images/patterns/footer2.png') no-repeat center;
 	color: #a3a3a3;
+
 }
 
 .footnote {
