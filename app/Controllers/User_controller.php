@@ -209,10 +209,10 @@ class User_controller extends Prefab{
 	function monCompte(){
 		$id=F3::get('SESSION.user');
 	    $id=$id[0]['id_users'];
-
+	    //récupération des infos de l'user
 		$User=new User();
 		$infoUserCo=$User->infoUserCo($id);
-
+		//Récupération des offres posté par l'utilisateur
 		$Offer=new Offer();
 		$getOfferByUSerId=$Offer->getOfferByUSerId($id);
 		    // print_r($infoUserCo);
