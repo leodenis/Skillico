@@ -100,7 +100,7 @@
 	</div>
 	</div>
 
-	<div class="top">
+	<div class="top gun">
 	<div class="row">
 
 		<div class="grid_12">
