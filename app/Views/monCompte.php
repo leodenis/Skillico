@@ -383,8 +383,16 @@
 		</div>
 	</div>
 	<div id="tabs-5">
-		<h2>Content heading 5</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad ltra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+		<h2>Mes paiements</h2>
+		<ul id="paiement">
+			<li><label><span>Le 24/03/13 :</span> 15 Euros</label></li>
+			<li><label><span>Le 25/03/13 :</span> 12 Euros</label></li>
+			<li><label><span>Le 25/03/13 :</span> 14 Euros</label></li>
+			<li><label><span>Le 26/03/13 :</span> 6 Euros</label></li>
+			<li><label><span>Le 27/03/13 :</span> 8 Euros</label></li>
+			<li><label><span>Le 28/03/13 :</span> 12 Euros</label></li>
+			<li><label><span>Le 29/03/13 :</span> 11 Euros</label></li>
+		</ul>
 	</div>
 	<div id="tabs-6">
 			<h2>Réclamations</h2>

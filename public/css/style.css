@@ -510,6 +510,11 @@ ul.menuOffre li:first-child {
 	margin: 5px 0 0 0;
 }
 
+#paiement{
+	background-color: white;
+	text-align: left;
+	
+}
 .avis{
 	display: inline-block;
 	width: 65%;
