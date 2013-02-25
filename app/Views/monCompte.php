@@ -197,9 +197,8 @@
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
-			<label id="upload"><span>Photo de profil </span><br/><br/><img src="public/images/<?php echo $infoUserCo[0]['firstname']; ?>/" /><br/><br/><input id="normal" type="file"></input></label><br/>
-			</div>
-
+			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="public/images/<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
+			</div>       																						 
 			<div id="info3">
 					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
 					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
