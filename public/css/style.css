@@ -395,6 +395,14 @@ div#info3 label{
 	border: 1px solid #c8c9ca;
 }
 
+label label#labelpad{
+	padding-bottom: 0px;
+}
+
+label label#labelpad0{
+	padding-bottom: 0px;
+}
+
 div.description{
 	display: inline-block;
 	width: 80%;
