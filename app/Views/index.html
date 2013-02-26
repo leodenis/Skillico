@@ -67,6 +67,17 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#displayBloc").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+</script> 
+
 </head>
 <body>
 
@@ -115,7 +126,7 @@
 					?>							  
 		
 					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
+						<a href="#" id="displayBloc"><img src="public/images/menu/home2.png">Rechercher</a>
 					</li>
 					
 						
