@@ -49,4 +49,23 @@ class Offer_controller{
     echo Views::instance()->render('annonce_detail.html');
 
   }
+
+  function postulate(){
+    $idOffer=F3::get('PARAMS.IdOffer');
+    $idUser=F3::get('PARAMS.IdUser');
+    $Offer=new Offer();
+    $postulate=$Offer->postulate($idOffer,$idUser);
+    F3::reroute('/monCompte');
+
+  }
+
+  function validate(){
+      $idOffer=F3::get('PARAMS.IdOffer');
+      $Offer=new Offer();
+      $validate=$Offer->validate($idOffer);
+      F3::reroute('/monCompte');
+
+
+  }
+
 }

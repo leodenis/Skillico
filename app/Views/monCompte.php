@@ -184,7 +184,7 @@
 					<li><a href="monCompte#tabs-1">Mon profil</a></li>
 					<li><a href="monCompte#tabs-2">Mes services effectués</a></li>
 					<li><a href="monCompte#tabs-3">Mes avis</a></li>
-					<li><a href="monCompte#tabs-4">Mes réservations</a></li>
+					<li><a href="monCompte#tabs-4">Mes annonces postées</a></li>
 					<li><a href="monCompte#tabs-5">Mes paiements</a></li>
 					<li><a href="monCompte#tabs-6">Réclamations</a></li>
 				</ul>
@@ -197,9 +197,8 @@
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
-			<label id="upload"><span>Photo de profil </span><br/><br/><img src="public/images/<?php echo $infoUserCo[0]['firstname']; ?>/" /><br/><br/><input id="normal" type="file"></input></label><br/>
-			</div>
-
+			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="public/images/<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
+			</div>       																						 
 			<div id="info3">
 					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
 					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
@@ -348,39 +347,59 @@
 
 
 	<div id="tabs-4">
-		<h2>Mes réservations</h2>
+		<h2>Mes annonces postées</h2>
+		<?php foreach($getOfferByUSerId as $getOfferByUSerId):?>
+	        <div class="tab_part_right">
+				<img src="public/images/list/achat_immediat.jpg">
+				<div class="description2">
+					<img src="public/images/dummies/img.png">
+					<h3><?php echo $getOfferByUSerId['title']; ?></h3><br>
+					<p><?php echo $getOfferByUSerId['desciption']; ?></p>
+					<?php 
+						if ($getOfferByUSerId['visibility'] == 1) {
+					?>
+						<a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>"><input type="button" value="Valider" class="postuler"></a>
+					<?php
+						}
+					 ?>
 
-		<div class="tab_part_right">
-			<img src="public/images/list/achat_immediat.jpg">
-			<div class="description2">
-				<img src="public/images/dummies/img.png">
-				<h3>M'apporter un Mac donald's</h3><br>
-				<p>Me rapporter un mac donald's chez moi, à 21h30. Je voudrais : 1 Menu maxi best of Big Mac, frittes, coca-cola + un Mac fleury au daim sans nappage.</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
-					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
-				</ul>
-			</div>
-		</div>
+					 <?php 
+						if ($getOfferByUSerId['visibility'] == 2) {
+					?><a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>">
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+							<input name="amount" type="hidden" value="<?php echo $getOfferByUSerId['price']; ?>" />
+							<input name="currency_code" type="hidden" value="EUR" />
+							<input name="shipping" type="hidden" value="0.00" />
+							<input name="tax" type="hidden" value="0.00" />
+							<input name="return" type="hidden" value="http://denis-leo.com/paypal/success.php" />
+							<input name="cancel_return" type="hidden" value="http://denis-leo.com/paypal/cancel.php" />
+							<input name="notify_url" type="hidden" value="http://denis-leo.com/paypal/ipn.php" />
+							<input name="cmd" type="hidden" value="_xclick" />
+							<input name="business" type="hidden" value="<?php echo $infoUserCo[0]['email']; ?>" />
+							<input name="item_name" type="hidden" value="<?php echo $getOfferByUSerId['title']; ?>" />
+							<input name="no_note" type="hidden" value="1" />
+							<input name="lc" type="hidden" value="FR" />
+							<input name="bn" type="hidden" value="PP-BuyNowBF" />
+							<input name="custom" type="hidden" value="user_id=1" />
+							<input type="submit" value="Payer" class="postuler">
+						</form>
+						<p>Vous avez validé votre annonce, vous pouvez dès à présent payer la personne</p>
 
-		<div class="tab_part_right">
-			<img src="public/images/list/achat_immediat.jpg">
-			<div class="description2">
-				<img src="public/images/dummies/img.png">
-				<h3>Aide pour aller chercher mes courses</h3><br>
-				<p>J'aurais besoin d'aide pour porter mes courses. Rdv à 15h devant le Carrefour Market</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
-					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
-				</ul>
-			</div>
-		</div>
+					<?php
+						}
+					 ?>
+				</div>
+				<div class="info2">
+					<ul>
+						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferByUSerId['price']; ?></p></li>
+						<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferByUSerId['ending']; ?></p></li>
+					</ul>
+				</div>
+			</div>  
+        <?php endforeach; ?>
+
+	
 	</div>
 	<div id="tabs-5">
 		<h2>Mes paiements</h2>
