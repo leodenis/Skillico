@@ -101,7 +101,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -183,8 +183,8 @@
 					<li>Mon Compte</li>
 					<li><a href="monCompte#tabs-1">Mon profil</a></li>
 					<li><a href="monCompte#tabs-2">Mes services effectués</a></li>
-					<li><a href="monCompte#tabs-3">Mes avis</a></li>
 					<li><a href="monCompte#tabs-4">Mes annonces postées</a></li>
+					<li><a href="monCompte#tabs-3">Mes avis</a></li>
 					<li><a href="monCompte#tabs-5">Mes paiements</a></li>
 					<li><a href="monCompte#tabs-6">Réclamations</a></li>
 				</ul>
@@ -202,12 +202,14 @@
 			<div id="info3">
 					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
 					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
-					<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="civitilite"></input>Femme<input type="radio" value="Femme" name="civitilite"></input></label>
+					<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Homme'){ echo 'checked';} ?>></input>Femme<input type="radio" value="Femme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Femme'){ echo 'checked';} ?>></input></label>
 					<label><span>Email :</span><input type="text" name="email" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
-					<label><span>Dâte de naissance :</span></br><input type="date" value="" min="1920-08-14" max="2013-02-08" placeholder="Date de naissance"></input></label>
-					<label><span>Adresse complète :</span><input class="base" type="text" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Adresse"></input></label>
-					<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe"></input></label>
-					<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe"></input></label>
+					<label><span>Dâte de naissance :</span></br><input type="date" value="22/25/1991" min="1920-08-14" max="2013-02-08" name="born" placeholder="Date de naissance"></input></label>
+					<label><span>Adresse</span><input class="base" name="adress" type="text" value="<?php echo $infoUserCo[0]['adress']; ?>" placeholder="Adresse"></input></label>
+					<label><span>Code postal</span><input class="base" name="CP" type="text" value="<?php echo $infoUserCo[0]['CP']; ?>" placeholder="Adresse"></input></label>
+					<label><span>Ville</span><input class="base" type="text" name="city" value="<?php echo $infoUserCo[0]['city']; ?>" placeholder="Adresse"></input></label>
+					<label><span>Mot de passe :</span><input type="password" value="" placeholder="Mot de passe" name="password"></input></label>
+					<label><span>Confirmation mot de passe :</span><input type="password" value="" placeholder="Confirmer le mot de passe" name="password2"></input></label>
 					</div>
 					<div id="BoutonAction">
 						<label id="envoyer"><input type="submit" value="Envoyer" class="postuler"></input></label>
@@ -221,130 +223,24 @@
 
 	<div id="tabs-2">
 		<h2>Mes services effectués</h2>
-
-		<div class="tab_part_right">
-			<img src="public/images/list/achat_immediat.jpg">
-			<div class="description2">
-				<img src="public/images/dummies/img.png">
-				<h3>Aide courses</h3><br>
-				<p>J'aurais besoin de quelqu'un pour m'aider à porter mes courses.</p>
+		<?php foreach($getOfferByUSerIdAccomplite as $getOfferByUSerIdAccomplite):?>
+		     <div class="tab_part_right">
+				<img src="public/images/list/achat_immediat.jpg">
+				<div class="description2">
+					<img src="public/images/dummies/img.png">
+					<h3><?php echo $getOfferByUSerIdAccomplite['title']; ?></h3><br>
+					<p><?php echo $getOfferByUSerIdAccomplite['desciption']; ?></p>
+				</div>
+				<div class="info2">
+					<ul>
+						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferByUSerIdAccomplite['price']; ?></p></li>
+						<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferByUSerIdAccomplite['ending']; ?></p></li>
+					</ul>
+				</div>
 			</div>
-			<div class="info2">
-				<ul>
-					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
-					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="tab_part_right">
-			<img src="public/images/list/achat_immediat.jpg">
-			<div class="description2">
-				<img src="public/images/dummies/img.png">
-				<h3>Aide pour aller chercher mes courses</h3><br>
-				<p>J'aurais besoin de quelqu'un pour m'aider à porter mes courses.</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><img src="public/images/dummies/price.png"><p>5 euros</p></li>
-					<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-					<li><img src="public/images/dummies/event.png"><p>23/02/2013</p></li>
-				</ul>
-			</div>
-		</div>
-
+        <?php endforeach; ?>
 	</div>
-
-
-	<div id="tabs-3">
-		<h2>Mes avis</h2>
-
-		<div class="grid_4 nomargin part_info left">
-			<h2>Donnés</h2>
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Super</h3>
-				<p>Super moment avec léo</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>18/20</p></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Bien</h3>
-				<p>Merci à Arthur</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>15/20</p></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Mauvais</h3>
-				<p>Simon est méchant</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>4/20</p></li>
-				</ul>
-			</div>
-		</div>
-		</div>
-
-		<div class="grid_4 nomargin part_info right">
-			<h2>Reçu</h2>
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Super</h3>
-				<p>Super moment avec léo</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>18/20</p></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Bien</h3>
-				<p>Merci à Arthur</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>15/20</p></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="tab_part_right">
-			<div class="avis">
-				<img src="public/images/dummies/img.png">
-				<h3>Mauvais</h3>
-				<p>Simon est méchant</p>
-			</div>
-			<div class="info2">
-				<ul>
-					<li><h5>Note:</h5><p>4/20</p></li>
-				</ul>
-			</div>
-		</div>
-		</div>
-	</div>
-
 
 	<div id="tabs-4">
 		<h2>Mes annonces postées</h2>
@@ -399,8 +295,31 @@
 			</div>  
         <?php endforeach; ?>
 
-	
+
 	</div>
+	<div id="tabs-3">
+		<h2>Mes avis</h2>
+		<?php foreach($avisUser as $avisUser):?>
+		<div class="grid_4 nomargin part_info left">
+			<h2>Reçu</h2>
+			<div class="tab_part_right">
+				<div class="avis">
+					<img src="public/images/dummies/img.png">
+<!-- 					<h3>Super</h3>
+ -->					<p><?php echo $avisUser['description']; ?></p>
+				</div>
+				<div class="info2">
+					<ul>
+						<li><h5>Note:</h5><p><?php echo $avisUser['note']; ?></p></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+		<?php endforeach; ?>
+	</div>
+
+
+
 	<div id="tabs-5">
 		<h2>Mes paiements</h2>
 		<ul id="paiement">

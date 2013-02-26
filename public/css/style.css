@@ -486,6 +486,31 @@ input.postuler{
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 }
 
+
+input.postulerFalse{
+	
+	border: 1px solid red;
+	width: auto;
+	padding: 5px;
+	cursor: pointer;
+	font: bold 13px Arial, Helvetica;
+	color: #fafafa;
+	text-transform: uppercase;
+	background-color: red;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(red));
+	background-image: -webkit-linear-gradient(top, red, red);
+	background-image: -moz-linear-gradient(top, red, red);
+	background-image: -ms-linear-gradient(top, red, red);
+	background-image: -o-linear-gradient(top, red, red);
+	background-image: linear-gradient(top, red, red);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+}
 input.encherir{
 	
 	border: 1px solid #e51616;

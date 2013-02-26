@@ -111,8 +111,11 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-					</li>
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } ?>					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
@@ -255,7 +258,10 @@
 							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
 							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
 						</ul>
-						<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
+						<?php } else { ?>
+						<?php } ?>
 					</div>
 				</div>
                 <?php endforeach; ?>
