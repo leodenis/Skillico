@@ -157,9 +157,9 @@
 					            </div>
 					            <div id="part_identify">
 					            	<h4>Inscriver vous gratuitement</h4></br>
-					            	<p>Facebook connect</p>
-					            	<p>Twitter connect</p>
-					            	<p>gmail connect</p>
+					            	<a><p>S'inscrire</p></a>
+					            	<a><p>Facebook connect</p></a>
+					            	<a><p>Twitter connect</p></a>
 					            </div>
 				            </fieldset>
 				        </div>

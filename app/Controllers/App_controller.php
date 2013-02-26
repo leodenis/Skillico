@@ -21,6 +21,13 @@ class App_controller{
 		echo $view->render('annonce_detail.html'); 
 	}
 
+	function formulaire_inscription(){
+		$view=new View(); 
+		echo $view->render('formulaireInscription.html'); 
+	}
+
+
+
 	function __destruct(){
 
 	}
