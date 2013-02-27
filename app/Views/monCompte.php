@@ -65,6 +65,22 @@
 	});
 	</script>
 	
+	<script>
+	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
+
+		$(document).ready(function() {
+			$("#deposer_annonce").fancybox({
+				'width'				: '60%',
+				'height'			: '100%',
+				'autoScale'			: false,
+				'transitionIn'		: 'true',
+				'transitionOut'		: 'true',
+				'type'				: 'iframe'
+			});
+	
+		});		
+	</script>
+	
 </head>
 <body>
 
