@@ -14,7 +14,7 @@ class Offer extends Prefab
 
 	function getOfferListe(){
             $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-	    return $offer->find();;
+	    return $offer->find(NULL,array('order'=>'id_offer DESC'));;
 	}
 
 	/*
