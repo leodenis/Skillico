@@ -206,18 +206,21 @@
 					<label id="upload"><span>Photo de profil </span><img src="" /><br/><br/><input id="normal" type="file" name="image[]"></input></label>
 				</div>
 				<script type="text/javascript">
-					function controle(){
-			
-						$("#envoyer").html('');
-						if('input[type=checkbox][name=controleAccepte]:checked'){
-							$("#envoyer").append('<input id="tesssst" type="submit" value="Envoyer" class="postuler"></input>');
-						}
-						else{
-							$("#envoyer").append('<input type="submit" disabled="disabled" value="Envoyer" class="postuler"></input>');
-						}
+					$(function() {
+					    $("#sendFormAccept").attr("disabled", ! $("#idSendable").is(':checked'));  
+					    
+					    $("#idSendable").change(function(){
+					        $("#sendFormAccept").attr("disabled", ! $(this).is(':checked'));  
+					    });  
 
-	  
-					}
+					   $("#sendFormAccept").toggleClass("postuler", ! $("#idSendable").is(':checked'));  
+					    
+					    $("#idSendable").change(function(){
+					        $("#sendFormAccept").toggleClass("postulerFalse", ! $(this).is(':checked'));  
+					    });  
+					});
+
+
 				</script>
 				<div id="info3">
 					<label><span>Login :</span><input type="text" name="login" value="" placeholder="Nom"></input></label>
@@ -233,10 +236,10 @@
 					<label><span>Confirmation mot de passe :</span><input type="password" name="password2" value="" placeholder="Confirmer le mot de passe"></input></label>
 					 <input type="hidden" name="date_creation" placeholder="date_creation" value="<?php date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s"); ?>"/>
        				<input type="hidden" name="last_connection" placeholder="last_connection" value="<?php date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s"); ?>"/>
-					<label><input type="checkbox" value='test' name="controleAccepte" onClick="controle();">J'accepte les conditions générale de Skillico</input></label>
+					<label><input id="idSendable" type="checkbox" onClick="controle();">J'accepte les conditions générale de Skillico</input></label>
 				</div>
 				<div id="BoutonAction">
-					<label id="envoyer"><input type="submit" disabled="disabled" value="Envoyer" class="postulerFalse"></input>'</label>
+					<label id="envoyer"><input id="sendFormAccept" type="submit" value="Envoyer" class="postulerFalse"></input>'</label>
 				</div>
 
 			</div>
