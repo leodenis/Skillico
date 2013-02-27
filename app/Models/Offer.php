@@ -160,6 +160,15 @@ class Offer extends Prefab
             $price2=$chaineExplode[4]; 
             $requete='';
 
+            if($SecondRequest == 'tous'){
+                $SecondRequest="AND (O.type='immediat' OR O.type='enchere')";
+            }
+            else if($SecondRequest == 'immediat'){
+                $SecondRequest="AND O.type='immediat'";
+            }
+            else{
+                $SecondRequest="AND O.type='enchere'";
+            }
             //Créatop, des requêtes dynamiquement en fonction de ce que nous recevons
             
             if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7]) && isset($chaineExplode[8])){
@@ -179,7 +188,7 @@ class Offer extends Prefab
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*

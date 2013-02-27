@@ -246,8 +246,10 @@
 					<div id="slider-range"></div>
 					</li>		
 					<li><p>Type de vente</p></li>
-					<div><input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" checked onClick="ajaxSearch();"/>Achat immédiat</br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère
+					<div>
+						<input style="font-size:1.2em;" type="radio" name="searchin" checked value="tous" onClick="ajaxSearch();"/>Tous
+						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" checked onClick="ajaxSearch();"/>Achat immédiat</br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère</br>
 					</div>
 					<li><p>Type d'annonce</p></li>
 					<div>
