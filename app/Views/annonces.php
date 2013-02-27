@@ -248,7 +248,7 @@
 					<li><p>Type de vente</p></li>
 					<div>
 						<input style="font-size:1.2em;" type="radio" name="searchin" checked value="tous" onClick="ajaxSearch();"/>Tous
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" checked onClick="ajaxSearch();"/>Achat immédiat</br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" onClick="ajaxSearch();"/>Achat immédiat</br>
 						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère</br>
 					</div>
 					<li><p>Type d'annonce</p></li>
@@ -267,7 +267,11 @@
 				<?php foreach($offers as $offer):?>
                 <?php echo $offer ?>
 				<div class="grid_8 nomargin part_right">
-					<img src="public/images/list/achat_immediat.jpg">
+					<?php if($offer->type =='enchere'){ ?>
+						<img src="public/images/list/enchere.jpg">
+					<?php } else {?>
+						<img src="public/images/list/achat_immediat.jpg">
+					<?php } ?>
 					<div class="description">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer->title ?></h3><br/>
@@ -287,26 +291,6 @@
 				</div>
                 <?php endforeach; ?>
             </div>
-
-
-			<div id="enchere">
-				<div class="grid_8 nomargin part_right">
-					<img src="public/images/list/enchere.jpg">
-					<div class="description">
-						<img src="public/images/dummies/img.png">
-						<h3>je suis une enchère</h3><br/>
-						<p>Je suis la description de l'enchère</p>
-					</div>
-					<div class="info">
-						<ul>
-							<li><img src="public/images/dummies/price.png"><p>50€</p></li>
-							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-							<li><img src="public/images/dummies/event.png"><p>23/03/2013</p></li>
-						</ul>
-						<a href="offer/detailsOffer/"><input type="button" value="J'enchéri" class="encherir"></a>
-					</div>
-				</div>
-	        </div>
         </div>
 	</div>
 </section>
