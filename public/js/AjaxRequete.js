@@ -130,8 +130,15 @@
 
 	                        if (data) {
 	                            var obj = jQuery.parseJSON(data);
+
 	                            for (var i = 0; i < obj.length; i++) {
-									$("#donneesAnnonces").append('<div class="grid_8 nomargin part_right"><img src="public/images/list/achat_immediat.jpg"><div class="description"><img src="public/images/dummies/img.png"><h3>'+obj[i].title+'</h3></br><p>'+obj[i].desciption+'</p></div><div class="info"><ul><li><img src="public/images/dummies/price.png"><p>' + obj[i].price + '</p></li><li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li><li><img src="public/images/dummies/event.png"><p>'+obj[i].ending+'</p></li></ul><input type="button" value="Postuler" class="postuler"></div></div>');
+	                            	if(obj[i].type == 'immediat'){
+	                            		enchImm='<img src="public/images/list/achat_immediat.jpg">';
+	                            	}
+	                            	else{
+	                            		enchImm='<img src="public/images/list/enchere.jpg">';
+	                            	}
+									$("#donneesAnnonces").append('<div class="grid_8 nomargin part_right">'+enchImm+'<div class="description"><img src="public/images/dummies/img.png"><h3>'+obj[i].title+'</h3></br><p>'+obj[i].desciption+'</p></div><div class="info"><ul><li><img src="public/images/dummies/price.png"><p>' + obj[i].price + '</p></li><li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li><li><img src="public/images/dummies/event.png"><p>'+obj[i].ending+'</p></li></ul><a href="offer/detailsOffer/'+obj[i].id_offer+'"><input type="button" value="Postuler" class="postuler"></a></div></div>');
 		                            }
 		                        };        	                             
 		                    }

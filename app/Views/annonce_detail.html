@@ -57,14 +57,7 @@
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
 	<script src="public/js/AjaxRequete.js"></script>	
-	<script type="text/javascript">
-		function searchhome(){						ajaxSearch();
 
-					
-				}							
-
-
-	</script>
 	<script type="text/javascript">
 
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
@@ -94,7 +87,7 @@
 	</script> 
 
 </head>
-<body onload="searchhome();">
+<body>
 
 <header>
 	<div class="topstatic">
@@ -129,15 +122,8 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<?php if(F3::get('SESSION.user')){ ?>
-							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-						<?php } else { ?>
-
-							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-
-
-						<?php } ?>					</li>
-					
+						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
@@ -146,7 +132,7 @@
 						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-						
+		
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
@@ -167,6 +153,7 @@
 			</nav>
 			<!--end navigation-->	
 		</div>
+
 		<div class="grid_12 centered margintop15">
 			<div class="grid_5 nomargin" id="connexion">
 				<div class="box">
@@ -186,7 +173,7 @@
 
 					            </div>
 					            <div id="part_identify">
-					            		<h4>Inscriver vous gratuitement</h4></br>
+					            	<h4>Inscriver vous gratuitement</h4></br>
 					            	<a href="formulaire_inscription"><p>S'inscrire</p></a>
 					            	<a><p>Facebook connect</p></a>
 					            	<a><p>Twitter connect</p></a>
@@ -205,7 +192,7 @@
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 		<form id="position" class="form-wrapper">
-			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
+			<input type="text" id="search2" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
@@ -215,82 +202,50 @@
        <div id="mon_bouton"></div>
     </a>
 </div>
+
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin">
-				
+					<a href="#" class="retourAnnonce">Retour aux annonces</a>
 			</div>
-			<div class="grid_8 nomargin" id="tri_top">
-				<span class="tri_bot"><p>Trier par :</p>
-						<input type="checkbox" name="distance" value="distance">Distance
-						<input type="checkbox" name="remuneration" value="remuneration">Rémunération
-						<input type="checkbox" name="duree" value="duree">Durée
-				</span>
-
+			<div class="grid_8 nomargin">
+				<h3 class="h3AnnonceDetail">Détails  de l'annonce</h3>
 			</div>
+		
 </section>
 <section id="annonces">
 
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin" id="part_left">
-				<ul class="menuOffre" style="background-color:white;">
-					<li>Filtrer les annonces</li>
-					<li><p>Localisation</p><input type="text" id="search" name="search" onKeyUp="ajaxSearch();"/></li>
-					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value=""/></li>
-					<div id="slider-range-max"></div>
 
-					<li><p for="amout">Rémunération</p><input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" value=""/>
-										
-					<div id="slider-range"></div>
-					</li>		
-					<li><p>Type de vente</p></li>
-					<div>
-						<input style="font-size:1.2em;" type="radio" name="searchin" checked value="tous" onClick="ajaxSearch();"/>Tous
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" onClick="ajaxSearch();"/>Achat immédiat</br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère</br>
-					</div>
-					<li><p>Type d'annonce</p></li>
-					<div>
-						<input type="checkbox" name="chk1" value="course" onClick="ajaxSearch();"/>Service à la personne<br>
-						<input type="checkbox" name="chk2" value="macdo" onClick="ajaxSearch();"/>Plomberie<br>
-						<input type="checkbox" name="chk3" value="jardin" onClick="ajaxSearch();"/>Menuiserie<br>
-						<input type="checkbox" name="chk4" value="alcool" onClick="ajaxSearch();"/>Alimentaire<br>
-					</div>
+				<ul class="detailOffreMenu">
+					<li>Achat immédiat</li>
+					<li><p>Annonceur</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration Annonceur"><p><?php echo $offer[0]['login']; ?></p></span></li>
+					<li><p id="padding">Catégories</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration catégorie"><p>Menuiserie</p><span></li>
+					
+					<li><p>Date</p><span><img src="public/images/dummies/event.png" alt="pictogramme illustration Datr"><p>24/03/13</p></span></li>
+					<li><p>Rémunération</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration rémunération"><p><?php echo $offer[0]['price']; ?></p></span></li>
+					<li><p>Localisation</p><span><img src="public/images/dummies/location.png" alt="pictogramme illustration localisation"><p>Paris 12</p></span></li>
 
 				</ul>
 			</div>
-
-
-			<div id="donneesAnnonces">
-				<?php foreach($offers as $offer):?>
-                <?php echo $offer ?>
-				<div class="grid_8 nomargin part_right">
-					<?php if($offer->type =='enchere'){ ?>
-						<img src="public/images/list/enchere.jpg">
-					<?php } else {?>
-						<img src="public/images/list/achat_immediat.jpg">
-					<?php } ?>
-					<div class="description">
+				<div class="grid_8 nomargin detailOffre">
+					<div class="descriptionOffre">
 						<img src="public/images/dummies/img.png">
-						<h3><?php echo $offer->title ?></h3><br>
-						<p><?php echo $offer->description ?></p>
-					</div>
-					<div class="info">
-						<ul>
-							<li><img src="public/images/dummies/price.png"><p><?php echo $offer->price ?></p></li>
-							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
-						</ul>
-						<?php if(F3::get('SESSION.user')){ ?>
-							<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
-						<?php } else { ?>
-						<?php } ?>
+						<h3><?php echo $offer[0]['title']; ?></h3><br>
+						<h4>Description de l'annonce</h4>
+						<p>	<?php print_r($offer); ?>
+							<?php echo $offer[0]['desciption']; ?>
+
+						</p>
+						<h4>Localisation</h4>
+						<img id="mapDetail" src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
+						<a href="offer/postulate/<?php echo $offer[0]['id_offer'];?>-<?php echo $offer[0]['id_users'];?>"><input type="button" value="Postuler" class="postuler"></a>
+
 					</div>
 				</div>
-                <?php endforeach; ?>
-            </div>
         </div>
 	</div>
 </section>

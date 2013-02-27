@@ -67,6 +67,17 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#displayBloc").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+	</script> 
+
 </head>
 <body>
 
@@ -92,7 +103,8 @@
 	</div>
 	</div>
 
-	<div class="top">
+
+	<div class="top gun">
 	<div class="row">
 
 		<div class="grid_12">
@@ -103,29 +115,39 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } ?>
+						
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
-					</li>							  
-					<li>
-						<a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a>
-				
 					</li>
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
+					<?php 
+						if(F3::get('SESSION.user')){
+						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
+						}
+					?>							  
 						
 				</ul>
-					<div id="contactLink" class="boutonId">
-						<span id="creerCompte" ><a>Créer un compte</a></span><br>
-						<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
-					</div>
-					<div class="langue">
-						<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-						<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-					</div>
+					<?php 
+						if(F3::get('SESSION.user')){
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
+						}
+						else{
+					?>
+						<div id="contactLink" class="boutonId">
+							<span id="creerCompte" ><a>Créer un compte</a></span><br>
+							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
+						</div>
+
+					<?php
+						}
+					?>		
+
 			</nav>
 			<!--end navigation-->	
 		</div>
@@ -138,17 +160,21 @@
 				            <fieldset>
 				            	<div id="part_connect">
 				            		<h4>Se Connecter</h4>
-					                <label for="identifiant">Identifiant*</label>
-					                <input id="identifiant" type="text" />
-					                <label for="mdp">Mot de passe*</label>
-					                <input id="mdp" type="text" />
-					                <input id="sendRequest" type="submit" name="submit" onclick="closeForm()" />
+				            		<form action="user/connexion" method="post" enctype="multipart/form-data">
+						                <label for="identifiant">Identifiant*</label>
+						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
+						                <label for="mdp">Mot de passe*</label>
+						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
+						                <input type="submit" value="save"/>
+<!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
+ -->						        </form>
+
 					            </div>
 					            <div id="part_identify">
 					            	<h4>Inscriver vous gratuitement</h4></br>
-					            	<p>Facebook connect</p>
-					            	<p>Twitter connect</p>
-					            	<p>gmail connect</p>
+					            	<a href="formulaire_inscription"><p>S'inscrire</p></a>
+					            	<a><p>Facebook connect</p></a>
+					            	<a><p>Twitter connect</p></a>
 					            </div>
 				            </fieldset>
 				        </div>
@@ -159,15 +185,24 @@
 	
 	</div>
 	</div>
+      <?php if($errorMsg['login']){ echo "ERREUR MEC, complète ce champs, sinon je ne vais pas être content :)";} ?>
 
 </header>
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/trans-1.jpg" alt="Milieu urbain illustrant le concept de Skillico">
-		<form id="position" class="form-wrapper">
-			<input type="text" id="search" placeholder="Rechercher une offre ...">
+		<form action="offer/searchHome" method="post" enctype="multipart/form-data" id="position" class="form-wrapper">
+			<input type="text" id="search2" name="searchHome" placeholder="Rechercher une offre ...">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche">
+    <a id="displayBloc">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
+
+
 <section id="content">
 
 
@@ -236,7 +271,7 @@
 
 <section id="rechercher">
 			<form class="form-wrapper">
-				<input type="text" id="search" placeholder="Rechercher une offre ...">
+				<input type="text" id="search2" placeholder="Rechercher une offre ...">
 				<input type="submit" value="Rechercher" id="submit">
 			</form>
 </section>

@@ -32,6 +32,12 @@
             	display:none;
                   position: absolute;
                   z-index: 50;
+                  -webkit-border-bottom-right-radius: 15px;
+                  -webkit-border-bottom-left-radius: 15px;
+                  -moz-border-radius-bottomright: 15px;
+                  -moz-border-radius-bottomleft: 15px;
+                  border-bottom-right-radius: 15px;
+                  border-bottom-left-radius: 15px;
             }
             #contactForm fieldset
             {
@@ -72,6 +78,7 @@
             }                
             #contactLink
             {
+                  float:right;
                   padding-top: 5px;
                   border: 0;
                   font-size: 100%;
@@ -79,6 +86,7 @@
                   vertical-align: baseline;
             	display:block;
             	cursor:pointer;
+                  margin-right: 36px;
             }
             #connectLink{
                   margin: 0;

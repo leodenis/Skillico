@@ -42,10 +42,8 @@ class User_controller extends Prefab{
 			      'name'=>'required',
 			      'firstname'=>'required',
 			      'adress'=>'required',
-			      'phone'=>'required',
 			      'date_creation'=>'required',
-			      'last_connection'=>'required',
-			      'level'=>'required'
+			      'last_connection'=>'required'
 			     
 			    );
 				
@@ -59,23 +57,15 @@ class User_controller extends Prefab{
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
 			    if($error){
 			      F3::set('errorMsg',$error);
-			      echo Views::instance()->render('inscription.php');
+			      echo Views::instance()->render('formulaireInscription.html');
 			      return;
 			    }
 			    else{	
-			    	//Ajout dans la base de donnée
-	
-			    	
+			    	//Ajout dans la base de donnée			    	
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password);
 		   			echo 'Merci, votre inscription a bien été prise en compte!';
-
-					// $image=new DB\SQL\Mapper(F3::get('dB'),'image'); // Connexion à la table image
-					// $image->copyFrom('POST'); // on récupère le POST
-					// $image->save(); // on sauvegarde
-			      //
-			      //$user->record();
 			    }
 			break;
 		}
@@ -115,7 +105,7 @@ class User_controller extends Prefab{
 
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('connexion.php');
+				echo Views::instance()->render('index.html');
 			break;
 			case 'POST':
 				 $check=array(
@@ -123,20 +113,19 @@ class User_controller extends Prefab{
 		   	      'password'=>'required'
 			     
 			    );
-
 				$login=$_POST['login'];
 				$password=md5($_POST['password']);
 
 				$user_connexion=new User;
 		   		$recupMdpId=$user_connexion->connexion($login,$password);
 		   		if ($recupMdpId == false) {
-		   			echo 'try again';
+			      	F3::reroute('/');
 		   		}
 		   		else {
 		   			//Création Session
 		   			date_default_timezone_set('Europe/Paris');  
 		   			$date=date("Y-m-d H:i:s");
-		   			F3::set('SESSION.user',$recupMdpId[0]['id_users']);
+		   			F3::set('SESSION.user',$recupMdpId);
 		   			//Récupération de l'id users afin de updater la last connexion
 		   			$id=$recupMdpId[0]['id_users'];
 		   			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
@@ -144,13 +133,14 @@ class User_controller extends Prefab{
 			 		$users->last_connection=$date; // on récupère le POST
 					$users->update(); // 
 
-		   			F3::reroute('/user/');
+		   			F3::reroute('/monCompte');
 		   		}
 			   
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
 			    if($error){
 			      F3::set('errorMsg',$error);
-			      echo Views::instance()->render('connexion.php');
+			      echo Views::instance()->render('index.html');
+			      F3::reroute('/');
 			      return;
 			    }
 			    else{	
@@ -210,30 +200,63 @@ class User_controller extends Prefab{
 
 	}
 
+	function monCompte(){
+		$id=F3::get('SESSION.user');
+	    $id=$id[0]['id_users'];
+	    //récupération des infos de l'user
+		$User=new User();
+		$infoUserCo=$User->infoUserCo($id);
+		//Récupération des offres posté par l'utilisateur
+		$Offer=new Offer();
+		$getOfferByUSerId=$Offer->getOfferByUSerId($id);
+
+		//Récupération annonces postées
+		$Offer=new Offer();
+		$getOfferByUSerIdAccomplite=$Offer->getOfferByUSerIdAccomplite($id);
+
+		//Récupération avis
+		$User=new User();
+		$avisUser=$User->avis($id);
+		    // print_r($infoUserCo);
+		F3::set('infoUserCo',$infoUserCo);
+		F3::set('getOfferByUSerId',$getOfferByUSerId);
+		F3::set('getOfferByUSerIdAccomplite',$getOfferByUSerIdAccomplite);
+		F3::set('avisUser',$avisUser);
+
+		$view=new View(); 
+		echo $view->render('monCompte.php'); 	
+
+	}
+
 	function edit(){
 	    switch(F3::get('VERB')){
 	      case 'GET':
 	       	$id=F3::get('SESSION.user');
+	       	$id=$id[0]['id_users'];
 			$User=new User();
 		    $infoUserCo=$User->infoUserCo($id);
+		    // print_r($infoUserCo);
 		    F3::set('infoUserCo',$infoUserCo);
-	        echo Views::instance()->render('user.php');
+	        Views::instance()->render('monCompte.php');
+	        F3::reroute('/monCompte');
 	      break;
 	      case 'POST':
-	        $id=F3::get('SESSION.user');
+	        $id = F3::get('SESSION.user');
+	   		$id=$id[0]['id_users'];
 	        $User=new User();
 		    $infoUserCo=$User->infoUserCo($id);
+		    $password=$_POST['password'];
 		    $id_image=$infoUserCo[0]['id_image'];
 			$User=new User();
-		    $EditInfoUser=$User->EditInfoUser($id,$id_image);
-		    F3::reroute('/user');
+		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password);
+		    F3::reroute('/');
 	      break;
 	    }
   	}
 
 	function deconnexion(){
 		F3::clear('SESSION.user');
-		F3::reroute('/user/');
+		F3::reroute('/');
 	}
 	function delete(){
 		$image=new DB\SQL\Mapper(F3::get('dB'),'image');

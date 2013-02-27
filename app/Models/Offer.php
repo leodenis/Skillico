@@ -7,14 +7,13 @@ class Offer extends Prefab
 	{
 	}
 
-
 	/*
 	*	RECUPERATION DE LA LISTE DES OFFRES
 	*/
 
 	function getOfferListe(){
             $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-	    return $offer->find(NULL,array('order'=>'id_offer DESC'));;
+            return $offer = $offer->find('visibility = 0 ',array('order'=>'id_offer DESC'));
 	}
 
 	/*
@@ -25,7 +24,11 @@ class Offer extends Prefab
 	    $offer = F3::get('dB')->exec('SELECT * FROM offer WHERE id_offer = ' . $idOffer);
 	    return $offer;
 	}
-        
+
+    function getOfferUserDetails($idOffer){
+        $offer = F3::get('dB')->exec('SELECT * FROM offer O, users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
+        return $offer;
+    }
         /*
          * RECUPERATION DES DURATIONS DES OFFRES
          */
@@ -100,20 +103,49 @@ class Offer extends Prefab
        }
        
        /*
-        *       RECUPERATION DES OFFRES D'UN UTILISATEUR
+        *       RECUPERATION DES OFFRES Posté D'UN UTILISATEUR
         */
 
        function getOfferByUSerId($idUser){
             $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-            $filter = 'fk_id_users_post = '.$idUser.' OR fk_id_users_respond = '.$idUser;
+            $filter = 'fk_id_users_post = '.$idUser;
             $option = array(
                 'group'=>NULL,
-                'order'=>NULL,
-                'limit'=>5,
-                'offset'=>2
+                'order'=>NULL
+ 
             );
-            $offerList = $offer->find($filter,$option);
-	    return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
+            return $offerList = $offer->afind($filter,$option);
+	        // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
+       }
+
+              /*
+        *       RECUPERATION DES OFFRES Posté D'UN UTILISATEUR
+        */
+
+       function getOfferByUSerIdAccomplite($idUser){
+            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $filter = 'fk_id_users_respond = '.$idUser;
+            $option = array(
+                'group'=>NULL,
+                'order'=>NULL
+ 
+            );
+            return $offerListAccomplite = $offer->find($filter,$option);
+       }
+               /*
+        *        RECUPERATION DES OFFRES répondu D'UN UTILISATEUR
+        */
+
+       function getOfferRespondByUSerId($idUser){
+            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $filter = 'fk_id_users_respond = '.$idUser;
+            $option = array(
+                'group'=>NULL,
+                'order'=>NULL
+ 
+            );
+            return $offerRespond = $offer->find($filter,$option);
+            // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
         
 
@@ -127,6 +159,15 @@ class Offer extends Prefab
             $price2=$chaineExplode[4]; 
             $requete='';
 
+            if($SecondRequest == 'tous'){
+                $SecondRequest="AND (O.type='immediat' OR O.type='enchere')";
+            }
+            else if($SecondRequest == 'immediat'){
+                $SecondRequest="AND O.type='immediat'";
+            }
+            else{
+                $SecondRequest="AND O.type='enchere'";
+            }
             //Créatop, des requêtes dynamiquement en fonction de ce que nous recevons
             
             if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7]) && isset($chaineExplode[8])){
@@ -146,16 +187,30 @@ class Offer extends Prefab
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.desciption, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' AND O.type='$SecondRequest' AND O.price BETWEEN $price1 AND $price2 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption,O.type, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*
         * Recuperation pour creer les marqueurs
         */
-       
-       function reqLatLng(){
+    function postulate($idOffer,$idUser){
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $offer->load(array('id_offer=?',$idOffer));
+        $offer->visibility=1;
+        $offer->fk_id_users_respond=$idUser;
+        $offer->update();
+    } 
+
+    function validate($idOffer){
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $offer->load(array('id_offer=?',$idOffer));
+        $offer->visibility=2;
+        $offer->update();    
+    }
+
+    function reqLatLng(){
            
-       }
+    }
 }
 
 ?>
