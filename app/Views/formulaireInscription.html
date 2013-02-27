@@ -64,6 +64,23 @@
 		$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 	});
 	</script>
+
+	<script>
+	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
+
+		$(document).ready(function() {
+			$("#deposer_annonce").fancybox({
+				'width'				: '60%',
+				'height'			: '100%',
+				'autoScale'			: false,
+				'transitionIn'		: 'true',
+				'transitionOut'		: 'true',
+				'type'				: 'iframe'
+			});
+	
+		});		
+	</script>
+
 	
 </head>
 <body>
@@ -115,16 +132,11 @@
 						}
 					?>							  
 		
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
-						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -132,10 +144,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+						
 					<?php
 						}
 					?>		

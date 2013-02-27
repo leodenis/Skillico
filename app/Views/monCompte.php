@@ -65,6 +65,22 @@
 	});
 	</script>
 	
+	<script>
+	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
+
+		$(document).ready(function() {
+			$("#deposer_annonce").fancybox({
+				'width'				: '60%',
+				'height'			: '100%',
+				'autoScale'			: false,
+				'transitionIn'		: 'true',
+				'transitionOut'		: 'true',
+				'type'				: 'iframe'
+			});
+	
+		});		
+	</script>
+	
 </head>
 <body>
 
@@ -111,17 +127,12 @@
 						 	echo '<li class="selected"><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-		
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
 						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>

@@ -27,7 +27,7 @@ class Offer extends Prefab
 	}
 
     function getOfferUserDetails($idOffer){
-        $offer = F3::get('dB')->exec('SELECT * FROM offer O, Users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
+        $offer = F3::get('dB')->exec('SELECT * FROM offer O, users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
         return $offer;
     }
         /*

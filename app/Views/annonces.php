@@ -57,7 +57,14 @@
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
 	<script src="public/js/AjaxRequete.js"></script>	
+	<script type="text/javascript">
+		function searchhome(){						ajaxSearch();
 
+					
+				}							
+
+
+	</script>
 	<script type="text/javascript">
 
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
@@ -75,8 +82,19 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#rech").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+	</script> 
+
 </head>
-<body>
+<body onload="searchhome();">
 
 <header>
 	<div class="topstatic">
@@ -114,8 +132,12 @@
 						<?php if(F3::get('SESSION.user')){ ?>
 							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 						<?php } else { ?>
+
 							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+
+
 						<?php } ?>					</li>
+					
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
@@ -124,17 +146,12 @@
 						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-		
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
 						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -142,10 +159,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+						
 					<?php
 						}
 					?>		
@@ -153,7 +167,6 @@
 			</nav>
 			<!--end navigation-->	
 		</div>
-
 		<div class="grid_12 centered margintop15">
 			<div class="grid_5 nomargin" id="connexion">
 				<div class="box">
@@ -192,10 +205,16 @@
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 		<form id="position" class="form-wrapper">
-			<input type="text" id="search2" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
+			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche2">
+    <a id="rech">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
@@ -249,7 +268,7 @@
 					<img src="public/images/list/achat_immediat.jpg">
 					<div class="description">
 						<img src="public/images/dummies/img.png">
-						<h3><?php echo $offer->title ?></h3><br>
+						<h3><?php echo $offer->title ?></h3><br/>
 						<p><?php echo $offer->desciption ?></p>
 					</div>
 					<div class="info">
@@ -266,6 +285,26 @@
 				</div>
                 <?php endforeach; ?>
             </div>
+
+
+			<div id="enchere">
+				<div class="grid_8 nomargin part_right">
+					<img src="public/images/list/enchere.jpg">
+					<div class="description">
+						<img src="public/images/dummies/img.png">
+						<h3>je suis une enchère</h3><br/>
+						<p>Je suis la description de l'enchère</p>
+					</div>
+					<div class="info">
+						<ul>
+							<li><img src="public/images/dummies/price.png"><p>50€</p></li>
+							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
+							<li><img src="public/images/dummies/event.png"><p>23/03/2013</p></li>
+						</ul>
+						<a href="offer/detailsOffer/"><input type="button" value="J'enchéri" class="encherir"></a>
+					</div>
+				</div>
+	        </div>
         </div>
 	</div>
 </section>

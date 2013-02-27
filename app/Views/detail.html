@@ -75,6 +75,17 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#rech").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+	</script> 
+
 </head>
 <body>
 
@@ -130,8 +141,8 @@
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -193,6 +204,13 @@
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche2">
+    <a id="rech">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
+
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">

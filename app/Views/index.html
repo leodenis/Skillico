@@ -76,7 +76,7 @@
 	    });
 	});
 
-</script> 
+	</script> 
 
 </head>
 <body>
@@ -102,6 +102,7 @@
 
 	</div>
 	</div>
+
 
 	<div class="top gun">
 	<div class="row">
@@ -129,17 +130,12 @@
 						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-		
-					<li>
-						<a href="#" id="displayBloc"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
 						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -147,10 +143,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+
 					<?php
 						}
 					?>		
@@ -197,11 +190,19 @@
 </header>
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/trans-1.jpg" alt="Milieu urbain illustrant le concept de Skillico">
-		<form id="position" class="form-wrapper">
-			<input type="text" id="search2" placeholder="Rechercher une offre ...">
+		<form action="offer/searchHome" method="post" enctype="multipart/form-data" id="position" class="form-wrapper">
+			<input type="text" id="search2" name="searchHome" placeholder="Rechercher une offre ...">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche">
+    <a id="displayBloc">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
+
+
 <section id="content">
 
 
