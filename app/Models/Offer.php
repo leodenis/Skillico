@@ -7,7 +7,6 @@ class Offer extends Prefab
 	{
 	}
 
-
 	/*
 	*	RECUPERATION DE LA LISTE DES OFFRES
 	*/
@@ -28,7 +27,7 @@ class Offer extends Prefab
 	}
 
     function getOfferUserDetails($idOffer){
-        $offer = F3::get('dB')->exec('SELECT * FROM offer O, Users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
+        $offer = F3::get('dB')->exec('SELECT * FROM offer O, users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
         return $offer;
     }
         /*
@@ -118,6 +117,21 @@ class Offer extends Prefab
             );
             return $offerList = $offer->afind($filter,$option);
 	        // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
+       }
+
+              /*
+        *       RECUPERATION DES OFFRES Posté D'UN UTILISATEUR
+        */
+
+       function getOfferByUSerIdAccomplite($idUser){
+            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $filter = 'fk_id_users_respond = '.$idUser;
+            $option = array(
+                'group'=>NULL,
+                'order'=>NULL
+ 
+            );
+            return $offerListAccomplite = $offer->afind($filter,$option);
        }
                /*
         *        RECUPERATION DES OFFRES répondu D'UN UTILISATEUR

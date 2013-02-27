@@ -76,7 +76,7 @@
 	    });
 	});
 
-</script> 
+	</script> 
 
 </head>
 <body>
@@ -114,7 +114,12 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } ?>
+						
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -124,17 +129,12 @@
 						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-		
-					<li>
-						<a href="#"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
 						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -142,10 +142,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+
 					<?php
 						}
 					?>		
@@ -199,7 +196,7 @@
 </aside>
 
 <div id="btn_recherche">
-    <a id="displayBloc" href="#">
+    <a id="displayBloc">
        <div id="mon_bouton"></div>
     </a>
 </div>

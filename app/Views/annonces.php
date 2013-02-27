@@ -75,6 +75,17 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#rech").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+	</script> 
+
 </head>
 <body>
 
@@ -111,8 +122,11 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="App/Views/deposer.html"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-					</li>
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<?php } ?>					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
@@ -121,17 +135,12 @@
 						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
 						}
 					?>							  
-		
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
 						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -139,10 +148,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+						
 					<?php
 						}
 					?>		
@@ -193,6 +199,12 @@
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche2">
+    <a id="rech">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
@@ -255,7 +267,10 @@
 							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
 							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
 						</ul>
-						<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
+						<?php if(F3::get('SESSION.user')){ ?>
+							<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
+						<?php } else { ?>
+						<?php } ?>
 					</div>
 				</div>
                 <?php endforeach; ?>

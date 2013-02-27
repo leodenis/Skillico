@@ -75,6 +75,17 @@
 		});		
 	</script>
 
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#rech").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
+
+	</script> 
+
 </head>
 <body>
 
@@ -122,16 +133,11 @@
 						}
 					?>							  
 		
-					<li>
-						<a href="contact.html"><img src="public/images/menu/home2.png">Rechercher</a>
-					</li>
-					
-						
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p>';
+							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
 					?>
@@ -139,10 +145,7 @@
 							<span id="creerCompte" ><a>Créer un compte</a></span><br>
 							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
 						</div>
-						<div class="langue">
-							<a href="#"><img src="public/images/menu/france.png" alt="langue française"></a>
-							<a href="#"><img src="public/images/menu/uk.png" alt="English language"></a>
-						</div>
+						
 					<?php
 						}
 					?>		
@@ -193,6 +196,13 @@
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
+
+<div id="btn_recherche2">
+    <a id="rech">
+       <div id="mon_bouton"></div>
+    </a>
+</div>
+
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">

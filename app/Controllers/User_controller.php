@@ -42,10 +42,8 @@ class User_controller extends Prefab{
 			      'name'=>'required',
 			      'firstname'=>'required',
 			      'adress'=>'required',
-			      'phone'=>'required',
 			      'date_creation'=>'required',
-			      'last_connection'=>'required',
-			      'level'=>'required'
+			      'last_connection'=>'required'
 			     
 			    );
 				
@@ -59,19 +57,15 @@ class User_controller extends Prefab{
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
 			    if($error){
 			      F3::set('errorMsg',$error);
-			      echo Views::instance()->render('inscription.php');
+			      echo Views::instance()->render('formulaireInscription.html');
 			      return;
 			    }
 			    else{	
-			    	//Ajout dans la base de donnée
-	
-			    	
+			    	//Ajout dans la base de donnée			    	
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password);
 		   			echo 'Merci, votre inscription a bien été prise en compte!';
-
-
 			    }
 			break;
 		}
@@ -215,9 +209,19 @@ class User_controller extends Prefab{
 		//Récupération des offres posté par l'utilisateur
 		$Offer=new Offer();
 		$getOfferByUSerId=$Offer->getOfferByUSerId($id);
+
+		//Récupération annonces postées
+		$Offer=new Offer();
+		$getOfferByUSerIdAccomplite=$Offer->getOfferByUSerIdAccomplite($id);
+
+		//Récupération avis
+		$User=new User();
+		$avisUser=$User->avis($id);
 		    // print_r($infoUserCo);
 		F3::set('infoUserCo',$infoUserCo);
 		F3::set('getOfferByUSerId',$getOfferByUSerId);
+		F3::set('getOfferByUSerIdAccomplite',$getOfferByUSerIdAccomplite);
+		F3::set('avisUser',$avisUser);
 
 		$view=new View(); 
 		echo $view->render('monCompte.php'); 	
@@ -241,10 +245,10 @@ class User_controller extends Prefab{
 	   		$id=$id[0]['id_users'];
 	        $User=new User();
 		    $infoUserCo=$User->infoUserCo($id);
-		    
+		    $password=$_POST['password'];
 		    $id_image=$infoUserCo[0]['id_image'];
 			$User=new User();
-		    $EditInfoUser=$User->EditInfoUser($id,$id_image);
+		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password);
 		    F3::reroute('/');
 	      break;
 	    }

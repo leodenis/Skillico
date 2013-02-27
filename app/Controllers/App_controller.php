@@ -26,7 +26,10 @@ class App_controller{
 		echo $view->render('formulaireInscription.html'); 
 	}
 
-
+	function deposerUneAnnonce(){
+		$view=new View(); 
+		echo $view->render('deposer.html'); 
+	}
 
 	function __destruct(){
 
