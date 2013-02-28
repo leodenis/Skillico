@@ -50,10 +50,10 @@
 
 						<label> Type de vente</label><br/>
 						<div class="mon_select">
-							<input checked="yes" required style="font-size:1.2em;" type="radio" id="ma_radio" name="type_annonce" value="0"><label for="ma_radio">Achat immédiat</label>
+							<input checked="yes" required style="font-size:1.2em;" type="radio" id="ma_radio" name="type_annonce" value="immediat"><label for="ma_radio">Achat immédiat</label>
 						</div>
 						<div class="mon_select">
-							<input required style="font-size:1.2em;" type="radio" id="ma_radio2" name="type_annonce" value="1"><label for="ma_radio2">Enchère</label>
+							<input required style="font-size:1.2em;" type="radio" id="ma_radio2" name="type_annonce" value="enchere"><label for="ma_radio2">Enchère</label>
 						</div>
 					</div>
 
@@ -105,7 +105,7 @@
             $('#identifiant').val() ? offer.title = $('#identifiant').val() : $('#identifiant').css({'border':'1px solid red'});
             $('#description').val() ? offer.description = $('#description').val() : $('#description').css({'border':'1px solid red'});
             $('#price').val() ? offer.price = $('#price').val() : $('#price').css({'border':'1px solid red'});
-            $('input[name="type_annonce"]').val() ? offer.bid = $('input[name="type_annonce"]:checked').val() : $('input[name="type_annonce"]:checked').css({'border':'1px solid red'});
+            $('input[name="type_annonce"]').val() ? offer.type = $('input[name="type_annonce"]:checked').val() : $('input[name="type_annonce"]:checked').css({'border':'1px solid red'});
             $('#duration_service').val() ? offer.fk_duration_offer = $('#duration_service').val() : $('#duration_service').css({'border':'1px solid red'});
             $('#cat_service').val() ? offer.fk_cat_offer = $('#cat_service').val() : $('#cat_service').css({'border':'1px solid red'});
             $('#address').val() ? offer.address = $('#address').val() : $('#address').css({'border':'1px solid red'});
@@ -120,7 +120,15 @@
                                 $.ajax({
                                         type: "POST",
                                         url: 'offer',
-                                        data: { title: offer.title ,description: offer.description ,price: offer.price ,lat: offer.lat ,lng: offer.Lng ,fk_id_offer_duration: offer.fk_duration_offer ,fk_id_offer_cat: offer.fk_cat_offer ,fk_id_users_post: <?php $id=F3::get('SESSION.user'); echo $id=$id[0]['id_users']; ?>}
+                                        data: { title: offer.title ,
+                                        		description: offer.description ,
+                                        		price: offer.price ,
+                                        		lat: offer.lat ,
+                                        		lng: offer.Lng ,
+                                        		type: offer.type ,
+                                        		fk_id_offer_duration: offer.fk_duration_offer ,
+                                        		fk_id_offer_cat: offer.fk_cat_offer ,
+                                        		fk_id_users_post: <?php $id=F3::get('SESSION.user'); echo $id=$id[0]['id_users']; ?>}
                                 }).done(function() {
                                 	$('form').remove;
                                 	$('#content-form').html('<p>Votre a bien &eacute;t&eacute; ajout&eacute;.</p>')
