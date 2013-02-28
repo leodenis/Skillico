@@ -657,15 +657,45 @@ header nav ul li {
 
 }
 
+#mdp{
+	width: auto;
+}
+
+#sendRequest{
+	margin-top: 15px;
+}
+
+#forPass{
+	color:#FFF;
+	font-size:0.8em;
+	cursor:pointer;
+}
+
+#mail{
+	width: 70%;
+	margin-top:10px;
+	float: left;
+}
+
+#identity{
+	margin-top: 40px;
+	margin-right: 50px;
+}
+
+#subForget{
+	margin-top:9px;
+	float: left;
+	height:30px;
+}
+
 .gun{
 	height: 52px;
 	border-right: 1px solid #383838;
 	border-top: 1px solid #383838;
 	border-left: 1px solid #6e6e6e;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
-						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
-						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
-
+	inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+	inset 0px -20px 20px -10px rgba(200,200,200,0.1);
 }
 
 
