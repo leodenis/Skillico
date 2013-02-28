@@ -150,8 +150,9 @@
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
+							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/' .$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
+							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';						
+
 						}
 						else{
 					?>
@@ -247,16 +248,16 @@
 					</li>		
 					<li><p>Type de vente</p></li>
 					<div>
-						<input style="font-size:1.2em;" type="radio" name="searchin" checked value="tous" onClick="ajaxSearch();"/>Tous
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" onClick="ajaxSearch();"/>Achat immédiat</br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère</br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="tous" checked value="tous" onClick="ajaxSearch();"/><label class="rad" for="tous">Tous</label><br/>
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="imme" value="immediat" onClick="ajaxSearch();"/><label class="rad" for="imme">Achat immédiat</label></br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="enchere" value="enchere" onClick="ajaxSearch();"/><label class="rad" for="enchere">Enchère</label></br>
 					</div>
 					<li><p>Type d'annonce</p></li>
 					<div>
-						<input type="checkbox" name="chk1" value="course" onClick="ajaxSearch();"/>Service à la personne<br>
-						<input type="checkbox" name="chk2" value="macdo" onClick="ajaxSearch();"/>Plomberie<br>
-						<input type="checkbox" name="chk3" value="jardin" onClick="ajaxSearch();"/>Menuiserie<br>
-						<input type="checkbox" name="chk4" value="alcool" onClick="ajaxSearch();"/>Alimentaire<br>
+						<input type="checkbox" id="check1" name="chk1" value="course" onClick="ajaxSearch();"/><label class="rad" for="check1" >Service à la personne</label><br>
+						<input type="checkbox" id="check2" name="chk2" value="macdo" onClick="ajaxSearch();"/><label class="rad" for="check2" >Plomberie</label><br>
+						<input type="checkbox" id="check3" name="chk3" value="jardin" onClick="ajaxSearch();"/><label class="rad" for="check3" >Menuiserie</label><br>
+						<input type="checkbox" id="check4" name="chk4" value="alcool" onClick="ajaxSearch();"/><label class="rad" for="check4" >Alimentaire</label><br>
 					</div>
 
 				</ul>

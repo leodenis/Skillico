@@ -11,8 +11,6 @@
 
 .grid_3.nomargin 	{ width:232px; margin:0; overflow:hidden; float:left; display:inline; }
 
-
-
 .iview-caption {
 	font-size: 14px;
 	line-height:1.5em;
@@ -36,6 +34,24 @@
 
 /***** Tablet (Smaller than 959px) *****/
 @media only screen and (min-width: 768px) and (max-width: 959px) {
+
+#logg {
+	display:none;
+}
+
+#position{
+	margin-left: 7%;
+	width:80%;
+	margin-top:-100px;
+}
+
+.form-wrapper #search2 {
+	width:56%;
+}
+
+#submit{
+	width:27%;
+}
 
 .grid_3.nomargin 	{ width:185px; margin:0; overflow:hidden; float:left; display:inline; }
 	
@@ -91,6 +107,24 @@ ul.tabs li a {
 /***** Phone (portrait 300px) *****/
 @media only screen and (max-width: 767px) {
 
+#logg {
+	display:none;
+}
+
+#position{
+	margin-left: 7%;
+	width:80%;
+	margin-top:-100px;
+}
+
+.form-wrapper #search2 {
+	width:55%;
+}
+
+#submit{
+	width:27%;
+}
+
 header .topstatic .call_contact {
 	display:none;
 }
@@ -116,7 +150,7 @@ header .topstatic .call_contact {
 	  nav select {
 			width:100%;
 			padding:10px;
-			margin-top:20px;
+			margin-top:8px;
 			margin-bottom:30px;
 		}
 	
@@ -143,6 +177,25 @@ footer .grid_3 {
 /***** Phone (landscape 420px) *****/
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
+
+#logg {
+	display:none;
+}
+
+#position{
+	margin-left: 7%;
+	width:80%;
+	margin-top:-100px;
+}
+
+.form-wrapper #search2 {
+	width:55%;
+}
+
+#submit{
+	width:27%;
+}
+
 .post-meta .bwWrapper img {
 	float:left;
 	margin-right:20px;
@@ -151,8 +204,6 @@ footer .grid_3 {
 .post-meta ul.post-cat {
 	float:left;
 }
-
-
 
 footer .footnote {
 	text-align:center;
@@ -178,6 +229,25 @@ ul.breadcrumb li {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
+
+
+#logg {
+	display:none;
+}
+
+#position{
+	margin-left: 7%;
+	width:80%;
+	margin-top:-100px;
+}
+
+.form-wrapper #search2 {
+	width:55%;
+}
+
+#submit{
+	width:27%;
+}
 
 #iview {
 	display:none;

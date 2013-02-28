@@ -6,9 +6,12 @@ class App_controller{
 	}
 
 	function home(){ 
-		//echo Views::instance()->render(index.html)
-		$view=new View(); 
-		echo $view->render('index.html'); 	
+		$id=F3::get('SESSION.user');
+	    $id=$id[0]['id_users'];
+		$User=new User();
+		$InfoUser=$User->infoUserCo($id);
+		F3::set('InfoUser',$InfoUser);
+		echo Views::instance()->render('index.html');	
 	}
 
 	function renduPage(){
@@ -16,10 +19,6 @@ class App_controller{
 		echo $view->render('monCompte.php');
 	}
 
-	function offer_detail(){
-		$view=new View(); 
-		echo $view->render('annonce_detail.html'); 
-	}
 
 	function formulaire_inscription(){
 		$view=new View(); 

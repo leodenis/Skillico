@@ -20,6 +20,11 @@ class Offer_controller{
 
                 }
                 $offers = Offer::instance()->getOfferListe();
+                $User=new User();
+                $id=F3::get('SESSION.user');
+                $id=$id[0]['id_users'];
+                $InfoUser=$User->infoUserCo($id);
+                F3::set('InfoUser',$InfoUser);
                 F3::set('offers',$offers);
                 echo Views::instance()->render('annonces.php');  
            }
@@ -52,6 +57,11 @@ class Offer_controller{
     $Offer=new Offer();
     $offer=$Offer->getOfferUserDetails($idOffer);
     F3::set('offer',$offer);
+    $id=F3::get('SESSION.user');
+    $id=$id[0]['id_users'];
+    $User=new User();
+    $InfoUser=$User->infoUserCo($id);
+    F3::set('InfoUser',$InfoUser);
     echo Views::instance()->render('annonce_detail.html');
 
   }

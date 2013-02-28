@@ -128,10 +128,8 @@ class User_controller extends Prefab{
 		   			F3::set('SESSION.user',$recupMdpId);
 		   			//Récupération de l'id users afin de updater la last connexion
 		   			$id=$recupMdpId[0]['id_users'];
-		   			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
-			 		$users->load(array('id_users=?',$id));
-			 		$users->last_connection=$date; // on récupère le POST
-					$users->update(); // 
+
+
 
 		   			F3::reroute('/monCompte');
 		   		}
