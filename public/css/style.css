@@ -1084,7 +1084,7 @@ section#monCompte {
 }
 
 .form-wrapper #search2 {
-	width: 330px;
+	width: 69%;
 	height: 20px;
 	padding: 10px 5px;
 	float: left;    
@@ -1260,7 +1260,7 @@ aside#featured {
 	top:0;
 	background:#e1ecf0;
 	line-height: 0;
-	z-index: -1;
+	/*z-index: -1;*/
 	/*border-bottom:1px solid #e9e9e9;*/
 
 }
