@@ -900,6 +900,7 @@ header nav ul  li ul li:hover ul li a{
 
     nav select {
       display: none;
+      z-index:10000000;
     }
 	
 
@@ -1021,7 +1022,7 @@ section#monCompte {
 	padding: 20px 0px;
 }
 #position{
-	margin-left: 45%;
+	margin-left: 54%;
 	margin-top: -130px;
 	position: absolute;
 }
@@ -2216,10 +2217,10 @@ blockquote.boxed {
 
 #pic_header{
 	float: left;
-	margin-top:6px;
+	margin-top:5px;
 	margin-left:25px;
-	width:38px;
-	height:38px;
+	width:39px;
+	height:39px;
 	background:lightblue;
 	border:3px solid #1794d5;
 	-webkit-border-radius: 7px;
@@ -2246,6 +2247,11 @@ blockquote.boxed {
 	font-family: Tahoma, Arial, sans-serif;
 	color: #909090;
 }
+
+#userDeco:hover{
+	color:#1794d5;
+}
+
 
 #userDeco a{
 	font-family: Tahoma, Arial, sans-serif;

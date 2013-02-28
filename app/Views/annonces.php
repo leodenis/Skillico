@@ -150,7 +150,7 @@
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
+							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/' .$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
 							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
 						}
 						else{
