@@ -13,8 +13,7 @@ class Offer extends Prefab
 
 	function getOfferListe(){
             $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-            $filter = 'visibility = 0 ';
-            return $offer = $offer->find($filter);
+            return $offer = $offer->find('visibility = 0 ',array('order'=>'id_offer DESC'));
 	}
 
 	/*
@@ -131,7 +130,7 @@ class Offer extends Prefab
                 'order'=>NULL
  
             );
-            return $offerListAccomplite = $offer->afind($filter,$option);
+            return $offerListAccomplite = $offer->find($filter,$option);
        }
                /*
         *        RECUPERATION DES OFFRES répondu D'UN UTILISATEUR
@@ -145,7 +144,7 @@ class Offer extends Prefab
                 'order'=>NULL
  
             );
-            return $offerRespond = $offer->afind($filter,$option);
+            return $offerRespond = $offer->find($filter,$option);
             // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
         
@@ -188,7 +187,7 @@ class Offer extends Prefab
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption,O.type, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.description,O.type, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.description LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*
@@ -200,7 +199,7 @@ class Offer extends Prefab
         $offer->visibility=1;
         $offer->fk_id_users_respond=$idUser;
         $offer->update();
-    }
+    } 
 
     function validate($idOffer){
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
