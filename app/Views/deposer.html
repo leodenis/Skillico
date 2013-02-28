@@ -95,6 +95,9 @@
 	$('#fancybox-close').click(function(){
 		parent.$.fancybox.close();
 	})
+            
+        
+
     $('#offerPost').submit(function(event){
         event.preventDefault();
         if($('#conditions')[0].checked){
@@ -106,15 +109,14 @@
             $('#duration_service').val() ? offer.fk_duration_offer = $('#duration_service').val() : $('#duration_service').css({'border':'1px solid red'});
             $('#cat_service').val() ? offer.fk_cat_offer = $('#cat_service').val() : $('#cat_service').css({'border':'1px solid red'});
             $('#address').val() ? offer.address = $('#address').val() : $('#address').css({'border':'1px solid red'});
+            $('#adress').val() ? offer.address = $('#adress').val() : $('#adress').css({'border':'1px solid red'});
             if($('#identifiant').val() != null || $('#description').val() != null || $('#price').val() != null || $('#adress').val() != null){
-
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({"address":offer.address}, function(data,status){
                         if(status=='OK'){
                                 offer.address.value = data[0].formatted_address;
                                 offer.lat=data[0].geometry.location.lat();
                                 offer.Lng=data[0].geometry.location.lng();
-                                console.log(offer);
                                 $.ajax({
                                         type: "POST",
                                         url: 'offer',

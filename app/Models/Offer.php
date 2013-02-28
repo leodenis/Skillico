@@ -187,7 +187,7 @@ class Offer extends Prefab
                 $requete='';
             }
 
-            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.desciption,O.type, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.desciption LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
+            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.description,O.type, O.beginning, O.ending, O.price, C.title as cat FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.description LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
 
         }
        /*
