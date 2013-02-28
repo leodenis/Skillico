@@ -151,7 +151,8 @@
 					<?php 
 						if(F3::get('SESSION.user')){
 							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/' .$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
+							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';						
+
 						}
 						else{
 					?>
@@ -275,6 +276,7 @@
 					<div class="description">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer->title ?></h3><br/>
+
 						<p><?php echo $offer->description ?></p>
 					</div>
 					<div class="info">

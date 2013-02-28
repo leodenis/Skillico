@@ -13,8 +13,7 @@ class Offer extends Prefab
 
 	function getOfferListe(){
             $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-            $filter = 'visibility = 0 ';
-            return $offer = $offer->find($filter);
+            return $offer = $offer->find('visibility = 0 ',array('order'=>'id_offer DESC'));
 	}
 
 	/*
@@ -131,7 +130,7 @@ class Offer extends Prefab
                 'order'=>NULL
  
             );
-            return $offerListAccomplite = $offer->afind($filter,$option);
+            return $offerListAccomplite = $offer->find($filter,$option);
        }
                /*
         *        RECUPERATION DES OFFRES répondu D'UN UTILISATEUR
@@ -145,7 +144,7 @@ class Offer extends Prefab
                 'order'=>NULL
  
             );
-            return $offerRespond = $offer->afind($filter,$option);
+            return $offerRespond = $offer->find($filter,$option);
             // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
         
@@ -200,7 +199,7 @@ class Offer extends Prefab
         $offer->visibility=1;
         $offer->fk_id_users_respond=$idUser;
         $offer->update();
-    }
+    } 
 
     function validate($idOffer){
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
