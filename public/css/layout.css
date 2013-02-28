@@ -142,6 +142,9 @@ header .topstatic .call_contact {
 	margin: 0;
 }
 
+div#contactLink{
+	float: left;
+}
 
 
 /* disable top menu */
@@ -174,6 +177,8 @@ footer .grid_3 {
 	margin-bottom:30px;
 }	
 
+header .top {
+	height: 110px;
 }
 
 
@@ -181,9 +186,7 @@ footer .grid_3 {
 /***** Phone (landscape 420px) *****/
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
-div#contactLink.boutonId{
-	display: none;
-}
+
 
 #logg {
 	display:none;
@@ -233,6 +236,8 @@ ul.breadcrumb li {
 	width:100%;
 }
 
+div#contactLink{
+	float: left;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
@@ -284,8 +289,8 @@ ul.breadcrumb li {
     float:left;
 }
 
-div#contactLink.boutonId{
-	display: none;
+header .top {
+	height: 100px;
 }
 
 /***** Retina *****/
