@@ -116,7 +116,7 @@ header .topstatic .call_contact {
 	  nav select {
 			width:100%;
 			padding:10px;
-			margin-top:20px;
+			margin-top:8px;
 			margin-bottom:30px;
 		}
 	
@@ -142,6 +142,12 @@ footer .grid_3 {
 	
 /***** Phone (landscape 420px) *****/
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+
+#logg {
+	display:none;
+}
+
 
 .post-meta .bwWrapper img {
 	float:left;
@@ -178,6 +184,12 @@ ul.breadcrumb li {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
+
+
+#logg {
+	display:none;
+}
+
 
 #iview {
 	display:none;

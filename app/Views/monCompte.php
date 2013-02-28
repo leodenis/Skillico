@@ -131,8 +131,8 @@
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<div id="logg"><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p>';	
-							echo '<p id="userDeco"><a href="user/deconnexion">Déconnexion</a></p></div>';
+							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/icons/icon-1.png" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
+							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';
 						}
 						else{
 					?>
