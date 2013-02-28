@@ -41,7 +41,7 @@
 
 #position{
 	margin-left: 7%;
-	width:80%;
+	width:40%;
 	margin-top:-100px;
 }
 
@@ -181,6 +181,9 @@ footer .grid_3 {
 /***** Phone (landscape 420px) *****/
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
+div#contactLink.boutonId{
+	display: none;
+}
 
 #logg {
 	display:none;
@@ -188,7 +191,7 @@ footer .grid_3 {
 
 #position{
 	margin-left: 7%;
-	width:80%;
+	width:66%;
 	margin-top:-100px;
 }
 
@@ -280,6 +283,9 @@ ul.breadcrumb li {
 #searchForm {
     float:left;
 }
+
+div#contactLink.boutonId{
+	display: none;
 }
 
 /***** Retina *****/
