@@ -275,7 +275,7 @@
 					<div class="description">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer->title ?></h3><br/>
-						<p><?php echo $offer->desciption ?></p>
+						<p><?php echo $offer->description ?></p>
 					</div>
 					<div class="info">
 						<ul>
