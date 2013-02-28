@@ -58,12 +58,9 @@
 
 	<script src="public/js/AjaxRequete.js"></script>	
 	<script type="text/javascript">
-		function searchhome(){						ajaxSearch();
-
-					
-				}							
-
-
+		function searchhome(){						
+			ajaxSearch();
+		}							
 	</script>
 	<script type="text/javascript">
 
@@ -265,33 +262,7 @@
 
 
 			<div id="donneesAnnonces">
-				<?php foreach($offers as $offer):?>
-                <?php echo $offer ?>
-				<div class="grid_8 nomargin part_right">
-					<?php if($offer->type =='enchere'){ ?>
-						<img src="public/images/list/enchere.jpg">
-					<?php } else {?>
-						<img src="public/images/list/achat_immediat.jpg">
-					<?php } ?>
-					<div class="description">
-						<img src="public/images/dummies/img.png">
-						<h3><?php echo $offer->title ?></h3><br/>
-
-						<p><?php echo $offer->description ?></p>
-					</div>
-					<div class="info">
-						<ul>
-							<li><img src="public/images/dummies/price.png"><p><?php echo $offer->price ?></p></li>
-							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-							<li><img src="public/images/dummies/event.png"><p><?php echo $offer->beginning = date("d/m/y") ?></p></li>
-						</ul>
-						<?php if(F3::get('SESSION.user')){ ?>
-							<a href="offer/detailsOffer/<?php echo $offer->id_offer; ?>"><input type="button" value="Postuler" class="postuler"></a>
-						<?php } else { ?>
-						<?php } ?>
-					</div>
-				</div>
-                <?php endforeach; ?>
+				
             </div>
         </div>
 	</div>
