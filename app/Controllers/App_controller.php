@@ -27,12 +27,7 @@ class App_controller{
 
 	function deposerUneAnnonce(){
 		$view=new View(); 
-		echo $view->render('deposer.html');
-	}
-
-	function enchereDetail(){
-		$view=new View();
-		echo $view->render('enchere_detail.html');
+		echo $view->render('deposer.html'); 
 	}
 
 	function __destruct(){
