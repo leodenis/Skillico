@@ -30,6 +30,11 @@ class App_controller{
 		echo $view->render('deposer.html'); 
 	}
 
+		function enchereDetail(){
+		$view=new View();
+		echo $view->render('enchere_detail.html');
+	}
+
 	function __destruct(){
 
 	}
