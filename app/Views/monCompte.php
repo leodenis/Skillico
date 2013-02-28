@@ -204,7 +204,7 @@
 			<div class="grid_8 nomargin part_info">
 	<div id="tabs-1">
 
-		<h2>Mes profil</h2>
+		<h2>Mon profil</h2>
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
