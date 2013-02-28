@@ -28,7 +28,6 @@ class Offer_controller{
 
 	function post(){ 
             Offer::instance()->postOffer();
-            Offer::instance()->postOffer();
 	}
         
 	function update(){ 
