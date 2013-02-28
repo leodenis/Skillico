@@ -13,6 +13,12 @@ class Offer_controller{
                 F3::set('offer',$offer);
                 echo Views::instance()->render('annonces_detail.html');  // A FINIR AVEC L'INTE
            }else{
+              if(empty($_POST['searchHome'])){
+                }else{
+                  $searchHome =$_POST['searchHome'];
+                  F3::set('searchHome',$searchHome);
+
+                }
                 $offers = Offer::instance()->getOfferListe();
                 F3::set('offers',$offers);
                 echo Views::instance()->render('annonces.php');  
@@ -22,6 +28,7 @@ class Offer_controller{
 
 	function post(){ 
            Offer::instance()->postOffer();
+
 	}
         
 	function update(){ 
@@ -66,6 +73,12 @@ class Offer_controller{
       F3::reroute('/monCompte');
 
 
+  }
+
+  function searchHome(){
+      F3::set('searchHome',$searchHome);
+      echo Views::instance()->render('p');
+      F3::reroute('/offer');
   }
 
 }

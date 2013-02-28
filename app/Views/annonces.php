@@ -57,7 +57,14 @@
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
 	<script src="public/js/AjaxRequete.js"></script>	
+	<script type="text/javascript">
+		function searchhome(){						ajaxSearch();
 
+					
+				}							
+
+
+	</script>
 	<script type="text/javascript">
 
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
@@ -87,7 +94,7 @@
 	</script> 
 
 </head>
-<body>
+<body onload="searchhome();">
 
 <header>
 	<div class="topstatic">
@@ -125,8 +132,12 @@
 						<?php if(F3::get('SESSION.user')){ ?>
 							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 						<?php } else { ?>
-							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a>  
+
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+
+
 						<?php } ?>					</li>
+					
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>
@@ -156,7 +167,6 @@
 			</nav>
 			<!--end navigation-->	
 		</div>
-
 		<div class="grid_12 centered margintop15">
 			<div class="grid_5 nomargin" id="connexion">
 				<div class="box">
@@ -195,7 +205,7 @@
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 		<form id="position" class="form-wrapper">
-			<input type="text" id="search2" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
+			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
@@ -236,8 +246,10 @@
 					<div id="slider-range"></div>
 					</li>		
 					<li><p>Type de vente</p></li>
-					<div><input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" checked onClick="ajaxSearch();"/>Achat immédiat</br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère
+					<div>
+						<input style="font-size:1.2em;" type="radio" name="searchin" checked value="tous" onClick="ajaxSearch();"/>Tous
+						<input style="font-size:1.2em;" type="radio" name="searchin" value="immediat" onClick="ajaxSearch();"/>Achat immédiat</br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" value="enchere" onClick="ajaxSearch();"/>Enchère</br>
 					</div>
 					<li><p>Type d'annonce</p></li>
 					<div>
@@ -255,7 +267,11 @@
 				<?php foreach($offers as $offer):?>
                 <?php echo $offer ?>
 				<div class="grid_8 nomargin part_right">
-					<img src="public/images/list/achat_immediat.jpg">
+					<?php if($offer->type =='enchere'){ ?>
+						<img src="public/images/list/enchere.jpg">
+					<?php } else {?>
+						<img src="public/images/list/achat_immediat.jpg">
+					<?php } ?>
 					<div class="description">
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer->title ?></h3><br/>
@@ -275,26 +291,6 @@
 				</div>
                 <?php endforeach; ?>
             </div>
-
-
-			<div id="enchere">
-				<div class="grid_8 nomargin part_right">
-					<img src="public/images/list/enchere.jpg">
-					<div class="description">
-						<img src="public/images/dummies/img.png">
-						<h3>je suis une enchère</h3><br/>
-						<p>Je suis la description de l'enchère</p>
-					</div>
-					<div class="info">
-						<ul>
-							<li><img src="public/images/dummies/price.png"><p>50€</p></li>
-							<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-							<li><img src="public/images/dummies/event.png"><p>23/03/2013</p></li>
-						</ul>
-						<a href="offer/detailsOffer/"><input type="button" value="J'enchéri" class="encherir"></a>
-					</div>
-				</div>
-	        </div>
         </div>
 	</div>
 </section>
