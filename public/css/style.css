@@ -678,7 +678,7 @@ header nav ul li {
     display: inline-block;
 	float: left;
 	margin:0;
-	padding:11px 10px 5px 10px;
+	padding:11px 10px 2px 10px;
 	z-index:100;
 
 }
@@ -749,7 +749,7 @@ ul.menu li a img {
 }
 
 header nav ul li:hover,header nav ul li.selected {
-	border-bottom:5px solid #1794d5;
+	border-top:2px solid #1794d5;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
 						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
 						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
