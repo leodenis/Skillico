@@ -725,8 +725,14 @@ header nav ul li {
 	border-top: 1px solid #383838;
 	border-left: 1px solid #6e6e6e;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
-	inset 0px 20px 20px -10px rgba(200,200,200,0.1),
-	inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+		inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+		inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	-moz-box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
 }
 
 
@@ -747,6 +753,14 @@ header nav ul li:hover,header nav ul li.selected {
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
 						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
 						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	-moz-box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+
+	
 } 
 
 header nav li:first-child {
