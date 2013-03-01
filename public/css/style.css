@@ -697,6 +697,11 @@ header nav ul li {
 	cursor:pointer;
 }
 
+#oubliPass{
+	display:none;
+	width: 158px;
+}
+
 #mail{
 	width: 70%;
 	margin-top:10px;
@@ -887,8 +892,8 @@ header nav ul li ul li:hover ul li a {
 
 .boutonId span:nth-child(3){
 	float: right;
-	margin-right: 5px;
-	margin-top: -17px;
+	margin-right: 6px;
+	margin-top: -16px;
 }
 
 .boutonId span:nth-child(3) a{
@@ -903,7 +908,8 @@ header nav ul li ul li:hover ul li a {
 
 #creerCompte{
 	border-right: 1px dotted black;
-	padding: 15px;
+	padding: 6px;
+	margin-left: 15px;
 }
 
 #creerCompte a{

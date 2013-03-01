@@ -76,7 +76,7 @@
 	    });
 
 	    $("#forPass").click(function(){
-        $("#oubliPass").slideToggle("slow");
+        $("#oubliPass").slideToggle();
     });
 	});
 
@@ -176,10 +176,10 @@
 						                <input id="sendRequest" type="submit" value="save"/>
 						                
 						                <a id="forPass">Mot de passe oublié ?</a><br/>
-						                <span id="oubliPass">
+						                <div id="oubliPass">
 						                	<input id="mail" type="email" name="email" placeholder="Email" value="" />
 						               		<input id="subForget" type="submit" value="Ok"/>
-						            	</span>
+						            	</div>
 <!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
  -->						        </form>
 
