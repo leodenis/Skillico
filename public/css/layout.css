@@ -247,6 +247,20 @@ div#contactLink{
 	display:none;
 }
 
+#contactForm{
+	width:250px;
+}
+
+#part_identify{
+	float:left;
+	margin-left:0px;
+	margin-top:15px;
+}
+
+#part_connect{
+	border:none;
+}
+
 #contactLink {
 	margin-right:0px;
 	float:left;
