@@ -10,30 +10,6 @@ body {
 	overflow-x:hidden;
 }
 
-/* Style de la scrollbar */
-::-webkit-scrollbar {
-    width: 13px;
-}
- 
-/* Track */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(195,212,233,1); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background-color: rgba(245,245,245,0.5);
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(23,148,213,0.8); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255,0,0,0.4); 
-}
-
 #master {
 	width: 100%;
 	height:auto;
@@ -50,6 +26,29 @@ body {
 	width:91%;
 	margin-right:8px;
 	margin-top:1px;
+}
+
+#address{
+	width:88%;
+}
+
+#list a {
+    color:#686767;
+    text-decoration:none;
+}
+#list a:hover {
+    color:#0091ff;
+}
+
+#localiser{
+	margin-left:-34px;
+    cursor:hand;
+    cursor:pointer;
+    padding:5px;
+    height:31px;
+    background-color:#1794d5;
+    background: -moz-linear-gradient(center top , #666666, #000000) repeat scroll 0 0 transparent;
+    color:#FFF;
 }
 
 #search_frm input[type=submit] {
@@ -251,4 +250,28 @@ input.postuler{
 	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+}
+
+/* Style de la scrollbar */
+::-webkit-scrollbar {
+    width: 13px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(195,212,233,1); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgba(245,245,245,0.5);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(23,148,213,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,0,0,0.4); 
 }

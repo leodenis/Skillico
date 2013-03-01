@@ -77,7 +77,7 @@ window.onload=function() {
         geocoder.geocode({"latLng": e.latLng}, function(data, status) {
             if (status == google.maps.GeocoderStatus.OK && data[0]) {
                 document.getElementById("suggest").style.display="none";
-                document.getElementById("addr").value=data=data[0].formatted_address;
+                document.getElementById("address").value=data=data[0].formatted_address;
             }
         });
     });

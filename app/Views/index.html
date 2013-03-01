@@ -37,7 +37,7 @@
 	
 	<script type="text/javascript" src="public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	<script src="public/js/fancybox/function.js"></script>
+	<!--<script src="public/js/fancybox/function.js"></script>-->
 	
 	<script src="public/js/tooltips.js"></script>	
 	
@@ -74,9 +74,15 @@
 	        $("#featured").slideToggle("slow");
 	         //$(this).toggleClass("enroule"); return false;
 	    });
+
+		$("#forPass").click(function(){
+	        $("#oubliPass").slideToggle();
+	    });
 	});
 
 	</script> 
+
+
 
 </head>
 <body>
@@ -163,11 +169,17 @@
 				            	<div id="part_connect">
 				            		<h4>Se Connecter</h4>
 				            		<form action="user/connexion" method="post" enctype="multipart/form-data">
-						                <label for="identifiant">Identifiant*</label>
+						                <label for="identifiant" id="identity">Identifiant*</label>
 						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
 						                <label for="mdp">Mot de passe*</label>
 						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
-						                <input type="submit" value="save"/>
+						                <input id="sendRequest" type="submit" value="save"/>
+						                
+						                <a id="forPass">Mot de passe oublié ?</a><br/>
+						                <div id="oubliPass">
+						                	<input id="mail" type="email" name="email" placeholder="Email" value="" />
+						               		<input id="subForget" type="submit" value="Ok"/>
+						            	</div>
 <!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
  -->						        </form>
 

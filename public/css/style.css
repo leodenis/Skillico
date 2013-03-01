@@ -533,20 +533,14 @@ input.postuler{
 
 input.postulerFalse{
 	
-	border: 1px solid red;
+	border: 1px solid rgba(23, 148, 213, 0.6);
 	width: auto;
 	padding: 5px;
 	cursor: pointer;
 	font: bold 13px Arial, Helvetica;
 	color: #fafafa;
 	text-transform: uppercase;
-	background-color: red;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(red));
-	background-image: -webkit-linear-gradient(top, red, red);
-	background-image: -moz-linear-gradient(top, red, red);
-	background-image: -ms-linear-gradient(top, red, red);
-	background-image: -o-linear-gradient(top, red, red);
-	background-image: linear-gradient(top, red, red);
+	background: rgba(23, 148, 213, 0.6);
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -579,6 +573,32 @@ input.encherir{
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 }
+
+input.encherir2{
+	margin-top: 4px;
+	border: 1px solid #e51616;
+	width: 40%;
+	padding: 5px;
+	cursor: pointer;
+	font: bold 13px Arial, Helvetica;
+	color: #fafafa;
+	text-transform: uppercase;
+	background-color: #e51616;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ec1f1f), to(#e51616));
+	background-image: -webkit-linear-gradient(top, #ec1f1f, #e51616);
+	background-image: -moz-linear-gradient(top, #ec1f1f, #e51616);
+	background-image: -ms-linear-gradient(top, #ec1f1f, #e51616);
+	background-image: -o-linear-gradient(top, #ec1f1f, #e51616);
+	background-image: linear-gradient(top, #ec1f1f, #e51616);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+}
+
 
 ul.menuOffre li:first-child {
 	padding: 6px 0px 6px 0px;
@@ -652,9 +672,45 @@ header nav ul li {
     display: inline-block;
 	float: left;
 	margin:0;
-	padding:11px 10px 5px 10px;
+	padding:11px 10px 2px 10px;
 	z-index:100;
 
+}
+
+#mdp{
+	width: auto;
+}
+
+#sendRequest{
+	margin-top: 15px;
+}
+
+#forPass{
+	color:#FFF;
+	font-size:0.8em;
+	cursor:pointer;
+}
+
+#oubliPass{
+	display:none;
+	width: 158px;
+}
+
+#mail{
+	width: 70%;
+	margin-top:10px;
+	float: left;
+}
+
+#identity{
+	margin-top: 40px;
+	margin-right: 50px;
+}
+
+#subForget{
+	margin-top:9px;
+	float: left;
+	height:30px;
 }
 
 .gun{
@@ -663,9 +719,14 @@ header nav ul li {
 	border-top: 1px solid #383838;
 	border-left: 1px solid #6e6e6e;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
+		inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+		inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	-moz-box-shadow: 0 1px 3px #3a3a3a,
 						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
 						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
-
+	box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
 }
 
 
@@ -682,10 +743,18 @@ ul.menu li a img {
 }
 
 header nav ul li:hover,header nav ul li.selected {
-	border-bottom:5px solid #1794d5;
+	border-top:2px solid #1794d5;
 	-webkit-box-shadow: 0 1px 3px #3a3a3a,
 						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
 						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	-moz-box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+	box-shadow: 0 1px 3px #3a3a3a,
+						inset 0px 20px 20px -10px rgba(200,200,200,0.1),
+						inset 0px -20px 20px -10px rgba(200,200,200,0.1);
+
+	
 } 
 
 header nav li:first-child {
@@ -831,7 +900,8 @@ header nav ul li ul li:hover ul li a {
 
 .boutonId span:nth-child(3){
 	float: right;
-	margin-top: -20px;
+	margin-right: 6px;
+	margin-top: -16px;
 }
 
 .boutonId span:nth-child(3) a{
@@ -846,7 +916,8 @@ header nav ul li ul li:hover ul li a {
 
 #creerCompte{
 	border-right: 1px dotted black;
-	padding: 15px;
+	padding: 6px;
+	margin-left: 15px;
 }
 
 #creerCompte a{
@@ -1030,6 +1101,90 @@ section#monCompte {
 	margin-top: -130px;
 	position: absolute;
 }
+
+
+.detailOffre{
+	background-color: white;
+	border: 1px solid #c8c9ca;
+}
+
+#part_left.detailOffreEnchereMenu{
+	background-color: #eff1f7;
+}
+.detailOffreEnchereMenu li:first-child{
+	background-color: red;
+	color: white;
+	font-size:1.5em;
+}
+
+#enchereInfo li:first-of-type{
+	font-family: arial;
+	font-size: 1.3em;
+}
+
+#enchereInfo li{
+	float: left;
+	background:none;
+	color: #909090;
+	padding-left: 12px;
+	padding-top: 10px;
+	width: 60%;
+	text-align:left;
+}
+
+.detailOffreEnchereMenu img{
+	float: left;
+	width: 20%;
+	padding-left: 10px;
+}
+
+li img#iconUser{
+	width: 8%;
+	margin-left: -12px;
+	padding-right: 5px;
+}
+
+table#histo{
+	width: 90%;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+#montant{
+	width: 15%;
+	display: inline-block;
+}
+
+#encherePost input#proposerMontant{
+	width: 45%;
+}
+
+.historiqueEnchere{
+	float: left;
+	margin-left: 27%;
+	background-color: white;
+	border: 1px solid #c8c9ca;
+}
+
+#enchereInfo p{
+	float:left;
+}
+
+#encherePost input:first-child{
+	width: 20%;
+	display: inline-block;
+	margin-bottom: 7px;
+	margin-left: 15px;
+	float: left;
+}
+
+#encherePost2 {
+	margin-bottom: 15px;
+
+}
+
+
+
 
 .detailOffreMenu li:first-child{
 	background-color: #1794d5;

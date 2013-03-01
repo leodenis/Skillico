@@ -76,13 +76,19 @@
 				'transitionOut'		: 'true',
 				'type'				: 'iframe'
 			});
+
 		    $("#rech").click(function () {
 		        $("#featured").slideToggle("slow");
 		         //$(this).toggleClass("enroule"); return false;
 		    });
+
+		    $("#forPass").click(function(){
+		        $("#oubliPass").slideToggle();
+		    });
+	    
 	
-		});		
-	</script>
+		});
+	</script> 
 
 </head>
 <body onload="searchhome();">
@@ -172,7 +178,13 @@
 						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
 						                <label for="mdp">Mot de passe*</label>
 						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
-						                <input type="submit" value="save"/>
+						                <input id="sendRequest" type="submit" value="save"/>
+
+						                <a id="forPass">Mot de passe oublié ?</a><br/>
+						                <div id="oubliPass">
+						                	<input id="mail" type="email" name="email" placeholder="Email" value="" />
+						               		<input id="subForget" type="submit" value="Ok"/>
+						            	</div>
 <!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
  -->						        </form>
 
