@@ -61,7 +61,7 @@ class User extends Prefab{
 	 		$users->password=md5($password); // on récupère le POST
 			$users->update(); // on sauvegarde
 
-			return $log = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
+			return $log = F3::get('dB')->exec("SELECT email FROM users WHERE login = '".$login."'");
 
 			F3::reroute('/user');
 	}

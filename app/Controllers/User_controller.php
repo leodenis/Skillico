@@ -31,7 +31,7 @@ class User_controller extends Prefab{
 
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('inscription.php');
+				echo Views::instance()->render('formulaireInscription.html');
 			break;
 			case 'POST':
 				 $check=array(
@@ -179,18 +179,17 @@ class User_controller extends Prefab{
 			    	$login=$_POST['login'];
 		   			$user_log=new User;
 		   			$recupLog=$user_log->forgetpassword($login,$password);
-	
+		 
+					
 		   			if ($recupLog == false) {
 		   			echo 'try again';
 		   			}
 					else{
-
-						$headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-						$headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-						$headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-						$headers .='Content-Transfer-Encoding: 8bit'; 
-					    $message ='<html><head><title>Bonjour</title></head><body>Voici votre nouveau mot de passe'.$password.'. Vous pouvez dès maintenant le changer dans votre espace</body></html>'; 
-						mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
+				
+						$email = $recupLog[0]['email'];
+									// F3::sendmail($password);
+						Mail::instance()->sendmail($password,$email);
+						
 					}
 			    }
 			break;

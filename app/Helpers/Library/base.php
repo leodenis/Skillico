@@ -131,6 +131,7 @@ final class Base {
 		@param $key string
 		@param $add bool
 	**/
+
 	function &ref($key,$add=TRUE) {
 		$parts=$this->cut($key);
 		if ($parts[0]=='SESSION') {
