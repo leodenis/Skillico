@@ -440,6 +440,21 @@ select#annee{
 	display: inline-block;
 }
 
+#noteOuverte{
+	display: none;
+	margin-top: 15px;
+}
+
+#noteOuverte label{
+	text-align: left;
+	font-size: 1.2em;
+	color: #1794d5;
+	margin-left: 20px;
+}
+#noteOuverte input{
+	width: 97%;
+}
+
 .description2 h3{
 	margin: 0 0 -10px 0;
 

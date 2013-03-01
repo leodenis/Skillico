@@ -79,7 +79,16 @@
 			});
 	
 		});		
+
+	$(document).ready(function(){
+	    $("#openNote").click(function () {
+	        $("#noteOuverte").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	});
 	</script>
+
+
 	
 </head>
 <body>
@@ -286,10 +295,13 @@
 					<?php 
 						if ($getOfferByUSerId['visibility'] == 1) {
 					?>
-						<a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>"><input type="button" value="Valider" class="postuler"></a>
+						<a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>"><input type="button" value="Valider" class="postuler"	></a>
+
 					<?php
 						}
 					 ?>
+
+					 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
 
 					 <?php 
 						if ($getOfferByUSerId['visibility'] == 2) {
@@ -326,9 +338,14 @@
 				</div>
 			</div>  
         <?php endforeach; ?>
+	<div class="tab_part_right" id="noteOuverte">
+		<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
+		<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
+	</div>
 
 
 	</div>
+	
 	<div id="tabs-3">
 		<h2>Mes avis</h2>
 		<?php foreach($avisUser as $avisUser):?>
