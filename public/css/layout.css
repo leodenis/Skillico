@@ -39,6 +39,10 @@
 	display:none;
 }
 
+header .top {
+	height: 100px;
+}
+
 #position{
 	margin-left: 7%;
 	width:80%;
@@ -109,6 +113,10 @@ ul.tabs li a {
 
 #logg {
 	display:none;
+}
+
+header .top {
+	height: 100px;
 }
 
 #position{
@@ -186,6 +194,10 @@ footer .grid_3 {
 	display:none;
 }
 
+header .top {
+	height: 100px;
+}
+
 #position{
 	margin-left: 7%;
 	width:80%;
@@ -237,6 +249,11 @@ ul.breadcrumb li {
 
 #logg {
 	display:none;
+}
+
+#contactLink {
+	margin-right:0px;
+	float:left;
 }
 
 #position{
