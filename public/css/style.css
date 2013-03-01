@@ -412,6 +412,34 @@ div#info3 label{
 	padding-bottom: 10px;
 }
 
+div#info3 label label{
+	padding-bottom: 0px;
+}
+
+div#info3 label.nopadi{
+	padding-bottom: 1px;
+}
+
+#dateOfBirth legend{
+	color: #1794d5;
+	font-size: 1.2em;
+}
+
+select#jour{
+	width: auto;
+	display: inline-block;
+}
+
+select#mois{
+	width: auto;
+	display: inline-block;
+}
+
+select#annee{
+	width: auto;
+	display: inline-block;
+}
+
 .description2 h3{
 	margin: 0 0 -10px 0;
 
