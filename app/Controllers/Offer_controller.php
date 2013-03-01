@@ -89,5 +89,9 @@ class Offer_controller{
       echo Views::instance()->render('p');
       F3::reroute('/offer');
   }
+  function searchMap(){
+      $searchMap = Offer::instance()->getOfferListe();
+      F3::set('searchMap',$searchMAp);
+  }
 
 }

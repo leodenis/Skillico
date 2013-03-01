@@ -9,7 +9,7 @@
 	<![endif]-->
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-        <base href="<?php echo $BASE; ?>/" />
+    <base href="<?php echo $BASE; ?>/" />
 	
 	<!-- CSS -->
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
@@ -31,7 +31,7 @@
 	<script src="public/js/raphael-min.js" type="text/javascript"></script>
 	<script src="public/js/jquery.easing.1.3.js" type="text/javascript"></script>
 	
- <!-- slideshow -->
+	<!-- slideshow -->
 	<script src="public/js/iview/iview.js"></script>
 	<script src="public/js/iview/function.js"></script>
 	
@@ -49,6 +49,7 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
@@ -75,20 +76,13 @@
 				'transitionOut'		: 'true',
 				'type'				: 'iframe'
 			});
+		    $("#rech").click(function () {
+		        $("#featured").slideToggle("slow");
+		         //$(this).toggleClass("enroule"); return false;
+		    });
 	
 		});		
 	</script>
-
-	<script type="text/javascript"> 
-
-	$(document).ready(function(){
-	    $("#rech").click(function () {
-	        $("#featured").slideToggle("slow");
-	         //$(this).toggleClass("enroule"); return false;
-	    });
-	});
-
-	</script> 
 
 </head>
 <body onload="searchhome();">
@@ -201,7 +195,9 @@
 
 </header>
 <aside id="featured" class="nopaddingbot marginbottom0">
-	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
+	<div alt="Milieu urbain illustrant le concept de Skillico">
+		<div id="mapSearch"></div>
+	</div>
 		<form id="position" class="form-wrapper">
 			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
 			<input type="submit" value="Rechercher" id="submit">
@@ -322,8 +318,8 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 	  		js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
 	  		fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-	</script>
-
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- <script src="public/js/searchMap.js"></script> -->
 </body>
 </html>
