@@ -533,20 +533,14 @@ input.postuler{
 
 input.postulerFalse{
 	
-	border: 1px solid red;
+	border: 1px solid rgba(23, 148, 213, 0.6);
 	width: auto;
 	padding: 5px;
 	cursor: pointer;
 	font: bold 13px Arial, Helvetica;
 	color: #fafafa;
 	text-transform: uppercase;
-	background-color: red;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(red));
-	background-image: -webkit-linear-gradient(top, red, red);
-	background-image: -moz-linear-gradient(top, red, red);
-	background-image: -ms-linear-gradient(top, red, red);
-	background-image: -o-linear-gradient(top, red, red);
-	background-image: linear-gradient(top, red, red);
+	background: rgba(23, 148, 213, 0.6);
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
