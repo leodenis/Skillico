@@ -209,6 +209,13 @@ class Offer extends Prefab
         $offer->update();    
     }
 
+    function paypal($offer_id){
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $offer->load(array('id_offer=?',$offer_id));
+        $offer->visibility=7;
+        $offer->update(); 
+    }
+
     function reqLatLng(){
            
     }
