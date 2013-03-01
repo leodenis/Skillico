@@ -17,9 +17,8 @@ body {
 }
 
 #map {
-        width: 101%;
+        width: 98%;
         height: 300px;
-        margin-left: 12px;
         border:7px solid #1794d5;
       }
 
@@ -27,6 +26,29 @@ body {
 	width:91%;
 	margin-right:8px;
 	margin-top:1px;
+}
+
+#address{
+	width:88%;
+}
+
+#list a {
+    color:#686767;
+    text-decoration:none;
+}
+#list a:hover {
+    color:#0091ff;
+}
+
+#localiser{
+	margin-left:-34px;
+    cursor:hand;
+    cursor:pointer;
+    padding:5px;
+    height:31px;
+    background-color:#1794d5;
+    background: -moz-linear-gradient(center top , #666666, #000000) repeat scroll 0 0 transparent;
+    color:#FFF;
 }
 
 #search_frm input[type=submit] {
