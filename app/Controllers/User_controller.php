@@ -8,23 +8,8 @@ class User_controller extends Prefab{
 	function homeUser(){ 
      $User=new User();
      $info=$User->InfoDetails();
-   	 // F3::set('info',$info->afind());
      F3::set('info',$info);
  	 echo Views::instance()->render('user.php');
-
- // 	 if(empty($_SESSION['user'])){
-	// echo 	 	'aucune session';
- // 	 }
- // 	 else{
- // 	     $id=F3::get('SESSION.user');
- // 	     $User=new User();
- //    	 $infoUserCo=$User->infoUserCo($id);
-
- //    	 F3::set('infoUserCo',$infoUserCo);
- // 	 	 echo Views::instance()->render('user.php');
-
- // 	 }
-
 	}
 
 	function inscription(){

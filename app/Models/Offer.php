@@ -199,6 +199,12 @@ class Offer extends Prefab
         $offer->update();    
     }
 
+    function postAvis(){
+        $avis=new DB\SQL\Mapper(F3::get('dB'),'avis');
+        $avis->copyFrom('POST'); 
+        $avis->save();
+    }
+
     function paypal($offer_id){
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
         $offer->load(array('id_offer=?',$offer_id));

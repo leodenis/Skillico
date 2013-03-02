@@ -84,27 +84,18 @@ class Offer_controller{
 
   }
 
-  // function paypal(){
-  //     $idOffer=3;
-  //     $successPaiement = PaypalSuccess::instance()->success();
-  //     if($successPaiement == 'good'){
-  //       $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
-  //       $offer->load(array('id_offer=?',$idOffer));
-  //       $offer->visibility=7;
-  //       $offer->update(); 
-  //     }
-  //     else{
-  //       echo 'ok';
-  //       die();
-  //     }
-  // }
-
-    function paypal(){
+  function paypal(){
       $offer_id = PaypalSuccess::instance()->success();
       if (isset($offer_id)) {
           $Offer=new Offer();
           $recupPaypal=$Offer->paypal($offer_id);
       }
+
+  }
+
+  function postAvis(){
+      Offer::instance()->postAvis();
+      F3::reroute('/monCompte');
 
   }
 

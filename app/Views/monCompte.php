@@ -293,7 +293,9 @@
 					<?php
 						}
 					 ?>
-					 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
+					 <?php if ($getOfferByUSerId['visibility'] == 3){ ?>
+						 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
+					 <?php }  ?>
 					 <?php 
 						if ($getOfferByUSerId['visibility'] == 2) {
 					?><a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>">
@@ -304,15 +306,9 @@
 							<input name="tax" type="hidden" value="0.00" />
 							<input name="return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/success.php" />
 							<input name="cancel_return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/cancel.php" />
-<<<<<<< HEAD
-							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/ipn.php" />
-							<input name="cmd" type="hidden" value="_xclick" />
-							<input name="business" type="hidden" value="sel_1361752549_biz@gmail.com" />
-=======
 							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/offer/paypal" />
 							<input name="cmd" type="hidden" value="_xclick" />
 							<input name="business" type="hidden" value="vendeu_1362172271_biz@gmail.com" />
->>>>>>> 92785d53804c0d27e0abea879bc1c42bbf716d41
 							<input name="item_name" type="hidden" value="<?php echo $getOfferByUSerId['title']; ?>" />
 							<input name="no_note" type="hidden" value="1" />
 							<input name="lc" type="hidden" value="FR" />
@@ -323,7 +319,6 @@
 							<input type="submit" value="Payer" class="postuler"/>
 						</form>
 						<p>Vous avez validé votre annonce, vous pouvez dès à présent payer la personne</p>
-
 					<?php
 						}
 					 ?>
@@ -337,9 +332,12 @@
 				</div>
 			</div>  
 				<div class="tab_part_right" id="noteOuverte">
-					<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
-					<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
-					<input type="submit" value="Valider" class="postuler"/> 
+					<form action="offer/postAvis" method="post">
+						<label>Commentaire sur la prestation :<input type="text" name="description" placeholder="Votre commentaire"/></label>
+						<label>Note sur 20 :<input type="text" name="note" placeholder="Votre note entre 0 et 20"/></label>
+						<input type="hidden" name="fk_id_users" value="<?php echo $getOfferByUSerId['fk_id_users_respond'];?>">
+						<input type="submit" value="Valider" class="postuler"/> 
+					</form>
 				</div>
         <?php endforeach; ?>
 
