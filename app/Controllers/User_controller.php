@@ -71,35 +71,73 @@ class User_controller extends Prefab{
 		}
 	   
 	}
-
 	function inscriptionfb(){
+		require './app/Libraries/facebook.php';
+		die();
+ 
+		// Vous trouverez de quoi remplacer les X et les Y dans la page que je vous ai recommander de garder de coté dans l'étape 1 !
+		define("FB_APP_ID","340091096096955");
+		define("FB_SECRET","d67a97f795f53caa019784e1d30cf49e");
+
+
+		// on crée notre objet Facebook
+		$facebook = new Facebook(array(
+		      'appId'  => FB_APP_ID,
+		      'secret' => FB_SECRET,
+		      'cookie' => true,
+		));
+		echo 'test';
+		print_r($facebook);
+		die();
+		$user = $facebook->getUser(); //Savoir si une session fb a été initialisée
+		if (!$user) {
+			$param = array( 
+			'redirect_uri' => 'http://localhost/projet/Skillico/Skillico/user/facebookConnect',
+			'scope' => 'email,user_birthday,offline_access'
+			);
+			F3::reroute($facebook->getLoginUrl($param));
+		} else {
+			try {
+				$user = $facebook->getUser();
+				$facebook_profile = $facebook->api('/me');
+				print_r($facebook_profile);
+				die();
+			} 
+			catch (FacebookApiException $e) {
+				error_log($e);
+				$user = null;
+			}
+		}
+	}
+
+	// function inscriptionfb(){
 
 		
 
-		//génére aléatoirement un mot de passe
-		$string = "";
-		$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
-		srand((double)microtime()*1000000);
-		for($i=0; $i<10; $i++) {
-		$string .= $chaine[rand()%strlen($chaine)];
-		}
+	// 	//génére aléatoirement un mot de passe
+	// 	$string = "";
+	// 	$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
+	// 	srand((double)microtime()*1000000);
+	// 	for($i=0; $i<10; $i++) {
+	// 	$string .= $chaine[rand()%strlen($chaine)];
+	// 	}
 
 
-		//Envoie du mot de passe
-		// $headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-	 //    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-	 //    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-	 //    $headers .='Content-Transfer-Encoding: 8bit'; 
-  //       $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
-		// mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
+	// 	//Envoie du mot de passe
+	// 	// $headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
+	//  //    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
+	//  //    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
+	//  //    $headers .='Content-Transfer-Encoding: 8bit'; 
+ //  //       $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
+	// 	// mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
 
-		$password=$string;
-		$user=new User;
-		$user->inscriptionfb($password);
+	// 	$password=$string;
+	// 	$user=new User;
+	// 	$user->inscriptionfb($password);
 
-		F3::reroute('/user');
+	// 	F3::reroute('/user');
 
-	}
+	// }
 
 	function connexion(){
 
