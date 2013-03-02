@@ -12,7 +12,7 @@ class User extends Prefab{
 
 	}
 
-	function inscription($password){
+	function inscription($password,$born){
 		   $img=Web::instance()->receive();
 				    if($img){
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
@@ -21,7 +21,7 @@ class User extends Prefab{
 				      $image->save();
 				    }else{
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				      $image->name='photodebase.jpg';
+				      $image->name='photodebase.png';
 				      $image->extension='.jpg';
 				      $image->save();
 				    }
@@ -30,6 +30,7 @@ class User extends Prefab{
  			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
  			$users->copyFrom('POST'); // on récupère le POST
  			$users->password=md5($password);
+ 			$users->born=$born;
  			$users->fk_id_image=$image->id_image;
 			$users->save(); // on sauvegarde
 	}
@@ -39,7 +40,7 @@ class User extends Prefab{
 
             if (empty($recupMdpId)) {
 	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				$image->name='photodebase.jpg';
+				$image->name='photodebase.png';
 				$image->extension='.jpg';
 				$image->save();
 					    
@@ -96,7 +97,7 @@ class User extends Prefab{
             return $avisUser = $avis->afind($filter,$option);
 
 	}
-	function EditInfoUser($id,$id_image,$password){
+	function EditInfoUser($id,$id_image,$password,$born){
 
 			$img=Web::instance()->receive();
 			    if($img){
@@ -110,6 +111,7 @@ class User extends Prefab{
 	 		$users->load(array('id_users=?',$id));
 	 		$users->copyFrom('POST'); // on récupère le POST
 	 		$users->password=md5($password);
+	 		$users->born=$born;
 			$users->update(); // on sauvegarde
 			F3::reroute('/user/edit');
 	}

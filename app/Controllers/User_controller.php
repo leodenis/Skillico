@@ -46,11 +46,15 @@ class User_controller extends Prefab{
 			      F3::reroute('/');
 			      return;
 			    }
-			    else{	
+			    else{
+				    $days=$_POST['days'];
+			   		$month=$_POST['month'];
+			   		$years=$_POST['years'];
+			   		$born=$years.'-'.$month.'-'.$days;	
 			    	//Ajout dans la base de donnée			    	
 			    	$password=$_POST['password'];
 		   			$user=new User;
-		   			$user->inscription($password);
+		   			$user->inscription($password,$born);
 					F3::reroute('/');
 			    }
 			break;
@@ -251,6 +255,12 @@ class User_controller extends Prefab{
 	        F3::reroute('/monCompte');
 	      break;
 	      case 'POST':
+
+	   		$days=$_POST['days'];
+	   		$month=$_POST['month'];
+	   		$years=$_POST['years'];
+	   		$born=$years.'-'.$month.'-'.$days;
+
 	        $id = F3::get('SESSION.user');
 	   		$id=$id[0]['id_users'];
 	        $User=new User();
@@ -258,7 +268,7 @@ class User_controller extends Prefab{
 		    $password=$_POST['password'];
 		    $id_image=$infoUserCo[0]['id_image'];
 			$User=new User();
-		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password);
+		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password,$born);
 		    F3::reroute('/');
 	      break;
 	    }

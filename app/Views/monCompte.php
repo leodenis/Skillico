@@ -210,25 +210,33 @@
 	<div id="tabs-1">
 
 		<h2>Mon profil</h2>
+
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
 			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="public/images/<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
 			</div>       																						 
 			<div id="info3">
+					<?php 
+						$born=explode('-',$infoUserCo[0]['born']);
+						$years=$born[0];
+						$month=$born[1];
+						$days=$born[2];
+					?>
 					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
 					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
 					<label class="nopadi"><span>Civilité :</span></br><label>Homme<input type="radio" value="Homme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Homme'){ echo 'checked';} ?>></input></label><label>Femme<input type="radio" value="Femme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Femme'){ echo 'checked';} ?>></input></label></label>
 					<label><span>Email :</span><input type="text" name="email" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
 					<fieldset id="dateOfBirth">
 						<legend>Date de naissance :</legend>
-						<select id="jour" title="Jour">
-							<option>1</option><option>2</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+						<select id="jour" title="Jour" name="days">
+							<option><?php echo $days; ?></option><option>1</option><option>2</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
 						</select>
-						<select id="mois" title="Mois">
-							<option>Janvier</option><option>Fevrier</option><option>Mars</option><option>Avril</option><option>Mai</option><option>Juin</option><option>Juillet</option><option>Août</option><option>Septembre</option><option>Octobre</option><option>Novembre</option><option>Decembre</option>
+						<select id="mois" title="Mois" name="month">
+							<option><?php echo $month; ?></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
 						</select>
-						<select id="annee" title="Année">
+						<select id="annee" title="Année" name="years">
+							<option><?php echo $years; ?></option>
 						<?php 
 							$anneeMin=1920;
 							$i=0;
