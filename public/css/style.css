@@ -443,6 +443,7 @@ select#annee{
 #noteOuverte{
 	display: none;
 	margin-top: 15px;
+	max-height: none;
 }
 
 #noteOuverte label{
@@ -452,7 +453,7 @@ select#annee{
 	margin-left: 20px;
 }
 #noteOuverte input{
-	width: 97%;
+	margin-bottom: 7px;
 }
 
 .description2 h3{

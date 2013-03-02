@@ -289,6 +289,8 @@
 							<input name="bn" type="hidden" value="PP-BuyNowBF" />
 							<input name="custom" type="hidden" value="offer_id=<?php echo $getOfferByUSerId['id_offer']; ?>" />
 							<input type="submit" value="Payer" class="postuler">
+							<input name="custom" type="hidden" value="user_id=1" />
+							<input type="submit" value="Payer" class="postuler"/>
 						</form>
 						<p>Vous avez validé votre annonce, vous pouvez dès à présent payer la personne</p>
 
@@ -305,7 +307,11 @@
 				</div>
 			</div>  
         <?php endforeach; ?>
-
+	<div class="tab_part_right" id="noteOuverte">
+		<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
+		<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
+		<input type="submit" value="Valider" class="postuler"/> 
+	</div>
 
 	</div>
 	<div id="tabs-3">
