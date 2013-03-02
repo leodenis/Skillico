@@ -77,6 +77,11 @@
 				'transitionOut'		: 'true',
 				'type'				: 'iframe'
 			});
+
+			$("#openNote").click(function () {
+         		$("#noteOuverte").slideToggle("slow");
+           //$(this).toggleClass("enroule"); return false;
+     		});
 	
 		});		
 	</script>
@@ -213,9 +218,28 @@
 			<div id="info3">
 					<label><span>Nom :</span><input type="text" name="firstname" value="<?php echo $infoUserCo[0]['firstname']; ?>" placeholder="Nom"></input></label>
 					<label><span>Prénom :</span><input type="text" name="name" value="<?php echo $infoUserCo[0]['name']; ?>" placeholder="Prénom"></input></label>
-					<label><span>Civilité :</span></br>Homme<input type="radio" value="Homme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Homme'){ echo 'checked';} ?>></input>Femme<input type="radio" value="Femme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Femme'){ echo 'checked';} ?>></input></label>
+					<label class="nopadi"><span>Civilité :</span></br><label>Homme<input type="radio" value="Homme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Homme'){ echo 'checked';} ?>></input></label><label>Femme<input type="radio" value="Femme" name="sexe" <?php if($infoUserCo[0]['sexe'] == 'Femme'){ echo 'checked';} ?>></input></label></label>
 					<label><span>Email :</span><input type="text" name="email" value="<?php echo $infoUserCo[0]['email']; ?>" placeholder="Adresse e-mail"></input></label>
-					<label><span>Dâte de naissance :</span></br><input type="date" value="22/25/1991" min="1920-08-14" max="2013-02-08" name="born" placeholder="Date de naissance"></input></label>
+					<fieldset id="dateOfBirth">
+						<legend>Date de naissance :</legend>
+						<select id="jour" title="Jour">
+							<option>1</option><option>2</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+						</select>
+						<select id="mois" title="Mois">
+							<option>Janvier</option><option>Fevrier</option><option>Mars</option><option>Avril</option><option>Mai</option><option>Juin</option><option>Juillet</option><option>Août</option><option>Septembre</option><option>Octobre</option><option>Novembre</option><option>Decembre</option>
+						</select>
+						<select id="annee" title="Année">
+						<?php 
+							$anneeMin=1920;
+							$i=0;
+							for ($i=0; $i < 93; $i++) { 
+								$anneeMin = $anneeMin +1;
+								echo '<option>'.$anneeMin.'</option>';
+							}
+
+						?>
+						</select>
+					</fieldset>
 					<label><span>Adresse</span><input class="base" name="adress" type="text" value="<?php echo $infoUserCo[0]['adress']; ?>" placeholder="Adresse"></input></label>
 					<label><span>Code postal</span><input class="base" name="CP" type="text" value="<?php echo $infoUserCo[0]['CP']; ?>" placeholder="Adresse"></input></label>
 					<label><span>Ville</span><input class="base" type="text" name="city" value="<?php echo $infoUserCo[0]['city']; ?>" placeholder="Adresse"></input></label>
@@ -234,19 +258,19 @@
 
 	<div id="tabs-2">
 		<h2>Mes services effectués</h2>
-		<?php foreach($getOfferByUSerIdAccomplite as $getOfferByUSerIdAccomplite):?>
+		<?php foreach($getOfferRespondByUSerId as $getOfferRespondByUSerId):?>
 		     <div class="tab_part_right">
 				<img src="public/images/list/achat_immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
-					<h3><?php echo $getOfferByUSerIdAccomplite['title']; ?></h3><br>
-					<p><?php echo $getOfferByUSerIdAccomplite['desciption']; ?></p>
+					<h3><?php echo $getOfferRespondByUSerId['title']; ?></h3><br>
+					<p><?php echo $getOfferRespondByUSerId['description']; ?></p>
 				</div>
 				<div class="info2">
 					<ul>
-						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferByUSerIdAccomplite['price']; ?></p></li>
+						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferRespondByUSerId['price']; ?></p></li>
 						<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferByUSerIdAccomplite['ending']; ?></p></li>
+						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferRespondByUSerId['ending']; ?></p></li>
 					</ul>
 				</div>
 			</div>
@@ -269,7 +293,7 @@
 					<?php
 						}
 					 ?>
-
+					 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
 					 <?php 
 						if ($getOfferByUSerId['visibility'] == 2) {
 					?><a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>">
@@ -280,15 +304,23 @@
 							<input name="tax" type="hidden" value="0.00" />
 							<input name="return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/success.php" />
 							<input name="cancel_return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/cancel.php" />
+<<<<<<< HEAD
 							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/ipn.php" />
 							<input name="cmd" type="hidden" value="_xclick" />
 							<input name="business" type="hidden" value="sel_1361752549_biz@gmail.com" />
+=======
+							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/offer/paypal" />
+							<input name="cmd" type="hidden" value="_xclick" />
+							<input name="business" type="hidden" value="vendeu_1362172271_biz@gmail.com" />
+>>>>>>> 92785d53804c0d27e0abea879bc1c42bbf716d41
 							<input name="item_name" type="hidden" value="<?php echo $getOfferByUSerId['title']; ?>" />
 							<input name="no_note" type="hidden" value="1" />
 							<input name="lc" type="hidden" value="FR" />
 							<input name="bn" type="hidden" value="PP-BuyNowBF" />
-							<input name="custom" type="hidden" value="user_id=1" />
+							<input name="custom" type="hidden" value="offer_id=<?php echo $getOfferByUSerId['id_offer']; ?>" />
 							<input type="submit" value="Payer" class="postuler">
+							<input name="custom" type="hidden" value="user_id=1" />
+							<input type="submit" value="Payer" class="postuler"/>
 						</form>
 						<p>Vous avez validé votre annonce, vous pouvez dès à présent payer la personne</p>
 
@@ -304,6 +336,11 @@
 					</ul>
 				</div>
 			</div>  
+				<div class="tab_part_right" id="noteOuverte">
+					<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
+					<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
+					<input type="submit" value="Valider" class="postuler"/> 
+				</div>
         <?php endforeach; ?>
 
 
@@ -356,18 +393,21 @@
 					<label><span>Facebook :</span><a href="http://www.facebook.com/skillico?ref=hl"> Skillico</a></label>
 					<label><span>Twitter :</span><a href="https://twitter.com/Skillicohetic"> #Skillico</a></label>
 			</div>
-
-
-
 		</div>
-		</form>
 
+		</form>
 		<div class="contact-form-holder">
 				<h2>Formulaire de contact</h2>
-				<form method="POST" id="contact-form" name="contact-form" action="./php/contact.php">
-					  <input type="text" name="subject" id="subject" placeholder="Entrer l'objet de votre réclamation"/>
-					  <textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
-					  <input type="submit" id="postuler" name="send-btn" value="Envoyer" />
+				<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
+					<select name="subject">
+						<?php foreach($RespondAndPosted as $RespondAndPosted):?>
+							<option><?php echo $RespondAndPosted['title'].' - '.$RespondAndPosted['price']; ?></option>
+					    <?php endforeach; ?>
+					</select>
+					<input name="user" type="hidden" value="<?php echo $infoUserCo[0]['login']; ?>" />
+					<input name="email" type="hidden" value="<?php echo $infoUserCo[0]['email']; ?>" />
+					<textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
+					<input type="submit" id="postuler" name="send-btn" value="Envoyer" />
 				</form>
 		    </div>
 	</div>

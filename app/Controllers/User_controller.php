@@ -66,41 +66,66 @@ class User_controller extends Prefab{
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password);
-		   			echo 'Merci, votre inscription a bien été prise en compte!';
+					F3::reroute('/');
 			    }
 			break;
 		}
 	   
 	}
-
 	function inscriptionfb(){
+		require './app/Libraries/facebook.php';
+ 
 
-		
+			$facebook = new Facebook(array(
+			'appId' => '340091096096955',
+			'secret' => 'd67a97f795f53caa019784e1d30cf49e',
+			'cookie' => true
+			));
+			$user = $facebook->getUser(); //Savoir si une session fb a été initialisée
+			if (!$user) {
+				$param = array( 
+				'redirect_uri' => 'http://localhost/SkillicoVFinale/Skillico/user/facebookConnect',
+				'scope' => 'email,user_birthday,offline_access'
+				);
+				F3::reroute($facebook->getLoginUrl($param));
+			} 
+			else {
+				try {
+					$user = $facebook->getUser();
+					$facebook_profile = $facebook->api('/me');
+				} 
+				catch (FacebookApiException $e) {
+					error_log($e);
+					$user = null;
+				}
+			}
 
-		//génére aléatoirement un mot de passe
-		$string = "";
-		$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
-		srand((double)microtime()*1000000);
-		for($i=0; $i<10; $i++) {
-		$string .= $chaine[rand()%strlen($chaine)];
+
+
+		$email=$facebook_profile['email'];
+		$name=$facebook_profile['last_name'];
+		$firstname=$facebook_profile['first_name'];
+		$birthday=$facebook_profile['birthday'];
+		$username=$facebook_profile['username'];
+		$city=$facebook_profile['location']['name'];
+		if($facebook_profile['gender'] == 'male'){
+			$gender='Homme';
+		}
+		else{
+			$gender='Femme';
 		}
 
+		$password = uniqid();
 
-		//Envoie du mot de passe
-		// $headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-	 //    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-	 //    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-	 //    $headers .='Content-Transfer-Encoding: 8bit'; 
-  //       $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
-		// mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
-
-		$password=$string;
-		$user=new User;
-		$user->inscriptionfb($password);
-
-		F3::reroute('/user');
+		$userInscriptionFb=new User;
+		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$birthday,$password,$gender,$city);
+		
+		F3::set('SESSION.user',$recupMdpId);
+		F3::reroute('/monCompte');
 
 	}
+
+
 
 	function connexion(){
 
@@ -188,7 +213,7 @@ class User_controller extends Prefab{
 						$email = $recupLog[0]['email'];
 									// F3::sendmail($password);
 						Mail::instance()->sendmail($password,$email);
-						
+						F3::reroute('/');
 					}
 			    }
 			break;
@@ -208,15 +233,19 @@ class User_controller extends Prefab{
 
 		//Récupération annonces postées
 		$Offer=new Offer();
-		$getOfferByUSerIdAccomplite=$Offer->getOfferByUSerIdAccomplite($id);
+		$getOfferRespondByUSerId=$Offer->getOfferRespondByUSerId($id);
 
 		//Récupération avis
 		$User=new User();
 		$avisUser=$User->avis($id);
+
+		$RespondAndPosted = array_merge($getOfferByUSerId, $getOfferRespondByUSerId);
+
 		    // print_r($infoUserCo);
 		F3::set('infoUserCo',$infoUserCo);
 		F3::set('getOfferByUSerId',$getOfferByUSerId);
-		F3::set('getOfferByUSerIdAccomplite',$getOfferByUSerIdAccomplite);
+		F3::set('getOfferRespondByUSerId',$getOfferRespondByUSerId);
+		F3::set('RespondAndPosted',$RespondAndPosted);
 		F3::set('avisUser',$avisUser);
 
 		$view=new View(); 

@@ -123,16 +123,6 @@ class Offer extends Prefab
         *       RECUPERATION DES OFFRES Posté D'UN UTILISATEUR
         */
 
-       function getOfferByUSerIdAccomplite($idUser){
-            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-            $filter = 'fk_id_users_respond = '.$idUser;
-            $option = array(
-                'group'=>NULL,
-                'order'=>NULL
- 
-            );
-            return $offerListAccomplite = $offer->find($filter,$option);
-       }
                /*
         *        RECUPERATION DES OFFRES répondu D'UN UTILISATEUR
         */
@@ -145,7 +135,7 @@ class Offer extends Prefab
                 'order'=>NULL
  
             );
-            return $offerRespond = $offer->find($filter,$option);
+            return $offerRespond = $offer->afind($filter,$option);
             // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
        }
         
@@ -207,6 +197,13 @@ class Offer extends Prefab
         $offer->load(array('id_offer=?',$idOffer));
         $offer->visibility=2;
         $offer->update();    
+    }
+
+    function paypal($offer_id){
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $offer->load(array('id_offer=?',$offer_id));
+        $offer->visibility=7;
+        $offer->update(); 
     }
 
     function reqLatLng(){

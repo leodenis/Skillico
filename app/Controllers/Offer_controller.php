@@ -84,10 +84,51 @@ class Offer_controller{
 
   }
 
+  // function paypal(){
+  //     $idOffer=3;
+  //     $successPaiement = PaypalSuccess::instance()->success();
+  //     if($successPaiement == 'good'){
+  //       $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+  //       $offer->load(array('id_offer=?',$idOffer));
+  //       $offer->visibility=7;
+  //       $offer->update(); 
+  //     }
+  //     else{
+  //       echo 'ok';
+  //       die();
+  //     }
+  // }
+
+    function paypal(){
+      $offer_id = PaypalSuccess::instance()->success();
+      if (isset($offer_id)) {
+          $Offer=new Offer();
+          $recupPaypal=$Offer->paypal($offer_id);
+      }
+
+  }
+
   function searchHome(){
       F3::set('searchHome',$searchHome);
       echo Views::instance()->render('p');
       F3::reroute('/offer');
+  }
+
+  function reclamation(){
+      switch(F3::get('VERB')){
+        case 'GET':
+         
+        break;
+        case 'POST':
+          $subject=$_POST['subject'];
+          $email=$_POST['email'];          
+          $message=$_POST['message'];
+          $user=$_POST['user']; 
+          Mail::instance()->sendmailReclamation($subject,$email,$message,$user);
+          F3::reroute('/monCompte');
+
+        break;
+      }
   }
 
 }

@@ -34,25 +34,33 @@ class User extends Prefab{
 			$users->save(); // on sauvegarde
 	}
 
-	function inscriptionfb($password){
+	function inscriptionfb($username,$email,$name,$firstname,$birthday,$password,$gender,$city){
+			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
- 			$date_creation=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
- 			$last_connection=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
- 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
- 			$users->login='fb1';
- 			$users->email='fb';
- 			$users->password=md5($password);
- 			$users->name='fb';
- 			$users->firstname='fb';
- 			$users->adress='fb';
- 			$users->phone='fb';
- 			$users->date_creation=$date_creation;
- 			$users->last_connection=$last_connection;
- 			$users->level='2';
- 			$users->fk_id_image='10';
-			$users->save(); // on sauvegarde
+            if (empty($recupMdpId)) {
+	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
+				$image->name='photodebase.jpg';
+				$image->extension='.jpg';
+				$image->save();
+					    
+	 			$date_creation=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+	 			$last_connection=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+	 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+	 			$users->login=$username;
+	 			$users->email=$email;
+	 			$users->password=md5($password);
+	 			$users->name=$name;
+	 			$users->firstname=$firstname;
+	 			$users->date_creation=$date_creation;
+	 			$users->sexe=$gender;
+	 			$users->city=$city;
+	 			$users->fk_id_image=$image->id_image;
+				$users->save(); // on sauvegarde
 
-			
+				return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+            }else{
+           		return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+            }	
 	}
 
 	function forgetpassword($login,$password){
