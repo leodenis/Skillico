@@ -114,4 +114,21 @@ class Offer_controller{
       F3::reroute('/offer');
   }
 
+  function reclamation(){
+      switch(F3::get('VERB')){
+        case 'GET':
+         
+        break;
+        case 'POST':
+          $subject=$_POST['subject'];
+          $email=$_POST['email'];          
+          $message=$_POST['message'];
+          $user=$_POST['user']; 
+          Mail::instance()->sendmailReclamation($subject,$email,$message,$user);
+          F3::reroute('/monCompte');
+
+        break;
+      }
+  }
+
 }

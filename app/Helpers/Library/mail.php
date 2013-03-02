@@ -14,6 +14,13 @@ class Mail extends Prefab{
     $message ='<html><head><title>Bonjour</title></head><body>Voici votre nouveau mot de passe '.$password.'. Vous pouvez dès maintenant le changer dans votre espace</body></html>'; 
     mail(''.$email.'', 'Sujet', $message, $headers);
   }
-  
+
+  function sendmailReclamation($subject,$email,$message,$user){
+    $headers ='From: '.$user.'<'.$email.'>'."\n"; 
+    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
+    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
+    $headers .='Content-Transfer-Encoding: 8bit'; 
+    mail('denisleo23@gmail.com', $subject, $message, $headers);
+  }
 }
 ?>

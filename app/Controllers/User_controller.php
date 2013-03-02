@@ -209,15 +209,19 @@ class User_controller extends Prefab{
 
 		//Récupération annonces postées
 		$Offer=new Offer();
-		$getOfferByUSerIdAccomplite=$Offer->getOfferByUSerIdAccomplite($id);
+		$getOfferRespondByUSerId=$Offer->getOfferRespondByUSerId($id);
 
 		//Récupération avis
 		$User=new User();
 		$avisUser=$User->avis($id);
+
+		$RespondAndPosted = array_merge($getOfferByUSerId, $getOfferRespondByUSerId);
+
 		    // print_r($infoUserCo);
 		F3::set('infoUserCo',$infoUserCo);
 		F3::set('getOfferByUSerId',$getOfferByUSerId);
-		F3::set('getOfferByUSerIdAccomplite',$getOfferByUSerIdAccomplite);
+		F3::set('getOfferRespondByUSerId',$getOfferRespondByUSerId);
+		F3::set('RespondAndPosted',$RespondAndPosted);
 		F3::set('avisUser',$avisUser);
 
 		$view=new View(); 

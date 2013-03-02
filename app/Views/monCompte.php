@@ -234,19 +234,19 @@
 
 	<div id="tabs-2">
 		<h2>Mes services effectués</h2>
-		<?php foreach($getOfferByUSerIdAccomplite as $getOfferByUSerIdAccomplite):?>
+		<?php foreach($getOfferRespondByUSerId as $getOfferRespondByUSerId):?>
 		     <div class="tab_part_right">
 				<img src="public/images/list/achat_immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
-					<h3><?php echo $getOfferByUSerIdAccomplite['title']; ?></h3><br>
-					<p><?php echo $getOfferByUSerIdAccomplite['desciption']; ?></p>
+					<h3><?php echo $getOfferRespondByUSerId['title']; ?></h3><br>
+					<p><?php echo $getOfferRespondByUSerId['description']; ?></p>
 				</div>
 				<div class="info2">
 					<ul>
-						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferByUSerIdAccomplite['price']; ?></p></li>
+						<li><img src="public/images/dummies/price.png"><p><?php echo $getOfferRespondByUSerId['price']; ?></p></li>
 						<li><img src="public/images/dummies/location.png"><p>Paris 12e</p></li>
-						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferByUSerIdAccomplite['ending']; ?></p></li>
+						<li><img src="public/images/dummies/event.png"><p><?php echo $getOfferRespondByUSerId['ending']; ?></p></li>
 					</ul>
 				</div>
 			</div>
@@ -356,18 +356,21 @@
 					<label><span>Facebook :</span><a href="http://www.facebook.com/skillico?ref=hl"> Skillico</a></label>
 					<label><span>Twitter :</span><a href="https://twitter.com/Skillicohetic"> #Skillico</a></label>
 			</div>
-
-
-
 		</div>
-		</form>
 
+		</form>
 		<div class="contact-form-holder">
 				<h2>Formulaire de contact</h2>
-				<form method="POST" id="contact-form" name="contact-form" action="./php/contact.php">
-					  <input type="text" name="subject" id="subject" placeholder="Entrer l'objet de votre réclamation"/>
-					  <textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
-					  <input type="submit" id="postuler" name="send-btn" value="Envoyer" />
+				<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
+					<select name="subject">
+						<?php foreach($RespondAndPosted as $RespondAndPosted):?>
+							<option><?php echo $RespondAndPosted['title'].' - '.$RespondAndPosted['price']; ?></option>
+					    <?php endforeach; ?>
+					</select>
+					<input name="user" type="hidden" value="<?php echo $infoUserCo[0]['login']; ?>" />
+					<input name="email" type="hidden" value="<?php echo $infoUserCo[0]['email']; ?>" />
+					<textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
+					<input type="submit" id="postuler" name="send-btn" value="Envoyer" />
 				</form>
 		    </div>
 	</div>
