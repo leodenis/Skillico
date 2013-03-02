@@ -306,12 +306,13 @@
 					</ul>
 				</div>
 			</div>  
+				<div class="tab_part_right" id="noteOuverte">
+					<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
+					<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
+					<input type="submit" value="Valider" class="postuler"/> 
+				</div>
         <?php endforeach; ?>
-	<div class="tab_part_right" id="noteOuverte">
-		<label>Commentaire sur la prestation :<input type="text" placeholder="Votre commentaire"/></label>
-		<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
-		<input type="submit" value="Valider" class="postuler"/> 
-	</div>
+
 
 	</div>
 	<div id="tabs-3">

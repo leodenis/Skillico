@@ -65,7 +65,7 @@ class User_controller extends Prefab{
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password);
-		   			echo 'Merci, votre inscription a bien été prise en compte!';
+					F3::reroute('/');
 			    }
 			break;
 		}
@@ -189,7 +189,7 @@ class User_controller extends Prefab{
 						$email = $recupLog[0]['email'];
 									// F3::sendmail($password);
 						Mail::instance()->sendmail($password,$email);
-						
+						F3::reroute('/');
 					}
 			    }
 			break;
