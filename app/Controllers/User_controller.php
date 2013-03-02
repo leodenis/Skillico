@@ -58,6 +58,7 @@ class User_controller extends Prefab{
 			    if($error){
 			      F3::set('errorMsg',$error);
 			      echo Views::instance()->render('formulaireInscription.html');
+			      F3::reroute('/');
 			      return;
 			    }
 			    else{	
@@ -169,12 +170,10 @@ class User_controller extends Prefab{
 			    }
 			    else{
 			    	//préparation du mdp
-			    	$password = "";
-					$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
-					srand((double)microtime()*1000000);
-					for($i=0; $i<10; $i++) {
-					$password .= $chaine[rand()%strlen($chaine)];
-					}	
+			    	
+					
+					$password = uniqid();
+					
 					//récup du log et appel du modèle
 			    	$login=$_POST['login'];
 		   			$user_log=new User;

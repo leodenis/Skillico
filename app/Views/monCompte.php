@@ -278,11 +278,11 @@
 							<input name="currency_code" type="hidden" value="EUR" />
 							<input name="shipping" type="hidden" value="0.00" />
 							<input name="tax" type="hidden" value="0.00" />
-							<input name="return" type="hidden" value="http://denis-leo.com/paypal/success.php" />
-							<input name="cancel_return" type="hidden" value="http://denis-leo.com/paypal/cancel.php" />
-							<input name="notify_url" type="hidden" value="http://denis-leo.com/paypal/ipn.php" />
+							<input name="return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/success.php" />
+							<input name="cancel_return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/cancel.php" />
+							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/ipn.php" />
 							<input name="cmd" type="hidden" value="_xclick" />
-							<input name="business" type="hidden" value="<?php echo $infoUserCo[0]['email']; ?>" />
+							<input name="business" type="hidden" value="sel_1361752549_biz@gmail.com" />
 							<input name="item_name" type="hidden" value="<?php echo $getOfferByUSerId['title']; ?>" />
 							<input name="no_note" type="hidden" value="1" />
 							<input name="lc" type="hidden" value="FR" />
