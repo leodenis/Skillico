@@ -77,6 +77,11 @@
 				'transitionOut'		: 'true',
 				'type'				: 'iframe'
 			});
+			
+			$("#openNote").click(function () {
+         		$("#noteOuverte").slideToggle("slow");
+           //$(this).toggleClass("enroule"); return false;
+     		});
 	
 		});		
 	</script>
@@ -269,7 +274,7 @@
 					<?php
 						}
 					 ?>
-
+					 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
 					 <?php 
 						if ($getOfferByUSerId['visibility'] == 2) {
 					?><a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>">
@@ -312,7 +317,6 @@
 		<label>Note sur 20 :<input type="text" placeholder="Votre note entre 0 et 20"/></label>
 		<input type="submit" value="Valider" class="postuler"/> 
 	</div>
-
 	</div>
 	<div id="tabs-3">
 		<h2>Mes avis</h2>
