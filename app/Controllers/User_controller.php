@@ -96,9 +96,9 @@ class User_controller extends Prefab{
 		$firstname=$facebook_profile['first_name'];
 		$birthday=$facebook_profile['birthday'];
 		$born=explode('/',$birthday);
-		$years=$born[0];
-		$month=$born[1];
-		$days=$born[2];	
+		$years=$born[2];
+		$month=$born[0];
+		$days=$born[1];	
 	   	$born=$years.'-'.$month.'-'.$days;
 		$username=$facebook_profile['username'];
 		$city=$facebook_profile['location']['name'];
