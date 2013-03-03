@@ -31,14 +31,8 @@
 	<script src="public/js/raphael-min.js" type="text/javascript"></script>
 	<script src="public/js/jquery.easing.1.3.js" type="text/javascript"></script>
 	
-	<!-- slideshow -->
-	<script src="public/js/iview/iview.js"></script>
-	<script src="public/js/iview/function.js"></script>
-	
-	
 	<script type="text/javascript" src="public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
- 	<script src="public/js/fancybox/function.js"></script>
 	
 	<script src="public/js/tooltips.js"></script>	
 	
@@ -54,15 +48,11 @@
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
 	<link rel="stylesheet" href="public/css/contactForm.css" />
-    <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
-	<script src="public/js/AjaxRequete.js"></script>	
-	<script type="text/javascript">
-		function searchhome(){						
-			ajaxSearch();
-		}							
-	</script>
+	<!-- // <script src="public/js/AjaxRequete.js"></script>	 -->
+	<script src="public/js/ajaxSearch.js"></script>
+
 	<script type="text/javascript">
 
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
@@ -91,7 +81,7 @@
 	</script> 
 
 </head>
-<body onload="searchhome();">
+<body>
 
 <header>
 	<div class="topstatic">
@@ -211,7 +201,7 @@
 		<div id="mapSearch"></div>
 	</div>
 		<form id="position" class="form-wrapper">
-			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ..." onKeyUp="ajaxSearch();">
+			<input type="text" id="search2"  value="<?php echo $searchHome; ?>" placeholder="Rechercher une offre ...">
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
@@ -229,9 +219,9 @@
 			</div>
 			<div class="grid_8 nomargin" id="tri_top">
 				<span class="tri_bot"><p>Trier par :</p>
-						<input type="checkbox" name="distance" value="distance">Distance
-						<input type="checkbox" name="remuneration" value="remuneration">Rémunération
-						<input type="checkbox" name="duree" value="duree">Durée
+						<input type="radio" name="order" value="distance">Distance
+						<input type="radio" name="order" value="price">Rémunération
+						<input type="radio" name="order" value="beggining">Durée
 				</span>
 
 			</div>
@@ -244,7 +234,7 @@
 				<ul class="menuOffre" style="background-color:white;">
 					<li>Filtrer les annonces</li>
 					<li><p>Localisation</p><input type="text" id="search" name="search" onKeyUp="ajaxSearch();"/></li>
-					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value=""/></li>
+					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value="50"/></li>
 					<div id="slider-range-max"></div>
 
 					<li><p for="amout">Rémunération</p><input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" value=""/>
@@ -252,17 +242,15 @@
 					<div id="slider-range"></div>
 					</li>		
 					<li><p>Type de vente</p></li>
-					<div>
-						<input style="font-size:1.2em;" type="radio" name="searchin" id="tous" checked value="tous" onClick="ajaxSearch();"/><label class="rad" for="tous">Tous</label><br/>
-						<input style="font-size:1.2em;" type="radio" name="searchin" id="imme" value="immediat" onClick="ajaxSearch();"/><label class="rad" for="imme">Achat immédiat</label></br>
-						<input style="font-size:1.2em;" type="radio" name="searchin" id="enchere" value="enchere" onClick="ajaxSearch();"/><label class="rad" for="enchere">Enchère</label></br>
+					<div id="type_offre">
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="tous" checked value="tous"/><label class="rad" for="tous">Tous</label><br/>
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="imme" value="immediat"/><label class="rad" for="imme">Achat immédiat</label></br>
+						<input style="font-size:1.2em;" type="radio" name="searchin" id="enchere" value="enchere"/><label class="rad" for="enchere">Enchère</label></br>
 					</div>
 					<li><p>Type d'annonce</p></li>
-					<div>
-						<input type="checkbox" id="check1" name="chk1" value="course" onClick="ajaxSearch();"/><label class="rad" for="check1" >Service à la personne</label><br>
-						<input type="checkbox" id="check2" name="chk2" value="macdo" onClick="ajaxSearch();"/><label class="rad" for="check2" >Plomberie</label><br>
-						<input type="checkbox" id="check3" name="chk3" value="jardin" onClick="ajaxSearch();"/><label class="rad" for="check3" >Menuiserie</label><br>
-						<input type="checkbox" id="check4" name="chk4" value="alcool" onClick="ajaxSearch();"/><label class="rad" for="check4" >Alimentaire</label><br>
+					<div id="cat_offer">
+						<input type="checkbox" id="check1" name="chk1" value="1"/><label class="rad" for="check1" >Service à la personne</label><br>
+						<input type="checkbox" id="check2" name="chk2" value="2"/><label class="rad" for="check2" >Plomberie</label><br>
 					</div>
 
 				</ul>
@@ -272,6 +260,15 @@
 			<div id="donneesAnnonces">
 				
             </div>
+            <!-- <form id="previous_form" action="offer-2" methode="POST">
+				<input class="objpage" type="hidden">
+				<input type="submit" value="PREV" class="postuler">
+			</form>
+
+            <form id="next_form" action="offer-2" methode="POST">
+				<input class="objpage" type="hidden">
+				<input type="submit" value="NEXT" class="postuler">
+			</form> -->
         </div>
 	</div>
 </section>

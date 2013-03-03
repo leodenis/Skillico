@@ -116,8 +116,7 @@ class Offer extends Prefab
  
             );
             return $offerList = $offer->afind($filter,$option);
-	        // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
-       }
+	   }
 
               /*
         *       RECUPERATION DES OFFRES Posté D'UN UTILISATEUR
@@ -150,46 +149,33 @@ class Offer extends Prefab
        }
         
 
-        function Search($search){
-        //Explosion de la chaine au caractère -
-            $chaineExplode =  explode('-', $search);
-            $firstRequest = $chaineExplode[0];
-            $SecondeSearch = $chaineExplode[1];
-            $SecondRequest = $chaineExplode[2];
-            $price1=$chaineExplode[3]; 
-            $price2=$chaineExplode[4]; 
-            $requete='';
-
-            if($SecondRequest == 'tous'){
-                $SecondRequest="AND (O.type='immediat' OR O.type='enchere')";
+        function Search($page=NULL){
+            $offer = new DB\SQL\Mapper(F3::get('dB'),'offer');
+            $sql = 'SELECT o.id_offer, o.title, o.description, o.beginning, o.price, o.lat, o.lng, o.type FROM offer AS o WHERE visibility = 0';
+            $post = F3::get('POST');
+            if(isset($post) && $post != null){
+                $sql .= $post['type'] == 'tous' ? '' : ' AND type = "'.$post['type'].'"';
+                $sql .= isset($post['searchBarre']) && empty($post['searchBarre']) ? '' : ' AND o.title LIKE "%'.$post['searchBarre'].'%" OR o.description LIKE "%'.$post['searchBarre'].'%"'; 
+                $sql .= ' AND o.price BETWEEN '. $post['priceRange'][0] .' AND '. $post['priceRange'][1];
+                if(isset($post['cat'])){
+                    $sql .= ' AND';
+                    for ($i=0; $i < count($post['cat']) ; $i++) { 
+                        $sql .= $i == 0 ? ' o.fk_id_offer_cat = '.$post['cat'][$i] : ' OR o.fk_id_offer_cat = '.$post['cat'][$i];
+                    }
+                }
             }
-            else if($SecondRequest == 'immediat'){
-                $SecondRequest="AND O.type='immediat'";
+            if(empty($post['order'])){
+                $sql .= ' ORDER BY '.$post['order'].' AND o.id_offer DESC';
+            }else{
+                $sql .= ' ORDER BY o.id_offer DESC';
             }
-            else{
-                $SecondRequest="AND O.type='enchere'";
-            }
-            //Créatop, des requêtes dynamiquement en fonction de ce que nous recevons
-            
-            if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7]) && isset($chaineExplode[8])){
-                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR C.title = '$chaineExplode[7]' OR '$chaineExplode[8]')";
-            }
-            else if(isset($chaineExplode[5]) && isset($chaineExplode[6]) && isset($chaineExplode[7])){
-                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]' OR C.title = '$chaineExplode[7]')";
-            }
-            else if(isset($chaineExplode[5]) && isset($chaineExplode[6])){
-                $requete="AND (C.title ='$chaineExplode[5]' OR C.title = '$chaineExplode[6]')";
-            }
-            else if(isset($chaineExplode[5])){
-                 $requete="AND C.title ='$chaineExplode[5]'";
-            }
-
-            else{
-                $requete='';
-            }
-
-            return $test = F3::get('dB')->exec("SELECT O.title, O.id_offer, O.description,O.type, O.beginning, O.ending, O.price, C.title as cat, o.lat, o.lng  FROM offer O,offer_cat C WHERE O.fk_id_offer_duration = C.id_offer_cat AND O.title LIKE '%$firstRequest%' $SecondRequest AND O.price BETWEEN $price1 AND $price2 AND O.visibility = 0 AND O.description LIKE '%$SecondeSearch%' $requete");        //  return $test = F3::get('dB')->exec("SELECT * FROM `oeuvre` WHERE title LIKE '%$firstRequest%' AND $SecondRequest");
-
+            $nb_page = ceil(count(F3::get('dB')->exec($sql))/10);
+            // if($page!=NULL){
+            //     $sql .= ' LIMIT 10 OFFSET '.$page;
+            // }else{
+            //     $sql .= ' LIMIT 0, 10';
+            // }
+            return array(F3::get('dB')->exec($sql),$nb_page,$page,$post,$sql);
         }
        /*
         * Recuperation pour creer les marqueurs
