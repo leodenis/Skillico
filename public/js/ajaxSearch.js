@@ -199,13 +199,15 @@ window.onload = function(){
 		// if(datareqLoc!=null){
 		// 	search = datareqLoc;
 		// }else{
+			console.log(reqURL)
 			//Récupération des données
-			if((reqURL.search('=')+1)==0 || reqURL == null){
+			if(reqURL == null){
 				search.searchBarre = document.getElementById('search2').value;
-				reqURL = "blah=";
+				reqURL = null;
 			}else{
 				search.searchBarre = reqURL.substring((reqURL.search('=')+1),reqURL.length);
-				reqURL = "";
+				document.getElementById('search2').value = reqURL.substring((reqURL.search('=')+1),reqURL.length);
+				reqURL = null;
 			}
 			search.location = $('#search').value;
 			search.type = $('input[type="radio"][name="searchin"]:checked')[0].value;
