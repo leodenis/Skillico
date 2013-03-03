@@ -1,0 +1,7 @@
+.textError{
+    color:red;
+    font-style: italic;
+}
+.unfield{
+    border: 1px solid red;
+}
