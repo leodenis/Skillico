@@ -177,6 +177,7 @@ window.onload = function(){
 	})
 	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
+	var reqURL = document.URL;
 	document.getElementById('position').onsubmit = function(event){
 		event.preventDefault();
 		return false;
@@ -199,10 +200,12 @@ window.onload = function(){
 		// 	search = datareqLoc;
 		// }else{
 			//Récupération des données
-			if((document.URL.search('=')+1)==0){
+			if((reqURL.search('=')+1)==0 || reqURL == null){
 				search.searchBarre = document.getElementById('search2').value;
+				reqURL = "blah=";
 			}else{
-				search.searchBarre = document.URL.substring((document.URL.search('=')+1),document.URL.length);
+				search.searchBarre = reqURL.substring((reqURL.search('=')+1),reqURL.length);
+				reqURL = "";
 			}
 			search.location = $('#search').value;
 			search.type = $('input[type="radio"][name="searchin"]:checked')[0].value;
