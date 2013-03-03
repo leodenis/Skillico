@@ -139,7 +139,7 @@ class Offer extends Prefab
        }
         
 
-        function Search($page=NULL){
+        function Search($page){
             $offer = new DB\SQL\Mapper(F3::get('dB'),'offer');
             $sql = 'SELECT o.id_offer, o.title, o.description, o.beginning, o.price, o.lat, o.lng, o.type FROM offer AS o WHERE visibility = 0';
             $post = F3::get('POST');
@@ -154,13 +154,14 @@ class Offer extends Prefab
                     }
                 }
             }
-            if(empty($post['order'])){
+            if(!empty($post['order']) && isset($post['order'])){
                 $sql .= ' ORDER BY '.$post['order'].' AND o.id_offer DESC';
             }else{
                 $sql .= ' ORDER BY o.id_offer DESC';
             }
             $nb_page = ceil(count(F3::get('dB')->exec($sql))/10);
-            // if($page!=NULL){
+            
+            // if($page){
             //     $sql .= ' LIMIT 10 OFFSET '.$page;
             // }else{
             //     $sql .= ' LIMIT 0, 10';
