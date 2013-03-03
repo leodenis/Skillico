@@ -21,7 +21,7 @@ class User extends Prefab{
 				      $image->save();
 				    }else{
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				      $image->name='photodebase.png';
+				      $image->name='public/images/photodebase.png';
 				      $image->extension='.jpg';
 				      $image->save();
 				    }
@@ -35,12 +35,12 @@ class User extends Prefab{
 			$users->save(); // on sauvegarde
 	}
 
-	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born){
+	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil){
 			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
             if (empty($recupMdpId)) {
 	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				$image->name='photodebase.png';
+				$image->name=$imgProfil;
 				$image->extension='.jpg';
 				$image->save();
 					    
@@ -104,7 +104,7 @@ class User extends Prefab{
 			    if($img){
 			      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
 			      $image->load(array('id_image=?',$id_image));
-			      $image->name=$img[0];
+			      $image->name='public/images/'.$img[0];
 			      $image->update();
 			    }
 

@@ -136,7 +136,7 @@
 				</ul>
 					<?php 
 						if(F3::get('SESSION.user')){
-							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/' .$infoUserCo[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
+							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="'.$infoUserCo[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
 							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';
 						}
 						else{
@@ -214,7 +214,7 @@
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
-			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="public/images/<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
+			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
 			</div>       																						 
 			<div id="info3">
 					<?php 
