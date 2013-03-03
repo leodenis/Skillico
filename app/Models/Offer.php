@@ -154,13 +154,13 @@ class Offer extends Prefab
                     }
                 }
             }
-            if(!empty($post['order']) && isset($post['order'])){
-                $sql .= ' ORDER BY '.$post['order'].' AND o.id_offer DESC';
+            if(empty($post['order']) && isset($post['order'])){
+                $sql .= ' ORDER BY o.id_offer ASC';
             }else{
-                $sql .= ' ORDER BY o.id_offer DESC';
+                $sql .= ' ORDER BY '.$post['order'].' AND o.id_offer ASC';
             }
             $nb_page = ceil(count(F3::get('dB')->exec($sql))/10);
-            
+
             // if($page){
             //     $sql .= ' LIMIT 10 OFFSET '.$page;
             // }else{

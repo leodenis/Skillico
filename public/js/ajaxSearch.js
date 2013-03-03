@@ -187,19 +187,23 @@ window.onload = function(){
 	document.getElementById('slider-range-max').onmouseup = function(){reqData()};
 	$('input').change(function(){reqData()});
 
-	if(localStorage.getItem(localStorage.key('searchLast'))!=null){
-		var datareqLoc = JSON.parse(localStorage.getItem(localStorage.key(1)));
-		reqData(datareqLoc);
-	}else{
+	// if(localStorage.getItem(localStorage.key('searchLast'))!=null){
+	// 	var datareqLoc = JSON.parse(localStorage.getItem(localStorage.key(1)));
+	// 	reqData(datareqLoc);
+	// }else{
 		reqData();
-	}
+	// }
 
 	function reqData(){
-		if(datareqLoc!=null){
-			search = datareqLoc;
-		}else{
+		// if(datareqLoc!=null){
+		// 	search = datareqLoc;
+		// }else{
 			//Récupération des données
-			search.searchBarre = document.getElementById('search2').value;
+			if((document.URL.search('=')+1)==0){
+				search.searchBarre = document.getElementById('search2').value;
+			}else{
+				search.searchBarre = document.URL.substring((document.URL.search('=')+1),document.URL.length);
+			}
 			search.location = $('#search').value;
 			search.type = $('input[type="radio"][name="searchin"]:checked')[0].value;
 			search.order = $('input[type="radio"][name="order"]:checked')[0] != null ? $('input[type=radio][name=order]:checked')[0].value : null;
@@ -207,7 +211,7 @@ window.onload = function(){
 			for(i=0;i<$('#cat_offer input:checked').length;i++){
 				search.cat[i] = $('#cat_offer input:checked')[i].value;
 			}	
-		}
+		// }
 		$.ajax({
 			type: "POST",
 			url: "./offer/search",
