@@ -208,7 +208,7 @@
 			
 			<div class="grid_8 nomargin part_info">
 	<div id="tabs-1">
-
+	
 		<h2>Mon profil</h2>
 
 		<form action="user/edit" method="post" enctype="multipart/form-data">
@@ -377,13 +377,14 @@
 	<div id="tabs-5">
 		<h2>Mes paiements</h2>
 		<ul id="paiement">
-			<li><label><span>Le 24/03/13 :</span> 15 Euros</label></li>
-			<li><label><span>Le 25/03/13 :</span> 12 Euros</label></li>
-			<li><label><span>Le 25/03/13 :</span> 14 Euros</label></li>
-			<li><label><span>Le 26/03/13 :</span> 6 Euros</label></li>
-			<li><label><span>Le 27/03/13 :</span> 8 Euros</label></li>
-			<li><label><span>Le 28/03/13 :</span> 12 Euros</label></li>
-			<li><label><span>Le 29/03/13 :</span> 11 Euros</label></li>
+
+		<?php foreach($PaiementDonnee as $PaiementDonnee):?>
+			<li><label><span><?php echo $PaiementDonnee['title'];  ?> Le <?php echo $PaiementDonnee['ending'];  ?> :</span><?php echo ' - '.$PaiementDonnee['price'].' €';?></label></li>
+		<?php endforeach; ?>
+		<?php foreach($PaiementRecu as $PaiementRecu):?>
+			<li><label><span><?php echo $PaiementRecu['title'];  ?> Le <?php echo $PaiementRecu['ending'];  ?> :</span><?php echo ' + '.$PaiementRecu['price'].' €';?></label></li>
+		<?php endforeach; ?>
+
 		</ul>
 	</div>
 	<div id="tabs-6">

@@ -96,7 +96,6 @@ class Offer_controller{
   function postAvis(){
       Offer::instance()->postAvis();
       F3::reroute('/monCompte');
-
   }
 
   function searchHome(){

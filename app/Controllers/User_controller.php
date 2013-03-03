@@ -228,6 +228,14 @@ class User_controller extends Prefab{
 		$User=new User();
 		$avisUser=$User->avis($id);
 
+		//Récupération paiement Reçu
+		$Offer=new Offer();
+		$PaiementRecu=$Offer->PaiementRecu($id);
+
+		$Offer=new Offer();
+		$PaiementDonnee=$Offer->PaiementDonnee($id);
+
+
 		$RespondAndPosted = array_merge($getOfferByUSerId, $getOfferRespondByUSerId);
 
 		    // print_r($infoUserCo);
@@ -236,6 +244,8 @@ class User_controller extends Prefab{
 		F3::set('getOfferRespondByUSerId',$getOfferRespondByUSerId);
 		F3::set('RespondAndPosted',$RespondAndPosted);
 		F3::set('avisUser',$avisUser);
+		F3::set('PaiementRecu',$PaiementRecu);
+		F3::set('PaiementDonnee',$PaiementDonnee);
 
 		$view=new View(); 
 		echo $view->render('monCompte.php'); 	

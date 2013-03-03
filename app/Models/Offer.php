@@ -192,6 +192,28 @@ class Offer extends Prefab
         $offer->update();
     } 
 
+    function PaiementRecu($id){
+        $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $filter = 'payment = 1 AND fk_id_users_respond='.$id;
+        $option = array(
+            'group'=>NULL,
+            'order'=>NULL
+ 
+        );
+        return $PaiementRecu = $offer->afind($filter,$option);
+    }   
+
+    function PaiementDonnee($id){
+        $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $filter = 'payment = 1 AND fk_id_users_post='.$id;
+        $option = array(
+            'group'=>NULL,
+            'order'=>NULL
+ 
+        );
+        return $PaiementRecu = $offer->afind($filter,$option);
+    }
+
     function validate($idOffer){
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
         $offer->load(array('id_offer=?',$idOffer));
@@ -208,7 +230,8 @@ class Offer extends Prefab
     function paypal($offer_id){
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
         $offer->load(array('id_offer=?',$offer_id));
-        $offer->visibility=7;
+        $offer->visibility=3;
+        $offer->payment=1;
         $offer->update(); 
     }
 
