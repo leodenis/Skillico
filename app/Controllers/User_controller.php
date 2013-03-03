@@ -95,6 +95,11 @@ class User_controller extends Prefab{
 		$name=$facebook_profile['last_name'];
 		$firstname=$facebook_profile['first_name'];
 		$birthday=$facebook_profile['birthday'];
+		$born=explode('/',$birthday);
+		$years=$born[0];
+		$month=$born[1];
+		$days=$born[2];	
+	   	$born=$years.'-'.$month.'-'.$days;
 		$username=$facebook_profile['username'];
 		$city=$facebook_profile['location']['name'];
 		if($facebook_profile['gender'] == 'male'){
@@ -107,7 +112,7 @@ class User_controller extends Prefab{
 		$password = uniqid();
 
 		$userInscriptionFb=new User;
-		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$birthday,$password,$gender,$city);
+		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$born,$password,$gender,$city);
 		
 		F3::set('SESSION.user',$recupMdpId);
 		F3::reroute('/monCompte');
