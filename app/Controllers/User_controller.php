@@ -73,7 +73,7 @@ class User_controller extends Prefab{
 			$user = $facebook->getUser(); //Savoir si une session fb a été initialisée
 			if (!$user) {
 				$param = array( 
-				'redirect_uri' => 'http://localhost/SkillicoVFinale/Skillico/user/facebookConnect',
+				'redirect_uri' => 'http://localhost/SkillicoMdp/Skillico/user/facebookConnect',
 				'scope' => 'email,user_birthday,offline_access'
 				);
 				F3::reroute($facebook->getLoginUrl($param));
@@ -138,6 +138,9 @@ class User_controller extends Prefab{
 
 				$user_connexion=new User;
 		   		$recupMdpId=$user_connexion->connexion($login,$password);
+
+
+		   		
 		   		if ($recupMdpId == false) {
 			      	F3::reroute('/');
 		   		}
@@ -145,9 +148,9 @@ class User_controller extends Prefab{
 		   			//Création Session
 		   			date_default_timezone_set('Europe/Paris');  
 		   			$date=date("Y-m-d H:i:s");
+		   			$id=2;
 		   			F3::set('SESSION.user',$recupMdpId);
 		   			//Récupération de l'id users afin de updater la last connexion
-		   			$id=$recupMdpId[0]['id_users'];
 
 
 
