@@ -35,7 +35,7 @@ class User extends Prefab{
 			$users->save(); // on sauvegarde
 	}
 
-	function inscriptionfb($username,$email,$name,$firstname,$birthday,$password,$gender,$city){
+	function inscriptionfb($username,$email,$name,$firstname,$birthday,$password,$gender,$city,$born){
 			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
             if (empty($recupMdpId)) {
@@ -54,6 +54,7 @@ class User extends Prefab{
 	 			$users->firstname=$firstname;
 	 			$users->date_creation=$date_creation;
 	 			$users->sexe=$gender;
+	 			$users->born=$born;
 	 			$users->city=$city;
 	 			$users->fk_id_image=$image->id_image;
 				$users->save(); // on sauvegarde
