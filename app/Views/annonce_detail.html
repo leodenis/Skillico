@@ -95,7 +95,7 @@
 	<div class="row">
 				<div class="grid_4">
 					<div class="logo">
-						<a href="index.html"><img src="public/images/logo.png" alt="" /></a>
+						<a href="./"><img src="public/images/logo.png" alt="" /></a>
 					</div>	
 				</div>
 				<div class="grid_8">
@@ -143,7 +143,7 @@
 					<?php 
 						if(F3::get('SESSION.user')){
 
-							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="public/images/' .$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
+							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="'.$infoUserCo[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
 							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';
 
 						}
@@ -170,20 +170,20 @@
 				            <fieldset>
 				            	<div id="part_connect">
 				            		<h4>Se Connecter</h4>
-				            		<form action="user/connexion" method="post" enctype="multipart/form-data">
-						                <label for="identifiant">Identifiant*</label>
+			   						<form action="user/connexion" method="post" enctype="multipart/form-data">
+						                <label for="identifiant" id="identity">Identifiant*</label>
 						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
 						                <label for="mdp">Mot de passe*</label>
 						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
 						                <input id="sendRequest" type="submit" value="save"/>
-
+						            </form>
 						                <a id="forPass">Mot de passe oublié ?</a><br/>
 						                <div id="oubliPass">
-						                	<input id="mail" type="email" name="email" placeholder="Email" value="" />
-						               		<input id="subForget" type="submit" value="Ok"/>
+						                	<form action="user/forgetpassword" method="post" enctype="multipart/form-data">
+							                	<input id="mail" type="text" name="login" placeholder="Login" value="" />
+							               		<input id="subForget" type="submit" value="Ok"/>
+							               	</form>
 						            	</div>
-<!-- 						                <input id="sendRequest" type="submit" name="submit" value="save" onclick="closeForm()" />
- -->						        </form>
 
 					            </div>
 					            <div id="part_identify">

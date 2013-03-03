@@ -12,7 +12,7 @@ class User extends Prefab{
 
 	}
 
-	function inscription($password){
+	function inscription($password,$born){
 		   $img=Web::instance()->receive();
 				    if($img){
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
@@ -21,7 +21,7 @@ class User extends Prefab{
 				      $image->save();
 				    }else{
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				      $image->name='photodebase.jpg';
+				      $image->name='public/images/photodebase.png';
 				      $image->extension='.jpg';
 				      $image->save();
 				    }
@@ -30,29 +30,39 @@ class User extends Prefab{
  			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
  			$users->copyFrom('POST'); // on récupère le POST
  			$users->password=md5($password);
+ 			$users->born=$born;
  			$users->fk_id_image=$image->id_image;
 			$users->save(); // on sauvegarde
 	}
 
-	function inscriptionfb($password){
+	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil){
+			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
- 			$date_creation=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
- 			$last_connection=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
- 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
- 			$users->login='fb1';
- 			$users->email='fb';
- 			$users->password=md5($password);
- 			$users->name='fb';
- 			$users->firstname='fb';
- 			$users->adress='fb';
- 			$users->phone='fb';
- 			$users->date_creation=$date_creation;
- 			$users->last_connection=$last_connection;
- 			$users->level='2';
- 			$users->fk_id_image='10';
-			$users->save(); // on sauvegarde
+            if (empty($recupMdpId)) {
+	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
+				$image->name=$imgProfil;
+				$image->extension='.jpg';
+				$image->save();
+					    
+	 			$date_creation=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+	 			$last_connection=date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s");
+	 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+	 			$users->login=$username;
+	 			$users->email=$email;
+	 			$users->password=md5($password);
+	 			$users->name=$name;
+	 			$users->firstname=$firstname;
+	 			$users->date_creation=$date_creation;
+	 			$users->sexe=$gender;
+	 			$users->born=$born;
+	 			$users->city=$city;
+	 			$users->fk_id_image=$image->id_image;
+				$users->save(); // on sauvegarde
 
-			
+				return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+            }else{
+           		return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+            }	
 	}
 
 	function forgetpassword($login,$password){
@@ -61,7 +71,7 @@ class User extends Prefab{
 	 		$users->password=md5($password); // on récupère le POST
 			$users->update(); // on sauvegarde
 
-			return $log = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."'");
+			return $log = F3::get('dB')->exec("SELECT email FROM users WHERE login = '".$login."'");
 
 			F3::reroute('/user');
 	}
@@ -88,13 +98,13 @@ class User extends Prefab{
             return $avisUser = $avis->afind($filter,$option);
 
 	}
-	function EditInfoUser($id,$id_image,$password){
+	function EditInfoUser($id,$id_image,$password,$born){
 
 			$img=Web::instance()->receive();
 			    if($img){
 			      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
 			      $image->load(array('id_image=?',$id_image));
-			      $image->name=$img[0];
+			      $image->name='public/images/'.$img[0];
 			      $image->update();
 			    }
 
@@ -102,6 +112,7 @@ class User extends Prefab{
 	 		$users->load(array('id_users=?',$id));
 	 		$users->copyFrom('POST'); // on récupère le POST
 	 		$users->password=md5($password);
+	 		$users->born=$born;
 			$users->update(); // on sauvegarde
 			F3::reroute('/user/edit');
 	}

@@ -8,30 +8,15 @@ class User_controller extends Prefab{
 	function homeUser(){ 
      $User=new User();
      $info=$User->InfoDetails();
-   	 // F3::set('info',$info->afind());
      F3::set('info',$info);
  	 echo Views::instance()->render('user.php');
-
- // 	 if(empty($_SESSION['user'])){
-	// echo 	 	'aucune session';
- // 	 }
- // 	 else{
- // 	     $id=F3::get('SESSION.user');
- // 	     $User=new User();
- //    	 $infoUserCo=$User->infoUserCo($id);
-
- //    	 F3::set('infoUserCo',$infoUserCo);
- // 	 	 echo Views::instance()->render('user.php');
-
- // 	 }
-
 	}
 
 	function inscription(){
 
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('inscription.php');
+				echo Views::instance()->render('formulaireInscription.html');
 			break;
 			case 'POST':
 				 $check=array(
@@ -58,48 +43,83 @@ class User_controller extends Prefab{
 			    if($error){
 			      F3::set('errorMsg',$error);
 			      echo Views::instance()->render('formulaireInscription.html');
+			      F3::reroute('/');
 			      return;
 			    }
-			    else{	
+			    else{
+				    $days=$_POST['days'];
+			   		$month=$_POST['month'];
+			   		$years=$_POST['years'];
+			   		$born=$years.'-'.$month.'-'.$days;	
 			    	//Ajout dans la base de donnée			    	
 			    	$password=$_POST['password'];
 		   			$user=new User;
-		   			$user->inscription($password);
-		   			echo 'Merci, votre inscription a bien été prise en compte!';
+		   			$user->inscription($password,$born);
+					F3::reroute('/');
 			    }
 			break;
 		}
 	   
 	}
-
 	function inscriptionfb(){
+		require './app/Libraries/facebook.php';
+ 
 
+			$facebook = new Facebook(array(
+			'appId' => '340091096096955',
+			'secret' => 'd67a97f795f53caa019784e1d30cf49e',
+			'cookie' => true
+			));
+			$user = $facebook->getUser(); //Savoir si une session fb a été initialisée
+			if (!$user) {
+				$param = array( 
+				'redirect_uri' => 'http://localhost/SkillicoVFinale/Skillico/user/facebookConnect',
+				'scope' => 'email,user_birthday,offline_access'
+				);
+				F3::reroute($facebook->getLoginUrl($param));
+			} 
+			else {
+				try {
+					$user = $facebook->getUser();
+					$facebook_profile = $facebook->api('/me');
+				} 
+				catch (FacebookApiException $e) {
+					error_log($e);
+					$user = null;
+				}
+			}
 		
-
-		//génére aléatoirement un mot de passe
-		$string = "";
-		$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
-		srand((double)microtime()*1000000);
-		for($i=0; $i<10; $i++) {
-		$string .= $chaine[rand()%strlen($chaine)];
+		$email=$facebook_profile['email'];
+		$name=$facebook_profile['last_name'];
+		$firstname=$facebook_profile['first_name'];
+		$birthday=$facebook_profile['birthday'];;
+		$imgProfil='https://graph.facebook.com/'.$facebook_profile["id"].'/picture?type=large';
+		$born=explode('/',$birthday);
+		$years=$born[2];
+		$month=$born[0];
+		$days=$born[1];	
+	   	$born=$years.'-'.$month.'-'.$days;
+		$username=$facebook_profile['username'];
+		$city=$facebook_profile['location']['name'];
+		if($facebook_profile['gender'] == 'male'){
+			$gender='Homme';
+		}
+		else{
+			$gender='Femme';
 		}
 
+		$password = uniqid();
 
-		//Envoie du mot de passe
-		// $headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-	 //    $headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-	 //    $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-	 //    $headers .='Content-Transfer-Encoding: 8bit'; 
-  //       $message ='<html><head><title>Bonjour</title></head><body>Merci pour votre inscription sur Skillico via votre compte FACEBOOK. Voici votre mot de passe'.$string.'</body></html>'; 
-		// mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
+		$userInscriptionFb=new User;
+		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil);
+		
+		F3::set('SESSION.user',$recupMdpId);
+		F3::reroute('/monCompte');
 
-		$password=$string;
-		$user=new User;
-		$user->inscriptionfb($password);
-
-		F3::reroute('/user');
 
 	}
+
+
 
 	function connexion(){
 
@@ -169,28 +189,25 @@ class User_controller extends Prefab{
 			    }
 			    else{
 			    	//préparation du mdp
-			    	$password = "";
-					$chaine = "abcdefghijklmnpqrstuvwxy1234567890";
-					srand((double)microtime()*1000000);
-					for($i=0; $i<10; $i++) {
-					$password .= $chaine[rand()%strlen($chaine)];
-					}	
+			    	
+					
+					$password = uniqid();
+					
 					//récup du log et appel du modèle
 			    	$login=$_POST['login'];
 		   			$user_log=new User;
 		   			$recupLog=$user_log->forgetpassword($login,$password);
-	
+		 
+					
 		   			if ($recupLog == false) {
 		   			echo 'try again';
 		   			}
 					else{
-
-						$headers ='From: "nom"<denisleo23@gmail.com>'."\n"; 
-						$headers .='Reply-To: denisleo23@gmail.com'."\n"; 
-						$headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
-						$headers .='Content-Transfer-Encoding: 8bit'; 
-					    $message ='<html><head><title>Bonjour</title></head><body>Voici votre nouveau mot de passe'.$password.'. Vous pouvez dès maintenant le changer dans votre espace</body></html>'; 
-						mail('denisleo23@gmail.com', 'Sujet', $message, $headers);
+				
+						$email = $recupLog[0]['email'];
+									// F3::sendmail($password);
+						Mail::instance()->sendmail($password,$email);
+						F3::reroute('/');
 					}
 			    }
 			break;
@@ -210,16 +227,30 @@ class User_controller extends Prefab{
 
 		//Récupération annonces postées
 		$Offer=new Offer();
-		$getOfferByUSerIdAccomplite=$Offer->getOfferByUSerIdAccomplite($id);
+		$getOfferRespondByUSerId=$Offer->getOfferRespondByUSerId($id);
 
 		//Récupération avis
 		$User=new User();
 		$avisUser=$User->avis($id);
+
+		//Récupération paiement Reçu
+		$Offer=new Offer();
+		$PaiementRecu=$Offer->PaiementRecu($id);
+
+		$Offer=new Offer();
+		$PaiementDonnee=$Offer->PaiementDonnee($id);
+
+
+		$RespondAndPosted = array_merge($getOfferByUSerId, $getOfferRespondByUSerId);
+
 		    // print_r($infoUserCo);
 		F3::set('infoUserCo',$infoUserCo);
 		F3::set('getOfferByUSerId',$getOfferByUSerId);
-		F3::set('getOfferByUSerIdAccomplite',$getOfferByUSerIdAccomplite);
+		F3::set('getOfferRespondByUSerId',$getOfferRespondByUSerId);
+		F3::set('RespondAndPosted',$RespondAndPosted);
 		F3::set('avisUser',$avisUser);
+		F3::set('PaiementRecu',$PaiementRecu);
+		F3::set('PaiementDonnee',$PaiementDonnee);
 
 		$view=new View(); 
 		echo $view->render('monCompte.php'); 	
@@ -239,6 +270,12 @@ class User_controller extends Prefab{
 	        F3::reroute('/monCompte');
 	      break;
 	      case 'POST':
+
+	   		$days=$_POST['days'];
+	   		$month=$_POST['month'];
+	   		$years=$_POST['years'];
+	   		$born=$years.'-'.$month.'-'.$days;
+
 	        $id = F3::get('SESSION.user');
 	   		$id=$id[0]['id_users'];
 	        $User=new User();
@@ -246,7 +283,7 @@ class User_controller extends Prefab{
 		    $password=$_POST['password'];
 		    $id_image=$infoUserCo[0]['id_image'];
 			$User=new User();
-		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password);
+		    $EditInfoUser=$User->EditInfoUser($id,$id_image,$password,$born);
 		    F3::reroute('/');
 	      break;
 	    }
