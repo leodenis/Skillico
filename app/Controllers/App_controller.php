@@ -15,20 +15,19 @@ class App_controller{
 	}
 
 	function renduPage(){
-		echo $view->render('monCompte.php');
+		echo Views::instance()->render('monCompte.php');	
 	}
 
-
 	function formulaire_inscription(){
-		echo $view->render('formulaireInscription.html'); 
+		echo Views::instance()->render('formulaireInscription.html');	
 	}
 
 	function deposerUneAnnonce(){
-		echo $view->render('deposer.html'); 
+		echo Views::instance()->render('deposer.html');	
 	}
 
 	function enchereDetail(){
-		echo $view->render('enchere_detail.html');
+		echo Views::instance()->render('enchere_detail.html');	
 	}
 
 	function __destruct(){
