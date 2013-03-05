@@ -73,7 +73,7 @@ class User_controller extends Prefab{
 			$user = $facebook->getUser(); //Savoir si une session fb a été initialisée
 			if (!$user) {
 				$param = array( 
-				'redirect_uri' => 'http://localhost/SkillicoVFinale/Skillico/user/facebookConnect',
+				'redirect_uri' => 'http://localhost/SkillicoMdp/Skillico/user/facebookConnect',
 				'scope' => 'email,user_birthday,offline_access'
 				);
 				F3::reroute($facebook->getLoginUrl($param));
@@ -88,26 +88,49 @@ class User_controller extends Prefab{
 					$user = null;
 				}
 			}
-		
-		$email=$facebook_profile['email'];
-		$name=$facebook_profile['last_name'];
-		$firstname=$facebook_profile['first_name'];
-		$birthday=$facebook_profile['birthday'];;
-		$imgProfil='https://graph.facebook.com/'.$facebook_profile["id"].'/picture?type=large';
-		$born=explode('/',$birthday);
-		$years=$born[2];
-		$month=$born[0];
-		$days=$born[1];	
-	   	$born=$years.'-'.$month.'-'.$days;
-		$username=$facebook_profile['username'];
-		$city=$facebook_profile['location']['name'];
-		if($facebook_profile['gender'] == 'male'){
-			$gender='Homme';
-		}
-		else{
-			$gender='Femme';
-		}
+		if (isset($facebook_profile['email'])) {
+			$email=$facebook_profile['email'];
+		}else{ $email='';}
 
+		if (isset($facebook_profile['last_name'])) {
+			$name=$facebook_profile['last_name'];
+		}else{ $name='';}
+
+		if (isset($facebook_profile['username'])) {
+			$username=$facebook_profile['username'];
+		}else{ $username='';}
+
+		if (isset($facebook_profile['first_name'])) {
+			$firstname=$facebook_profile['first_name'];
+		}else{ $firstname='';}
+
+		if (isset($facebook_profile['birthday'])) {
+			$birthday=$facebook_profile['birthday'];
+			$born=explode('/',$birthday);
+			$years=$born[2];
+			$month=$born[0];
+			$days=$born[1];	
+		   	$born=$years.'-'.$month.'-'.$days;
+		}else{ $birthday='';}
+
+		if (isset($facebook_profile['id'])) {
+			$imgProfil='https://graph.facebook.com/'.$facebook_profile["id"].'/picture?type=large';
+		}else{ $imgProfi='public/images/photodebase.png';}
+
+		
+		if (isset($facebook_profile['gender'])) {
+			if($facebook_profile['gender'] == 'male'){
+			$gender='Homme';
+			}
+			else{
+				$gender='Femme';
+			}
+		}else{ $gender='';}
+
+		if (isset($facebook_profile['location']['name')) {
+			$city=$facebook_profile['location']['name'];
+		}else{ $city='';}
+		
 		$password = uniqid();
 
 		$userInscriptionFb=new User;
@@ -138,6 +161,9 @@ class User_controller extends Prefab{
 
 				$user_connexion=new User;
 		   		$recupMdpId=$user_connexion->connexion($login,$password);
+
+
+		   		
 		   		if ($recupMdpId == false) {
 			      	F3::reroute('/');
 		   		}
@@ -145,9 +171,9 @@ class User_controller extends Prefab{
 		   			//Création Session
 		   			date_default_timezone_set('Europe/Paris');  
 		   			$date=date("Y-m-d H:i:s");
+		   			$id=2;
 		   			F3::set('SESSION.user',$recupMdpId);
 		   			//Récupération de l'id users afin de updater la last connexion
-		   			$id=$recupMdpId[0]['id_users'];
 
 
 

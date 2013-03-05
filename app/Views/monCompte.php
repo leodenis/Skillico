@@ -312,8 +312,8 @@
 							<input name="currency_code" type="hidden" value="EUR" />
 							<input name="shipping" type="hidden" value="0.00" />
 							<input name="tax" type="hidden" value="0.00" />
-							<input name="return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/success.php" />
-							<input name="cancel_return" type="hidden" value="http://denis-leo.com/SkillicoMdp/app/Helpers/Library/cancel.php" />
+							<input name="return" type="hidden" value="http://denis-leo.com/SkillicoMdp/offer/paypalSuccess" />
+							<input name="cancel_return" type="hidden" value="http://denis-leo.com/SkillicoMdp/offer/paypalCancel" />
 							<input name="notify_url" type="hidden" value="http://denis-leo.com/SkillicoMdp/offer/paypal" />
 							<input name="cmd" type="hidden" value="_xclick" />
 							<input name="business" type="hidden" value="vendeu_1362172271_biz@gmail.com" />
@@ -323,8 +323,6 @@
 							<input name="bn" type="hidden" value="PP-BuyNowBF" />
 							<input name="custom" type="hidden" value="offer_id=<?php echo $getOfferByUSerId['id_offer']; ?>" />
 							<input type="submit" value="Payer" class="postuler">
-							<input name="custom" type="hidden" value="user_id=1" />
-							<input type="submit" value="Payer" class="postuler"/>
 						</form>
 						<p>Vous avez validé votre annonce, vous pouvez dès à présent payer la personne</p>
 					<?php

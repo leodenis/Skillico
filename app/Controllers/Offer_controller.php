@@ -137,6 +137,14 @@ class Offer_controller{
   		}
   	}
   	
+    function paypalSuccess(){
+        F3::reroute('/monCompte');
+    }
+
+    function paypalCancel(){
+        F3::reroute('/monCompte');
+    }
+
   	function postAvis(){
   		Offer::instance()->postAvis();
   		F3::reroute('/monCompte');
