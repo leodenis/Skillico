@@ -40,7 +40,7 @@ class Offer_controller{
     @return void
     **/
     function post(){ 
-        Offer::instance()->postOffer();
+        $offer = Offer::instance()->postOffer();
     }
 
     /**

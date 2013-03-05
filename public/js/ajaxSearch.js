@@ -201,7 +201,7 @@ window.onload = function(){
 		// }else{
 			console.log(reqURL)
 			//Récupération des données
-			if(reqURL == null){
+			if(reqURL == null || (reqURL.search('=')+1) == 0){
 				search.searchBarre = document.getElementById('search2').value;
 				reqURL = null;
 			}else{

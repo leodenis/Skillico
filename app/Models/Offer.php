@@ -71,10 +71,10 @@ class Offer extends Prefab
               F3::set('errorMsg',$error);
             }
             else{
-                    $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
-                    $offer->copyFrom('POST'); 
-                    $offer->save();
-                    echo 'OK'; 
+                $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+                $offer->copyFrom('POST'); 
+                $offer->save();
+                echo $offer->get('id_offer'); 
             }
         }
 
@@ -155,9 +155,9 @@ class Offer extends Prefab
                 }
             }
             if(empty($post['order']) && isset($post['order'])){
-                $sql .= ' ORDER BY o.id_offer ASC';
+                $sql .= ' ORDER BY id_offer DESC';
             }else{
-                $sql .= ' ORDER BY '.$post['order'].' AND o.id_offer ASC';
+                $sql .= ' ORDER BY '.$post['order'].' AND id_offer DESC';
             }
             $nb_page = ceil(count(F3::get('dB')->exec($sql))/10);
 

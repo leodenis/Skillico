@@ -1178,6 +1178,10 @@ section#monCompte {
 
 .detailOffreEnchereMenu img{
 	float: left;
+	padding-left: 10px;
+}
+.detailOffreEnchereMenu img.clock{
+	float: left;
 	width: 20%;
 	padding-left: 10px;
 }
