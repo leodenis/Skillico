@@ -16,6 +16,10 @@ body {
 	/* margin: 0px auto 0 auto; */
 }
 
+div#enchereSetUp{
+	display: none;
+}
+
 #map {
         width: 98%;
         height: 300px;
