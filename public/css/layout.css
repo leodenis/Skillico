@@ -113,7 +113,7 @@ ul.tabs li a {
 
 #position{
 	margin-left: 7%;
-	width:80%;
+	width:90%;
 	margin-top:-100px;
 }
 
@@ -146,6 +146,10 @@ div#contactLink{
 	float: left;
 }
 
+.form-wrapper{
+	width: 309px;
+	margin-bottom: 20px;
+}
 
 /* disable top menu */
 .topnav ul { display:none; }

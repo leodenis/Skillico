@@ -54,9 +54,6 @@
     <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
-	<script src="public/js/AjaxRequete.js"></script>
-
-
 
 	<script>
 	$(function() {
