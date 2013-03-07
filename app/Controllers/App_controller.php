@@ -26,6 +26,12 @@ class App_controller{
 		echo Views::instance()->render('deposer.html');	
 	}
 
+	function error()
+	{
+		echo Views::instance()->render('404.html');	
+
+	}
+
 	function enchereDetail(){
 		echo Views::instance()->render('enchere_detail.html');	
 	}
