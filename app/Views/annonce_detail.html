@@ -62,7 +62,7 @@
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
 
 		$(document).ready(function() {
-			$("#deposer_annonce").fancybox({
+			$(".deposer_annonce").fancybox({
 				'width'				: '60%',
 				'height'			: '100%',
 				'autoScale'			: false,
@@ -127,7 +127,7 @@
 					</li>
 					<li>
 						<?php if(F3::get('SESSION.user')){ ?>
-							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+							<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 						<?php } else { ?>
 							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 						<?php } ?>
@@ -178,7 +178,7 @@
 						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
 						                <label for="mdp">Mot de passe*</label>
 						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
-						                <input id="sendRequest" type="submit" value="save"/>
+						                <input id="sendRequest" type="submit" value="Connexion"/>
 						            </form>
 						                <a id="forPass">Mot de passe oublié ?</a><br/>
 						                <div id="oubliPass">
@@ -190,10 +190,9 @@
 
 					            </div>
 					            <div id="part_identify">
-					            	<h4>Inscriver vous gratuitement</h4></br>
-					            	<a href="formulaire_inscription"><p>S'inscrire</p></a>
-					            	<a><p>Facebook connect</p></a>
-					            	<a><p>Twitter connect</p></a>
+					            	<h4>Inscriver vous gratuitement</h4><br/>
+					            	<a href="formulaire_inscription"><img src="./public/images/icons/btn_inscription.png"></a><br/>
+					            	<a href="user/facebookConnect"><img src="./public/images/icons/fb_connect.png"/></a>
 					            </div>
 				            </fieldset>
 				        </div>
@@ -345,10 +344,13 @@
 			<h4>Le site</h4>
 			<ul class="arrow-dot">
 				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Déposer une annonce</a></li>
-				<li><a href="#">Qui sommes-nous ?</a></li>
-				<li><a href="#">Mon compte</a></li>
-				<li><a href="#">Réclamations</a></li>
+				<li><?php if(F3::get('SESSION.user')){ ?>
+							<a class="deposer_annonce" href="deposerUneAnnonce">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription">Deposer une annonce</a> 
+						<?php } ?>	</li>
+				<li><a href="offer">Consulter les annonces</a></li>
+				<li><a href="monCompte">Mon compte</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">

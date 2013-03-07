@@ -1156,6 +1156,10 @@ section#monCompte {
 	display: none;
 }
 
+div#part_identify img{
+	padding-left: 17px;
+}
+
 .detailOffre{
 	background-color: white;
 	border: 1px solid #c8c9ca;

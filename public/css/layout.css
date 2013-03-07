@@ -151,6 +151,12 @@ div#contactLink{
 	margin-bottom: 20px;
 }
 
+fieldset div#part_identify {
+	margin-left:15px;
+	float: left;
+	margin: 0;
+}
+
 /* disable top menu */
 .topnav ul { display:none; }
 
