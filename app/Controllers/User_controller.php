@@ -23,6 +23,7 @@ class User_controller extends Prefab{
 			      'login'=>'required',
 		   	      'password'=>'required',
 		   	      'password2' => 'required',
+		   	      'password' != 'password2',
 			      'email'=>'required',
 			      'name'=>'required',
 			      'firstname'=>'required',
@@ -31,31 +32,34 @@ class User_controller extends Prefab{
 			      'last_connection'=>'required'
 			     
 			    );
-				
-				// $id_image=$_POST['fk_id_image'];
-
-			    if ($_POST['password'] != $_POST['password2']) {
-			    	echo "Les mots de passes doivent être identiques! Veuillez recommercer";
-			    	return;
-			    }
-
+						
+			    $login=$_POST['login']; 
+			  
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
+			    //     print_r($error);
+			    // die();
+			    
 			    if($error){
 			      F3::set('errorMsg',$error);
 			      echo Views::instance()->render('formulaireInscription.html');
-			      F3::reroute('/');
 			      return;
 			    }
+
 			    else{
 				    $days=$_POST['days'];
 			   		$month=$_POST['month'];
 			   		$years=$_POST['years'];
 			   		$born=$years.'-'.$month.'-'.$days;	
-			    	//Ajout dans la base de donnée			    	
+
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password,$born);
-					F3::reroute('/');
+
+		   			$password=md5($password);
+		   			$userConnex=new User;
+		   			$recupMdpId=$userConnex->connexion($login,$password);
+		   			F3::set('SESSION.user',$recupMdpId);
+		   			F3::reroute('/monCompte');
 			    }
 			break;
 		}
@@ -63,8 +67,6 @@ class User_controller extends Prefab{
 	}
 	function inscriptionfb(){
 		require './app/Libraries/facebook.php';
- 
-
 			$facebook = new Facebook(array(
 			'appId' => '340091096096955',
 			'secret' => 'd67a97f795f53caa019784e1d30cf49e',
@@ -168,15 +170,8 @@ class User_controller extends Prefab{
 			      	F3::reroute('/');
 		   		}
 		   		else {
-		   			//Création Session
-		   			date_default_timezone_set('Europe/Paris');  
-		   			$date=date("Y-m-d H:i:s");
-		   			$id=2;
+
 		   			F3::set('SESSION.user',$recupMdpId);
-		   			//Récupération de l'id users afin de updater la last connexion
-
-
-
 		   			F3::reroute('/monCompte');
 		   		}
 			   
@@ -198,40 +193,33 @@ class User_controller extends Prefab{
 	function forgetpassword(){
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('forgetpassword.php');
+				echo Views::instance()->render('index.html');
 			break;
 			case 'POST':
 				 $check=array(
 			      'login'=>'required'
 			     
 			    );
-
-
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
 			    if($error){
 			      F3::set('errorMsg',$error);
-				  echo Views::instance()->render('forgetpassword.php');
+				  echo Views::instance()->render('index.html');
 			      return;
 			    }
 			    else{
-			    	//préparation du mdp
-			    	
-					
+			    	//préparation du mdp			
 					$password = uniqid();
-					
 					//récup du log et appel du modèle
 			    	$login=$_POST['login'];
 		   			$user_log=new User;
 		   			$recupLog=$user_log->forgetpassword($login,$password);
-		 
-					
+
 		   			if ($recupLog == false) {
-		   			echo 'try again';
+		   				F3::reroute('/');
 		   			}
 					else{
 				
 						$email = $recupLog[0]['email'];
-									// F3::sendmail($password);
 						Mail::instance()->sendmail($password,$email);
 						F3::reroute('/');
 					}
@@ -263,6 +251,7 @@ class User_controller extends Prefab{
 		$Offer=new Offer();
 		$PaiementRecu=$Offer->PaiementRecu($id);
 
+		//Récupérer paiement Donnee
 		$Offer=new Offer();
 		$PaiementDonnee=$Offer->PaiementDonnee($id);
 

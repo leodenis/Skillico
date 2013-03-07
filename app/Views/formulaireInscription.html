@@ -54,8 +54,23 @@
     <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
-	<script src="public/js/AjaxRequete.js"></script>
+	<script type="text/javascript">
+		$(function() {
+					 $("#sendFormAccept").attr("disabled", ! $("#idSendable").is(':checked'));  
+					    
+					 $("#idSendable").change(function(){
+					     $("#sendFormAccept").attr("disabled", ! $(this).is(':checked'));  
+					 });  
 
+					$("#sendFormAccept").toggleClass("postuler", ! $("#idSendable").is(':checked'));  
+					    
+					 $("#idSendable").change(function(){
+					     $("#sendFormAccept").toggleClass("postulerFalse", ! $(this).is(':checked'));  
+					 });  
+		});
+
+	</script>
+	<script src="public/js/AjaxRequete.js"></script>
 
 
 	<script>
@@ -209,34 +224,20 @@
 			<h2>Vous devez être inscrit ou connecté pour pouvoir poster une annonce</h2>
 		<?php } ?>
 		<h2>Formulaire d'inscription</h2>
+		<h2><?php if ($errorMsg['login']==false) { echo 'Veuillez rentrer votre login';} ?></h2>
 		<form action="user/inscription" method="post" enctype="multipart/form-data">
 			<div class="box2">
 				<div id="profil-pic">
 					<label id="upload"><span>Photo de profil </span><img src="" /><br/><br/><input id="normal" type="file" name="image[]"></input></label>
 				</div>
-				<script type="text/javascript">
-					$(function() {
-					    $("#sendFormAccept").attr("disabled", ! $("#idSendable").is(':checked'));  
-					    
-					    $("#idSendable").change(function(){
-					        $("#sendFormAccept").attr("disabled", ! $(this).is(':checked'));  
-					    });  
-
-					   $("#sendFormAccept").toggleClass("postuler", ! $("#idSendable").is(':checked'));  
-					    
-					    $("#idSendable").change(function(){
-					        $("#sendFormAccept").toggleClass("postulerFalse", ! $(this).is(':checked'));  
-					    });  
-					});
 
 
-				</script>
 				<div id="info3">
-					<label><span>Login :</span><input type="text" name="login" value="" placeholder="Nom"></input></label>
-					<label><span>Nom :</span><input type="text" name="firstname" value="" placeholder="Nom"></input></label>
-					<label><span>Prénom :</span><input type="text" name="name" value="" placeholder="Prénom"></input></label>
-					<label><span>Civilité :</span></br><label id="labelpad"><input type="radio" value="Homme" name="sexe">Homme</input></label><label id="labelpad0"><input type="radio" value="Femme" name="sexe">Femme</input></label></label>
-					<label><span>Adresse e-mail :</span><input type="text" name="email" value="" placeholder="Adresse e-mail"></input></label>
+					<label><span>Login :</span><input type="text" name="login" value="" placeholder="Nom" ></input></label>
+					<label><span>Nom :</span><input type="text" name="firstname" value="" placeholder="Nom" required></input></label>
+					<label><span>Prénom :</span><input type="text" name="name" value="" placeholder="Prénom"required></input></label>
+					<label><span>Civilité :</span></br><label id="labelpad"><input type="radio" value="Homme" name="sexe" required>Homme</input></label><label id="labelpad0"><input type="radio" value="Femme" name="sexe">Femme</input></label></label>
+					<label><span>Adresse e-mail :</span><input type="text" name="email" value="" placeholder="Adresse e-mail" required></input></label>
 					<fieldset id="dateOfBirth">
 						<legend>Date de naissance :</legend>
 						<select id="jour" title="Jour" name="days">
@@ -258,11 +259,11 @@
 						?>
 						</select>
 					</fieldset>
-					<label><span>Adresse :</span><input type="text" name="adress" value="" placeholder="Adresse" size="30"></input></label>
-					<label><span>Code postal :</span><input type="text" name="CP" value="" size="10" placeholder="Code postal"></input></label>
-					<label><span>Ville</span><input type="text" name="city" value="" size="10" placeholder="Ville"></input></label>
-					<label><span>Mot de passe :</span><input type="password" name="password" value="" placeholder="Mot de passe"></input></label>
-					<label><span>Confirmation mot de passe :</span><input type="password" name="password2" value="" placeholder="Confirmer le mot de passe"></input></label>
+					<label><span>Adresse :</span><input type="text" name="adress" value="" placeholder="Adresse" size="30" required></input></label>
+					<label><span>Code postal :</span><input type="text" name="CP" value="" size="10" placeholder="Code postal" required></input></label>
+					<label><span>Ville</span><input type="text" name="city" value="" size="10" placeholder="Ville" required></input></label>
+					<label><span>Mot de passe :</span><input type="password" name="password" value="" placeholder="Mot de passe" required></input></label>
+					<label><span>Confirmation mot de passe :</span><input type="password" name="password2" value="" placeholder="Confirmer le mot de passe" required></input></label>
 					 <input type="hidden" name="date_creation" placeholder="date_creation" value="<?php date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s"); ?>"/>
        				<input type="hidden" name="last_connection" placeholder="last_connection" value="<?php date_default_timezone_set('Europe/Paris'); echo date("Y-m-d H:i:s"); ?>"/>
 					<label><input id="idSendable" type="checkbox" onClick="controle();">J'accepte les conditions générale de Skillico</input></label>

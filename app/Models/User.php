@@ -5,18 +5,14 @@ class User extends Prefab{
 	}
 	
 	function InfoDetails(){
-		// $info=new DB\SQL\Mapper(F3::get('dB'),'users');
-		// return $info->load(array('id_users=?','5'));
-		return $info = F3::get('dB')->exec("SELECT U.id_users,U.name,U.firstname,U.email,U.adress,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.name, I.extension FROM users U, image I WHERE U.fk_id_image = I.id_image AND U.id_users =2" );
-
-
+			return $info = F3::get('dB')->exec("SELECT U.id_users,U.name,U.firstname,U.email,U.adress,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.name, I.extension FROM users AS U INNER JOIN image AS I ON U.fk_id_image = I.id_image WHERE U.id_users =2" );
 	}
 
 	function inscription($password,$born){
 		   $img=Web::instance()->receive();
 				    if($img){
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				      $image->name=$img[0];
+				      $image->name='public/images/'.$img[0];
 				      $image->extension='.jpg';
 				      $image->save();
 				    }else{
@@ -27,16 +23,17 @@ class User extends Prefab{
 				    }
  				
  		
- 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
- 			$users->copyFrom('POST'); // on récupère le POST
+ 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); 
+ 			$users->copyFrom('POST'); 
  			$users->password=md5($password);
  			$users->born=$born;
  			$users->fk_id_image=$image->id_image;
-			$users->save(); // on sauvegarde
+			$users->save(); 
 	}
 
 	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil){
-			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+			$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
+	    	$recupMdpId->afind(array('login=?',$username));
 
             if (empty($recupMdpId)) {
 	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
@@ -57,11 +54,14 @@ class User extends Prefab{
 	 			$users->born=$born;
 	 			$users->city=$city;
 	 			$users->fk_id_image=$image->id_image;
-				$users->save(); // on sauvegarde
+				$users->save(); 
+			
+				$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
+	    		return $recupMdpId->afind(array('login=?',$username));
 
-				return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
             }else{
-           		return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
+           		$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
+	    		return $recupMdpId->afind(array('login=?',$username));
             }	
 	}
 
@@ -70,33 +70,25 @@ class User extends Prefab{
 	 		$users->load(array('login=?',$login));
 	 		$users->password=md5($password); // on récupère le POST
 			$users->update(); // on sauvegarde
+		   
+		    $log=new DB\SQL\Mapper(F3::get('dB'),'users');
+    		return $log->afind(array('login=?',$login));
 
-			return $log = F3::get('dB')->exec("SELECT email FROM users WHERE login = '".$login."'");
-
-			F3::reroute('/user');
 	}
 
 	function connexion($login,$password){
-			return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."' AND password = '".$password."'");
+			$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
+    		return $recupMdpId->afind(array('login=? and password=?',$login,$password));
 
 	}
 
 	function infoUserCo($id){
-			// return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE id_users = '".$id."'");
-			return $infoUserCo = F3::get('dB')->exec("SELECT U.id_users, U.login,U.name,U.firstname,U.email,U.adress,U.sexe,U.born,U.city,U.CP,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.id_image,I.name as imageUser, I.extension FROM users U, image I WHERE U.fk_id_image = I.id_image AND U.id_users ='".$id."'");
-
+			return $infoUserCo = F3::get('dB')->exec("SELECT U.id_users, U.login,U.name,U.firstname,U.email,U.adress,U.sexe,U.born,U.city,U.CP,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.id_image,I.name as imageUser, I.extension FROM users AS U INNER JOIN image AS I ON U.fk_id_image = I.id_image WHERE U.id_users ='".$id."'");
 	}
 
 	function avis($idUser){
-		    $avis =new DB\SQL\Mapper(F3::get('dB'),'avis');
-            $filter = 'fk_id_users = '.$idUser;
-            $option = array(
-                'group'=>NULL,
-                'order'=>NULL
- 
-            );
-            return $avisUser = $avis->afind($filter,$option);
-
+			$avisUser=new DB\SQL\Mapper(F3::get('dB'),'avis');
+    		return $avisUser->afind(array('fk_id_users=?',$idUser));
 	}
 	function EditInfoUser($id,$id_image,$password,$born){
 
