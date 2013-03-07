@@ -1152,6 +1152,9 @@ section#monCompte {
 	position: absolute;
 }
 
+#selectHide{
+	display: none;
+}
 
 .detailOffre{
 	background-color: white;

@@ -401,7 +401,7 @@
 		<div class="contact-form-holder">
 				<h2>Formulaire de contact</h2>
 				<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
-					<select name="subject">
+					<select id="selectHide" name="subject">
 						<?php foreach($RespondAndPosted as $RespondAndPosted):?>
 							<option><?php echo $RespondAndPosted['title'].' - '.$RespondAndPosted['price']; ?></option>
 					    <?php endforeach; ?>
