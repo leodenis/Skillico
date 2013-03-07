@@ -115,7 +115,7 @@
 			<nav>
 				<ul class="menu" > 
 					<li>
-						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
+						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Accueil</a>			  
 					</li>
 					<li>
 						<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 

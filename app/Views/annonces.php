@@ -97,7 +97,7 @@
 						<nav>
 				<ul class="menu" > 
 					<li>
-						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
+						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Accueil</a>			  
 					</li>
 					<li>
 						<?php if(F3::get('SESSION.user')){ ?>
