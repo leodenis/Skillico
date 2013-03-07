@@ -54,7 +54,6 @@
     <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
-
 	<script>
 	$(function() {
 		$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
@@ -91,7 +90,7 @@
 	<div class="row">
 				<div class="grid_4">
 					<div class="logo">
-						<a href="./"><img src="public/images/logo.png" alt="" /></a>
+						<a href="<?php echo $BASE; ?>/"><img src="public/images/logo.png" alt="" /></a>
 					</div>	
 				</div>
 				<div class="grid_8">
@@ -449,6 +448,7 @@
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
+				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">

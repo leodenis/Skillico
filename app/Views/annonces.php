@@ -9,50 +9,34 @@
 	<![endif]-->
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <base href="<?php echo $BASE; ?>/" />
-	
+    <base href="<?php echo $BASE; ?>/" />	
 	<!-- CSS -->
-	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
-	
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700italic,700' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" href="public/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />	
 	<link rel="stylesheet" href="public/css/base.css">
-	<link rel="stylesheet" href="public/css/amazium.css">
-	
+	<link rel="stylesheet" href="public/css/amazium.css">	
 	<link rel="stylesheet" href="public/css/style.css">
-	<link rel="stylesheet" href="public/css/layout.css">
-	
+	<link rel="stylesheet" href="public/css/layout.css">	
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="public/images/favicon_skillico.ico" />
 	<link rel="apple-touch-icon-precomposed" href="public/images/apple-touch-icon.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="public/images/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="public/images/apple-touch-icon-114x114.png" />
-	
 	<script src="public/js/jquery.min.js" type="text/javascript"></script>
 	<script src="public/js/raphael-min.js" type="text/javascript"></script>
 	<script src="public/js/jquery.easing.1.3.js" type="text/javascript"></script>
-	
 	<script type="text/javascript" src="public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	
 	<script src="public/js/tooltips.js"></script>	
-	
 	<script src="public/js/twitter/jquery.tweet.js"></script>	
 	<script src="public/js/twitter/function.js"></script>	
-
 	<script src="public/js/functions.js"></script>	
-
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script> 
-
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-
 	<link rel="stylesheet" href="public/css/contactForm.css" />
     <script src="public/js/contactForm.js" type="text/javascript"></script>
-
-	<!-- // <script src="public/js/AjaxRequete.js"></script>	 -->
 	<script src="public/js/ajaxSearch.js"></script>
-
 	<script type="text/javascript">
 
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
@@ -302,6 +286,7 @@
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
+				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">

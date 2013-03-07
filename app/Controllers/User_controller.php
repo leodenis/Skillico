@@ -5,12 +5,6 @@ class User_controller extends Prefab{
 
 	}
 
-	function homeUser(){ 
-     $User=new User();
-     $info=$User->InfoDetails();
-     F3::set('info',$info);
- 	 echo Views::instance()->render('user.php');
-	}
 
 	function inscription(){
 

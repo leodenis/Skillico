@@ -920,6 +920,8 @@ header nav ul li ul li:hover a {
 	  transition: all  0.3s ease;
 }
 
+
+
 header nav ul li ul li:hover {
 	border:none;
 }
@@ -951,7 +953,7 @@ header nav ul li ul li:hover ul li a {
 .boutonId span:nth-child(3){
 	float: right;
 	margin-right: 6px;
-	margin-top: -16px;
+	margin-top: -19px;
 }
 
 .boutonId span:nth-child(3) a{
@@ -1881,6 +1883,18 @@ form#comment .formfield input[type="submit"] {
 	background: #ffeceb;
 }
 
+#erreur{
+	text-align: center;
+}
+
+#erreurFond{
+	background: #E1ECF0;
+}
+
+#charteCentre{
+	text-align: center;
+	padding-top: 10px;
+}
 
 /* navigation */
 .navigation{

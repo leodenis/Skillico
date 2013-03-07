@@ -1,9 +1,10 @@
 var http = require('http');
 var mysql = require('mysql');
+var ven = process.env.VCAP_SERVICES;
 var connection = mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'',
+	host: ven.host,
+	user: ven.iden,
+	password: ven.pwd,
 });
 connection.connect();
 
@@ -11,7 +12,7 @@ httpServer = http.createServer(function(req, res){
 	console.log('Connection made');
 });
 
-httpServer.listen(1337);
+httpServer.listen('http://denis-leo.com/SkillicoMdp');
 var io = require('socket.io').listen(httpServer);
 var idBid = 0;
 var temps = 432000000;
@@ -49,9 +50,7 @@ function decrementation(idOffer){
 		}
 		else if (bids[i].end != true && bids[i].seconds == 0 && bids[i].minutes == 0 && bids[i].hours == 0 && bids[i].days == 0) {
 			bids[i].end = true;
-			console.log()
-			// connection.connect();
-			connection.query('UPDATE  `skillico`.`offer` SET  `price` =  "'+bids[i].price+'", `visibility` =  "1", `fk_id_users_respond` = "'+bids[i].winnerId+'" WHERE  `offer`.`id_offer` ='+bids[i].id+';', function(err, rows, fields) {
+			connection.query('UPDATE  `db457678616`.`offer` SET  `price` =  "'+bids[i].price+'", `visibility` =  "1", `fk_id_users_respond` = "'+bids[i].winnerId+'" WHERE  `offer`.`id_offer` ='+bids[i].id+';', function(err, rows, fields) {
 			});
 			clearInterval(bids[i].interval);
 		}

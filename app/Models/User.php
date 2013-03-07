@@ -3,10 +3,6 @@ class User extends Prefab{
 	function __construct(){
 
 	}
-	
-	function InfoDetails(){
-			return $info = F3::get('dB')->exec("SELECT U.id_users,U.name,U.firstname,U.email,U.adress,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.name, I.extension FROM users AS U INNER JOIN image AS I ON U.fk_id_image = I.id_image WHERE U.id_users =2" );
-	}
 
 	function inscription($password,$born){
 		   $img=Web::instance()->receive();

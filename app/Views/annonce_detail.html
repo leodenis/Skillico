@@ -9,202 +9,141 @@
 	<![endif]-->
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-        <base href="<?php echo $BASE; ?>/" />
-	
+	<base href="<?php echo $BASE; ?>/" />
+	<?php header('Access-Control-Allow-Origin: *'); ?>
 	<!-- CSS -->
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
-	
 	<link rel="stylesheet" href="public/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />	
 	<link rel="stylesheet" href="public/css/base.css">
 	<link rel="stylesheet" href="public/css/amazium.css">
-	
 	<link rel="stylesheet" href="public/css/style.css">
 	<link rel="stylesheet" href="public/css/layout.css">
-	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="public/css/contactForm.css" />
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="public/images/favicon_skillico.ico" />
 	<link rel="apple-touch-icon-precomposed" href="public/images/apple-touch-icon.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="public/images/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="public/images/apple-touch-icon-114x114.png" />
-
-	
+	<!-- Javascript -->
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script> 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="public/js/raphael-min.js" type="text/javascript"></script>
 	<script src="public/js/jquery.easing.1.3.js" type="text/javascript"></script>
-	
- <!-- slideshow -->
-	
-	
 	<script type="text/javascript" src="public/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-	
 	<script src="public/js/tooltips.js"></script>	
-	
 	<script src="public/js/twitter/jquery.tweet.js"></script>	
 	<script src="public/js/twitter/function.js"></script>	
-
 	<script src="public/js/functions.js"></script>	
-
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-
-	<script src="http://localhost:1337/socket.io/socket.io.js"></script>
-
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-
-	<link rel="stylesheet" href="public/css/contactForm.css" />
-    <script src="public/js/contactForm.js" type="text/javascript"></script>
-
 	<script src="public/js/ajaxSearch.js"></script>	
-
-	<script type="text/javascript">
-
-	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
-
-		$(document).ready(function() {
-			$(".deposer_annonce").fancybox({
-				'width'				: '60%',
-				'height'			: '100%',
-				'autoScale'			: false,
-				'transitionIn'		: 'true',
-				'transitionOut'		: 'true',
-				'type'				: 'iframe'
-			});
-	
-		});		
-	</script>
-
-	<script type="text/javascript"> 
-
-	$(document).ready(function(){
-	    $("#rech").click(function () {
-	        $("#featured").slideToggle("slow");
-	         //$(this).toggleClass("enroule"); return false;
-	    });
-
-	   $("#forPass").click(function(){
-	        $("#oubliPass").slideToggle();
-	    });
-	   
-	});
-
-	</script> 
+	<!-- node.js -->
+	<script src="http://skilico.eu01.aws.af.cm/socket.io/socket.io.js"></script>
 
 </head>
 <body>
 
 <header>
 	<div class="topstatic">
-	<div class="row">
-				<div class="grid_4">
-					<div class="logo">
-						<a href="./"><img src="public/images/logo.png" alt="" /></a>
-					</div>	
+		<div class="row">
+			<div class="grid_4">
+				<div class="logo">
+					<a href="<?php echo $BASE; ?>/"><img src="public/images/logo.png" alt="" /></a>
+				</div>	
+			</div>
+			<div class="grid_8">
+				<!--start navigation-->
+				<div class="call_contact">
+					<span><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://twitter.com/Skillicohetic" data-via="Skillicohetic" data-lang="en">Tweet</a></span>
+					<span class="fb-like" data-href="http://www.facebook.com/skillico" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></span></br>
 				</div>
-				<div class="grid_8">
-					<!--start navigation-->
-					<div class="call_contact">
-						<span><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://twitter.com/Skillicohetic" data-via="Skillicohetic" data-lang="en">Tweet</a></span>
-						<span class="fb-like" data-href="http://www.facebook.com/skillico" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></span></br>
-					</div>
-						
-
-					<!--end navigation-->	
-				</div>
-
-	</div>
-	</div>
-
-	<div class="top gun">
-	<div class="row">
-
-		<div class="grid_12">
-			<!--start navigation-->
-			<nav>
-				<ul class="menu" > 
-					<li class="selected">
-						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
-					</li>
-					<li>
-						<?php if(F3::get('SESSION.user')){ ?>
-							<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-						<?php } else { ?>
-							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
-						<?php } ?>
-						
-					</li>
-					<li>
-						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
-					</li>
-					<?php 
-						if(F3::get('SESSION.user')){
-						 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
-						}
-					?>							  
-						
-				</ul>
-					<?php 
-						if(F3::get('SESSION.user')){
-
-							echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="'.$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
-							echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';
-
-						}
-						else{
-					?>
-						<div id="contactLink" class="boutonId">
-							<span id="creerCompte" ><a>Créer un compte</a></span><br>
-							<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
-						</div>
-
-					<?php
-						}
-					?>		
-
-			</nav>
-			<!--end navigation-->	
+				<!--end navigation-->	
+			</div>
 		</div>
+	</div>
+	<div class="top gun">
+		<div class="row">
+			<div class="grid_12">
+				<!--start navigation-->
+				<nav>
+					<ul class="menu" > 
+						<li class="selected">
+							<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
+						</li>
+						<li>
+							<?php if(F3::get('SESSION.user')){ ?>
+								<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+							<?php } else { ?>
+								<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+							<?php } ?>
+						</li>
+						<li>
+							<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
+						</li>
+						<?php 
+							if(F3::get('SESSION.user')){
+							 	echo '<li><a href="monCompte"><img src="public/images/menu/MonCompte2.png">Mon Compte</a></li>';
+							}
+						?>							  
+					</ul>
+						<?php 
+							if(F3::get('SESSION.user')){
+								echo '<div id="logg"><a href="monCompte" alt="mon_compte"><img src="'.$InfoUser[0]['imageUser'].'" id="pic_header" /><p id="userConnect">Bienvenue ' .F3::get('SESSION.user[0][login]').'</p></a>';	
+								echo '<a href="user/deconnexion"><p id="userDeco">Déconnexion</p></a></div>';
+							}
+							else{
+						?>
+							<div id="contactLink" class="boutonId">
+								<span id="creerCompte" ><a>Créer un compte</a></span><br>
+								<span ><a><img src="public/images/menu/seConnecter.png">Se connecter</a></span>
+							</div>
+						<?php
+							}
+						?>		
+				</nav>
+				<!--end navigation-->	
+			</div>
+			<div class="grid_12 centered margintop15">
+				<div class="grid_5 nomargin" id="connexion">
+					<div class="box">
+					    <div id="contactFormContainer">
+					        <div id="contactForm">
+					            <fieldset>
+					            	<div id="part_connect">
+					            		<h4>Se Connecter</h4>
+				   						<form action="user/connexion" method="post" enctype="multipart/form-data">
+							                <label for="identifiant" id="identity">Identifiant*</label>
+							                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
+							                <label for="mdp">Mot de passe*</label>
+							                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
+							                <input id="sendRequest" type="submit" value="save"/>
+							            </form>
+							                <a id="forPass">Mot de passe oublié ?</a><br/>
+							                <div id="oubliPass">
+							                	<form action="user/forgetpassword" method="post" enctype="multipart/form-data">
+								                	<input id="mail" type="text" name="login" placeholder="Login" value="" />
+								               		<input id="subForget" type="submit" value="Ok"/>
+								               	</form>
+							            	</div>
 
-		<div class="grid_12 centered margintop15">
-			<div class="grid_5 nomargin" id="connexion">
-				<div class="box">
-				    <div id="contactFormContainer">
-				        <div id="contactForm">
-				            <fieldset>
-				            	<div id="part_connect">
-				            		<h4>Se Connecter</h4>
-			   						<form action="user/connexion" method="post" enctype="multipart/form-data">
-						                <label for="identifiant" id="identity">Identifiant*</label>
-						                <input id="identifiant" type="text" name="login" placeholder="login" value="" />
-						                <label for="mdp">Mot de passe*</label>
-						                <input id="mdp" type="password" name="password" placeholder="password" value=""/>
-						                <input id="sendRequest" type="submit" value="Connexion"/>
-						            </form>
-						                <a id="forPass">Mot de passe oublié ?</a><br/>
-						                <div id="oubliPass">
-						                	<form action="user/forgetpassword" method="post" enctype="multipart/form-data">
-							                	<input id="mail" type="text" name="login" placeholder="Login" value="" />
-							               		<input id="subForget" type="submit" value="Ok"/>
-							               	</form>
-						            	</div>
-
-					            </div>
-					            <div id="part_identify">
-					            	<h4>Inscriver vous gratuitement</h4><br/>
-					            	<a href="formulaire_inscription"><img src="./public/images/icons/btn_inscription.png"></a><br/>
-					            	<a href="user/facebookConnect"><img src="./public/images/icons/fb_connect.png"/></a>
-					            </div>
-				            </fieldset>
-				        </div>
-				    </div>            
+						            </div>
+						            <div id="part_identify">
+						            	<h4>Inscriver vous gratuitement</h4></br>
+						            	<a href="formulaire_inscription"><p>S'inscrire</p></a>
+						            	<a><p>Facebook connect</p></a>
+						            	<a><p>Twitter connect</p></a>
+						            </div>
+					            </fieldset>
+					        </div>
+					    </div>            
+					</div>
 				</div>
 			</div>
 		</div>
-	
 	</div>
-	</div>
-
 </header>
+
 <aside id="featured" class="nopaddingbot marginbottom0">
 	<img src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 		<form id="position" class="form-wrapper">
@@ -212,13 +151,11 @@
 			<input type="submit" value="Rechercher" id="submit">
 		</form>
 </aside>
-
 <div id="btn_recherche2">
     <a id="rech">
        <div id="mon_bouton"></div>
     </a>
 </div>
-
 <section id="tri">
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
@@ -228,10 +165,8 @@
 			<div class="grid_8 nomargin">
 				<h3 class="h3AnnonceDetail">Détails  de l'annonce</h3>
 			</div>
-		
 </section>
 <section id="annonces">
-
 	<div class="row features">
 		<div class="grid_12 centered margintop15">
 			<div class="grid_3 nomargin detailOffreEnchereMenu" id="part_left">
@@ -267,7 +202,6 @@
 				<?php
 				} 
 				?>
-
 			</div>
 				<div class="grid_8 nomargin detailOffre">
 					<div class="descriptionOffre">
@@ -305,12 +239,6 @@
 							<tr>
 								<th>Enchérisseur</th> <th>Montant</th> <th>Heure de l'enchère</th>
 							</tr>
-							<!-- <tr>
-								<td>Marie B.</td> <td>142€</td> <td>12h15min42s le 23/02/2013</td>
-							</tr>
-							<tr>
-								<td>Coucou C.</td> <td>140€</td> <td>12h11min42s le 23/02/2013</td>
-							</tr> -->
 						</table>
 					</div>
 				</div>
@@ -320,8 +248,6 @@
         ?>
 	</div>
 </section>
-
-
 
 <footer>
 	<div class="row">
@@ -339,7 +265,6 @@
 				<li class="dribble"><a href="#" data-rel="tooltip" title="Dribble">Dribble</a></li>
 			</ul>	
 		</div>
-		
 		<div class="grid_3">
 			<h4>Le site</h4>
 			<ul class="arrow-dot">
@@ -351,6 +276,7 @@
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
+				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">
@@ -366,30 +292,40 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 	</div>
 	<br/>
 	<div style="width:1200px; margin:0 auto;"><p style="float:right;"><a href="">Skillico</a> - La rémunération de service de demain</p></div>
-	
-	
-
 </footer>
 <a href="#" class="scrollup">Scroll</a>
-<script>(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-		 	if (d.getElementById(id)) return;
-		  	js = d.createElement(s); js.id = id;
-	  		js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-	  		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
 
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	<script type="text/javascript">
-	var socket = io.connect('http://localhost:1337');
+<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+	 	if (d.getElementById(id)) return;
+	  	js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	$(document).ready(function(){
+		$("#deposer_annonce").fancybox({
+			'width'				: '60%',
+			'height'			: '100%',
+			'autoScale'			: false,
+			'transitionIn'		: 'true',
+			'transitionOut'		: 'true',
+			'type'				: 'iframe'
+		});
+	    $("#rech").click(function () {
+	        $("#featured").slideToggle("slow");
+	         //$(this).toggleClass("enroule"); return false;
+	    });
+	   $("#forPass").click(function(){
+	        $("#oubliPass").slideToggle();
+	    });
+	});
+	var socket = io.connect('http://skilico.eu01.aws.af.cm');
 	var idofferpage = <?php echo $offer[0]['id_offer'] ?>;
 	var user = <?php $id = F3::get('SESSION.user'); echo json_encode($id[0]);?>;
-	console.log(user)
 	socket.on('decrementation',function(bids,idOffer){
-		console.log(idOffer);
 		if(idOffer == idofferpage ){
-			console.log(bids[idOffer].seconds);
 			$('.histo').remove();
 			$('.' + idOffer + ' .jj').html(bids[idOffer].days);
 			$('.' + idOffer + ' .hh').html(bids[idOffer].hours);
@@ -398,14 +334,12 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 			for(k in bids[idOffer].history){
 				$('#histo').append('<tr class="histo"><td>'+bids[idOffer].history[k].name+'</td> <td>'+bids[idOffer].history[k].price+'€</td> <td>'+bids[idOffer].history[k].hour+'</td></tr>');
 			}
-			console.log(bids[idOffer].price)
 			$('input[name="price"]').val(bids[idOffer].price);
 		}
-	})
+	});
 	$('.encherir').click(function(){
 		socket.emit('bid',idofferpage,user);
-	})
-
+	});
 	</script>
 	</body>
 </html>
