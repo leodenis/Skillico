@@ -296,7 +296,7 @@
 					<?php
 						}
 					 ?>
-					 <?php if ($getOfferByUSerId['visibility'] == 3){ ?>
+					 <?php if ($getOfferByUSerId['payment'] == 1 ){ ?>
 						 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
 					 <?php }  ?>
 					 <?php 
@@ -333,7 +333,7 @@
 				</div>
 			</div>  
 				<div class="tab_part_right" id="noteOuverte">
-					<form action="offer/postAvis" method="post">
+					<form action="offer/postAvis/<?php echo $getOfferByUSerId['id_offer']; ?>" method="post">
 						<label>Commentaire sur la prestation :<input type="text" name="description" placeholder="Votre commentaire"/></label>
 						<label>Note sur 20 :<input type="text" name="note" placeholder="Votre note entre 0 et 20"/></label>
 						<input type="hidden" name="fk_id_users" value="<?php echo $getOfferByUSerId['fk_id_users_respond'];?>">

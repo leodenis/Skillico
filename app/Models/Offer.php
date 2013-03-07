@@ -246,16 +246,18 @@ class Offer extends Prefab
 
 /**
     Post avis
+    @param $idOffer
     @return void
 **/
-    function postAvis(){
+    function postAvis($idOffer){
         $avis=new DB\SQL\Mapper(F3::get('dB'),'avis');
         $avis->copyFrom('POST'); 
         $avis->save();
 
-        // $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
-        // $offer->payment=2;
-        // $offer->update(); 
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        $offer->load(array('id_offer=?',$idOffer));
+        $offer->payment=2;
+        $offer->update(); 
     }
 
 /**

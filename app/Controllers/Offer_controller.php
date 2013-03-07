@@ -139,7 +139,8 @@ class Offer_controller{
     }
 
     function postAvis(){
-        Offer::instance()->postAvis();
+        $idOffer=F3::get('PARAMS.IdOffer');
+        Offer::instance()->postAvis($idOffer);
         F3::reroute('/monCompte');
     }
 
