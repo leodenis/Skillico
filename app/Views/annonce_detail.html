@@ -208,13 +208,14 @@
 						<img src="public/images/dummies/img.png">
 						<h3><?php echo $offer[0]['title']; ?></h3><br>
 						<h4>Description de l'annonce</h4>
-						<p><?php echo $offer[0]['desciption']; ?></p>
+						<p><?php echo $offer[0]['description']; ?></p>
 						<h4>Localisation</h4>
 						<img id="mapDetail" src="public/images/slide/map.jpg" style="margin:0px;" alt="Milieu urbain illustrant le concept de Skillico">
 						<?php 
 						if($offer[0]['type']=='immediat'){
 						?>
-							<a href="offer/postulate/<?php echo $offer[0]['id_offer'];?>-<?php echo $offer[0]['id_users'];?>"><input type="button" value="Postuler" class="postuler"></a>
+							<a href="offer/postulate/<?php echo $offer[0]['id_offer'];?>-<?php echo F3::get('SESSION.user')[0]['id_users'];?>
+"><input type="button" value="Postuler" class="postuler"></a>
 						<?php
 						}else{
 						?>

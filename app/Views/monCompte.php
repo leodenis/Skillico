@@ -263,7 +263,7 @@
 		<h2>Mes services effectués</h2>
 		<?php foreach($getOfferRespondByUSerId as $getOfferRespondByUSerId):?>
 		     <div class="tab_part_right">
-				<img src="public/images/list/achat_immediat.jpg">
+				<img src="public/images/list/immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
 					<h3><?php echo $getOfferRespondByUSerId['title']; ?></h3><br>
@@ -284,7 +284,7 @@
 		<h2>Mes annonces postées</h2>
 		<?php foreach($getOfferByUSerId as $getOfferByUSerId):?>
 	        <div class="tab_part_right">
-				<img src="public/images/list/achat_immediat.jpg">
+				<img src="public/images/list/immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
 					<h3><?php echo $getOfferByUSerId['title']; ?></h3><br>

@@ -243,15 +243,7 @@
 			<div id="donneesAnnonces">
 				
             </div>
-            <!-- <form id="previous_form" action="offer-2" methode="POST">
-				<input class="objpage" type="hidden">
-				<input type="submit" value="PREV" class="postuler">
-			</form>
 
-            <form id="next_form" action="offer-2" methode="POST">
-				<input class="objpage" type="hidden">
-				<input type="submit" value="NEXT" class="postuler">
-			</form> -->
         </div>
 	</div>
 </section>

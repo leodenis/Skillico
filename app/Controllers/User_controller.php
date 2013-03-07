@@ -5,7 +5,10 @@ class User_controller extends Prefab{
 
 	}
 
-
+    /**
+    User inscription
+    @return void
+    **/
 	function inscription(){
 
 		switch(F3::get('VERB')){
@@ -59,6 +62,12 @@ class User_controller extends Prefab{
 		}
 	   
 	}
+
+/**
+    User inscription
+    @return void
+**/
+
 	function inscriptionfb(){
 		require './app/Libraries/facebook.php';
 			$facebook = new Facebook(array(
@@ -138,7 +147,10 @@ class User_controller extends Prefab{
 
 	}
 
-
+    /**
+    User connexion
+    @return void
+    **/
 
 	function connexion(){
 
@@ -184,6 +196,11 @@ class User_controller extends Prefab{
 	   
 	}
 
+/**
+    User forgetpassword
+    @return void
+**/
+
 	function forgetpassword(){
 		switch(F3::get('VERB')){
 			case 'GET':
@@ -223,6 +240,10 @@ class User_controller extends Prefab{
 
 	}
 
+/**
+    User monCompte
+    @return void
+ **/
 	function monCompte(){
 		$id=F3::get('SESSION.user');
 	    $id=$id[0]['id_users'];
@@ -266,7 +287,12 @@ class User_controller extends Prefab{
 
 	}
 
-	function edit(){
+/**
+    User edit
+    @return void
+**/	
+
+    function edit(){
 	    switch(F3::get('VERB')){
 	      case 'GET':
 	       	$id=F3::get('SESSION.user');
@@ -298,10 +324,21 @@ class User_controller extends Prefab{
 	    }
   	}
 
+/**
+    User deconnexion
+    @return void
+**/	
+
 	function deconnexion(){
 		F3::clear('SESSION.user');
 		F3::reroute('/');
 	}
+
+/**
+    User Delete
+    @return void
+**/	
+
 	function delete(){
 		$image=new DB\SQL\Mapper(F3::get('dB'),'image');
 		$image->load(array('id_image=1'));
