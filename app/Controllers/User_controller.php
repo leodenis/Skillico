@@ -127,7 +127,7 @@ class User_controller extends Prefab{
 			}
 		}else{ $gender='';}
 
-		if (isset($facebook_profile['location']['name')) {
+		if (isset($facebook_profile['location']['name'])) {
 			$city=$facebook_profile['location']['name'];
 		}else{ $city='';}
 		

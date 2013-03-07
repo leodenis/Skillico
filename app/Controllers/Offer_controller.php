@@ -120,23 +120,15 @@ class Offer_controller{
     Offer post
     @return void
     **/
-    function searchHome(){
-        F3::set('searchHome',$searchHome);
-        echo Views::instance()->render('p');
-        F3::reroute('/offer');
+    
+    function paypal(){
+        $offer_id = PaypalSuccess::instance()->success();
+        if (isset($offer_id)) {
+            $Offer=new Offer();
+            $recupPaypal=$Offer->paypal($offer_id);
+        }
     }
-    function searchMap(){
-        $searchMap = Offer::instance()->getOfferListe();
-        F3::set('searchMap',$searchMAp);
-    }
-  	function paypal(){
-  		$offer_id = PaypalSuccess::instance()->success();
-  		if (isset($offer_id)) {
-  			$Offer=new Offer();
-  			$recupPaypal=$Offer->paypal($offer_id);
-  		}
-  	}
-  	
+    
     function paypalSuccess(){
         F3::reroute('/monCompte');
     }
@@ -145,26 +137,26 @@ class Offer_controller{
         F3::reroute('/monCompte');
     }
 
-  	function postAvis(){
-  		Offer::instance()->postAvis();
-  		F3::reroute('/monCompte');
-  	}
+    function postAvis(){
+        Offer::instance()->postAvis();
+        F3::reroute('/monCompte');
+    }
 
-  	function reclamation(){
-  		switch(F3::get('VERB')){
-  			case 'GET':
+    function reclamation(){
+        switch(F3::get('VERB')){
+            case 'GET':
 
-  			break;
-  			case 'POST':
-  				$subject=$_POST['subject'];
-  				$email=$_POST['email'];          
-  				$message=$_POST['message'];
-  				$user=$_POST['user']; 
-  				Mail::instance()->sendmailReclamation($subject,$email,$message,$user);
-  				F3::reroute('/monCompte');
-  			break;
-  		}
-  	}
+            break;
+            case 'POST':
+                $subject=$_POST['subject'];
+                $email=$_POST['email'];          
+                $message=$_POST['message'];
+                $user=$_POST['user']; 
+                Mail::instance()->sendmailReclamation($subject,$email,$message,$user);
+                F3::reroute('/monCompte');
+            break;
+        }
+    }
 
 
 

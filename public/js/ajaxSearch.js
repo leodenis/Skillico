@@ -109,7 +109,6 @@ window.onload = function(){
 					var address = $('#addressToCenter').val();
 					var geocoder = new google.maps.Geocoder();
 	                geocoder.geocode({"address":address}, function(data,status){
-	                	console.log(data);
 	                    if(status=='OK'){
 	                        var lat = data[0].geometry.location.lat();
 	                        var lng = data[0].geometry.location.lng();
@@ -172,7 +171,6 @@ window.onload = function(){
 			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 			search.priceRange[0] = ui.values[0];
 			search.priceRange[1] = ui.values[1];
-			console.log(search);
 		}
 	})
 	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
@@ -199,11 +197,9 @@ window.onload = function(){
 		// if(datareqLoc!=null){
 		// 	search = datareqLoc;
 		// }else{
-			console.log(reqURL)
 			//Récupération des données
 			if(reqURL == null || (reqURL.search('=')+1) == 0){
 				search.searchBarre = document.getElementById('search2').value;
-				reqURL = null;
 			}else{
 				search.searchBarre = reqURL.substring((reqURL.search('=')+1),reqURL.length);
 				document.getElementById('search2').value = reqURL.substring((reqURL.search('=')+1),reqURL.length);

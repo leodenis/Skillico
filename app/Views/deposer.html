@@ -4,16 +4,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="imagetoolbar" content="no" />
 	<title>Lightbox</title>
-
  	<link rel="stylesheet" href="public/css/fancy_style.css" />
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="public/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 	<script src="http://localhost:1337/socket.io/socket.io.js"></script>
-	<!-- // <script type="text/javascript" src="public/js/enchere.js"></script> -->
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 	<script type="text/javascript" src="public/js/skill_map.js"></script>
-	<!-- // <script src="http://maps.google.com/maps/api/js?sensor=true"></script>  -->
-
 </head>
 <body id="mon_body">
 	<div id="master">
@@ -23,7 +19,6 @@
 				<p>Veillez à bien à remplir tous les champs obligatoires pour que votre annonce se publie correctement</p>
 			</div>
 		</div>
-
 		<div id="content">
 			<div id="content-form">
 				<form id="offerPost">
@@ -50,7 +45,6 @@
 								<option value="3">Longue durée</option><br/><br/>
 							</select><br/><br/>
 						</div>
-
 						<label> Type de vente</label><br/>
 						<div class="mon_select">
 							<input checked="yes" required style="font-size:1.2em;" type="radio" id="ma_radio" name="type_annonce" value="immediat"><label for="ma_radio">Achat immédiat</label>
@@ -65,7 +59,6 @@
 							<input name="seconds" type="number" min="0" max="59" value="0"> Seconds
 						</div>
 					</div>
-
 					<div class="info">
 						<h2>Adresse du service à rendre</h2>
 						<label for="adress">Adresse</label><br/>
@@ -78,9 +71,6 @@
 				        <ul id="list"></ul>
 				    </div>
 					</div>
-
-
-
 					<div class="info">
 						<h2>Rémunération</h2>
 						<label for="price">Montant de la rémunération</label><br/>
@@ -88,11 +78,9 @@
 						<p>Le montant de la rémunération comprend les frais fixes pour le service ainsi que le prix de l’achat du produit.
 						<br/>Exemple : vous souhaitez vous faire livrer un Mc Do 5.00 € pour le service + 7.40 € pour le produit = 12.40 €</p><br/><br/>
 					</div>
-
 					<div class="info_mentions" id="checkCondition">
 						<input required type="checkbox" name="conditions" id="conditions" value="conditions" /><label for="ma_mention">J’ai lu et j’accepte les conditions générales d’utilisation de <a href="">skillico.fr</a></label>
 					</div>
-
 					<div class="info_button">
 						<input type="submit" value="Publier" class="postuler">
 						<input type="button" value="Annuler" id="fancybox-close" class="postuler">
@@ -101,23 +89,17 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript">
-    
+<script type="text/javascript">  
 	var socket = io.connect('http://localhost:1337');
-
 	$('#fancybox-close').click(function(){
 		parent.$.fancybox.close();
 	})
-
 	$('input[value="enchere"]').click(function(){
 		$('#enchereSetUp').fadeIn();
 	})
 	$('input[value="immediat"]').click(function(){
 		$('#enchereSetUp').fadeOut();
 	})
-            
-        
-
     $('#offerPost').submit(function(event){
         event.preventDefault();
         if($('#conditions')[0].checked){
@@ -134,37 +116,34 @@
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({"address":offer.address}, function(data,status){
                         if(status=='OK'){
-                                offer.address.value = data[0].formatted_address;
-                                offer.lat=data[0].geometry.location.lat();
-                                offer.Lng=data[0].geometry.location.lng();
-                                $.ajax({
-                                        type: "POST",
-                                        url: 'offer',
-                                        data: { title: offer.title ,
-                                        		description: offer.description ,
-                                        		price: offer.price ,
-                                        		lat: offer.lat ,
-                                        		lng: offer.Lng ,
-                                        		type: offer.type ,
-                                        		fk_id_offer_duration: offer.fk_duration_offer ,
-                                        		fk_id_offer_cat: offer.fk_cat_offer ,
-                                        		fk_id_users_post: <?php $id=F3::get('SESSION.user'); echo $id=$id[0]['id_users']; ?>}
-                                }).done(function(idOffer) {
-						            if(offer.type == 'enchere'){
-						            	console.log(idOffer)
-										var duration = {};
-										duration.seconds = $('input[name="seconds"]').val();
-										duration.minutes = $('input[name="minutes"]').val();
-										duration.hours = $('input[name="hours"]').val();
-										duration.days = $('input[name="days"]').val();
-										socket.emit('newBid', duration,idOffer,offer.price);
-						            }
-                                	$('form').remove;
-                                	$('#content-form').html('<p>Votre a bien &eacute;t&eacute; ajout&eacute;.</p>')
-									window.setInterval(function(){parent.$.fancybox.close();},1500);
-                                });
-                        }else{
-
+                            offer.address.value = data[0].formatted_address;
+                            offer.lat=data[0].geometry.location.lat();
+                            offer.Lng=data[0].geometry.location.lng();
+                            $.ajax({
+                                    type: "POST",
+                                    url: 'offer',
+                                    data: { title: offer.title ,
+                                    		description: offer.description ,
+                                    		price: offer.price ,
+                                    		lat: offer.lat ,
+                                    		lng: offer.Lng ,
+                                    		type: offer.type ,
+                                    		fk_id_offer_duration: offer.fk_duration_offer ,
+                                    		fk_id_offer_cat: offer.fk_cat_offer ,
+                                    		fk_id_users_post: <?php $id=F3::get('SESSION.user'); echo $id=$id[0]['id_users']; ?>}
+                            }).done(function(idOffer) {
+					            if(offer.type == 'enchere'){
+									var duration = {};
+									duration.seconds = $('input[name="seconds"]').val();
+									duration.minutes = $('input[name="minutes"]').val();
+									duration.hours = $('input[name="hours"]').val();
+									duration.days = $('input[name="days"]').val();
+									socket.emit('newBid', duration,idOffer,offer.price);
+					            }
+                            	$('form').remove;
+                            	$('#content-form').html('<p>Votre a bien &eacute;t&eacute; ajout&eacute;.</p>')
+								window.setInterval(function(){parent.$.fancybox.close();},1500);
+                            });
                         }
                 });   
             }
@@ -173,8 +152,6 @@
             $('#conditions').after('<span class="textError">Veuillez accepter les conditions d\'utilisation de Skillico.</span>')
         }
     })
-
-	
 </script>
 
 </body>
