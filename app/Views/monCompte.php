@@ -54,8 +54,6 @@
     <script src="public/js/jquery-1.2.6.min.js" type="text/javascript"></script>
     <script src="public/js/contactForm.js" type="text/javascript"></script>
 
-
-
 	<script>
 	$(function() {
 		$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
@@ -67,7 +65,7 @@
 	/* SCRIPT QUI PERMET D'OUVRIR LA LIGHTBOX */
 
 		$(document).ready(function() {
-			$("#deposer_annonce").fancybox({
+			$(".deposer_annonce").fancybox({
 				'width'				: '60%',
 				'height'			: '100%',
 				'autoScale'			: false,
@@ -120,7 +118,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
 					</li>
 					<li>
-						<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -169,11 +167,10 @@
 					                <input id="mdp" type="text" />
 					                <input id="sendRequest" type="submit" name="submit" onclick="closeForm()" />
 					            </div>
-					            <div id="part_identify">
-					            	<h4>Inscriver vous gratuitement</h4></br>
-					            	<a href="formulaire_inscription"><p>S'inscrire</p></a>
-					            	<a><p>Facebook connect</p></a>
-					            	<a><p>Twitter connect</p></a>
+					        	<div id="part_identify">
+					            	<h4>Inscriver vous gratuitement</h4><br/>
+					            	<a href="formulaire_inscription"><img src="./public/images/icons/btn_inscription.png"></a><br/>
+					            	<a href="user/facebookConnect"><img src="./public/images/icons/fb_connect.png"/></a>
 					            </div>
 				            </fieldset>
 				        </div>
@@ -402,7 +399,7 @@
 		<div class="contact-form-holder">
 				<h2>Formulaire de contact</h2>
 				<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
-					<select name="subject">
+					<select id="selectHide" name="subject">
 						<?php foreach($RespondAndPosted as $RespondAndPosted):?>
 							<option><?php echo $RespondAndPosted['title'].' - '.$RespondAndPosted['price']; ?></option>
 					    <?php endforeach; ?>
@@ -444,10 +441,13 @@
 			<h4>Le site</h4>
 			<ul class="arrow-dot">
 				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Déposer une annonce</a></li>
-				<li><a href="#">Qui sommes-nous ?</a></li>
-				<li><a href="#">Mon compte</a></li>
-				<li><a href="#">Réclamations</a></li>
+				<li><?php if(F3::get('SESSION.user')){ ?>
+							<a class="deposer_annonce" href="deposerUneAnnonce">Deposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription">Deposer une annonce</a> 
+						<?php } ?>	</li>
+				<li><a href="offer">Consulter les annonces</a></li>
+				<li><a href="monCompte">Mon compte</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">

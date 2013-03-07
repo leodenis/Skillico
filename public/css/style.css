@@ -721,6 +721,12 @@ header nav ul li {
 
 }
 
+#referencement{
+	margin: auto;
+	text-align: center;
+
+}
+
 #mdp{
 	width: auto;
 }
@@ -945,7 +951,7 @@ header nav ul li ul li:hover ul li a {
 .boutonId span:nth-child(3){
 	float: right;
 	margin-right: 6px;
-	margin-top: -16px;
+	margin-top: -18px;
 }
 
 .boutonId span:nth-child(3) a{
@@ -1141,11 +1147,18 @@ section#monCompte {
 	padding: 20px 0px;
 }
 #position{
-	margin-left: 54%;
+	margin-left: 48%;
 	margin-top: -130px;
 	position: absolute;
 }
 
+#selectHide{
+	display: none;
+}
+
+div#part_identify img{
+	padding-left: 17px;
+}
 
 .detailOffre{
 	background-color: white;
