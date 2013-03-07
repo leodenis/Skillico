@@ -20,8 +20,8 @@ class Offer extends Prefab
     @return array
   **/
 	function getOfferListe(){
-            $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-            return $offer = $offer->find('visibility = 0 ',array('order'=>'id_offer DESC'));
+        $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
+        return $offer = $offer->find('visibility = 0 ',array('order'=>'id_offer DESC'));
 	}
 
 /**
@@ -29,9 +29,9 @@ class Offer extends Prefab
     @return array
     @param $idOffer number
   **/
-	function getOfferDetails($idOffer){
-	    $offer = F3::get('dB')->exec('SELECT * FROM offer WHERE id_offer = ' . $idOffer);
-	    return $offer;
+	function getOfferDetails($idOffer){  
+        $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        return $offer->afind(array('id_offer=?',$idOffer));
 	}
 
 /**
@@ -40,7 +40,7 @@ class Offer extends Prefab
     @param $idOffer number
   **/
     function getOfferUserDetails($idOffer){
-        $offer = F3::get('dB')->exec('SELECT * FROM offer O, users U WHERE O.id_offer = ' . $idOffer.' AND O.fk_id_users_post = U.id_users');
+        $offer = F3::get('dB')->exec('SELECT * FROM offer AS O INNER JOIN users AS U ON O.id_offer = ' . $idOffer.' WHERE O.fk_id_users_post = U.id_users');
         return $offer;
     }
 
