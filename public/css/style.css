@@ -920,6 +920,8 @@ header nav ul li ul li:hover a {
 	  transition: all  0.3s ease;
 }
 
+
+
 header nav ul li ul li:hover {
 	border:none;
 }
@@ -1879,6 +1881,14 @@ form#comment .formfield input[type="submit"] {
 .formfield .validation-error:focus {
 	border:1px solid #f2c4c2;
 	background: #ffeceb;
+}
+
+#erreur{
+	text-align: center;
+}
+
+#erreurFond{
+	background: #E1ECF0;
 }
 
 
