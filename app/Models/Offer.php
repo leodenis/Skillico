@@ -252,6 +252,10 @@ class Offer extends Prefab
         $avis=new DB\SQL\Mapper(F3::get('dB'),'avis');
         $avis->copyFrom('POST'); 
         $avis->save();
+
+        // $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
+        // $offer->payment=2;
+        // $offer->update(); 
     }
 
 /**

@@ -19,15 +19,16 @@ class User_controller extends Prefab{
 				 $check=array(
 			      'login'=>'required',
 		   	      'password'=>'required',
-		   	      'password2' => 'required',
-		   	      'password' != 'password2',
+
+		   	      'password'=>'=password2',
 			      'email'=>'required',
 			      'name'=>'required',
 			      'firstname'=>'required',
 			      'adress'=>'required',
 			      'date_creation'=>'required',
 			      'last_connection'=>'required'
-			     
+			         			  
+
 			    );
 						
 			    $login=$_POST['login']; 
