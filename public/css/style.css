@@ -1891,6 +1891,10 @@ form#comment .formfield input[type="submit"] {
 	background: #E1ECF0;
 }
 
+#charteCentre{
+	text-align: center;
+	padding-top: 10px;
+}
 
 /* navigation */
 .navigation{

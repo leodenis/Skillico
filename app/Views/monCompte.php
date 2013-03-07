@@ -448,6 +448,7 @@
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
+				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">

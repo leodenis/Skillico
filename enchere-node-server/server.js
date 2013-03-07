@@ -1,9 +1,10 @@
 var http = require('http');
 var mysql = require('mysql');
+var ven = process.env.VCAP_SERVICES;
 var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: '',
+	host: ven.host,
+	user: ven.iden,
+	password: ven.pwd,
 });
 connection.connect();
 
@@ -11,7 +12,7 @@ httpServer = http.createServer(function(req, res){
 	console.log('Connection made');
 });
 
-httpServer.listen(1337);
+httpServer.listen('http://denis-leo.com/SkillicoMdp');
 var io = require('socket.io').listen(httpServer);
 var idBid = 0;
 var temps = 432000000;
