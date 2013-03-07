@@ -30,6 +30,10 @@ class App_controller{
 		echo Views::instance()->render('enchere_detail.html');	
 	}
 
+	function CGU(){
+		echo Views::instance()->render('cgu.html');
+	}
+
 	function __destruct(){
 
 	}

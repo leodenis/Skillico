@@ -118,13 +118,13 @@
 			<nav>
 				<ul class="menu" > 
 					<li class="selected">
-						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
+						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Accueil</a>			  
 					</li>
 					<li>
 						<?php if(F3::get('SESSION.user')){ ?>
-							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+							<a id="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 						<?php } else { ?>
-							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 						<?php } ?>
 						
 					</li>
@@ -312,15 +312,19 @@ Veuillez noter que, bien que nous nous efforcions à protéger toutes nos inform
 			<h4>Le site</h4>
 			<ul class="arrow-dot">
 				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Déposer une annonce</a></li>
-				<li><a href="#">Qui sommes-nous ?</a></li>
-				<li><a href="#">Mon compte</a></li>
-				<li><a href="#">Réclamations</a></li>
+				<li><?php if(F3::get('SESSION.user')){ ?>
+							<a class="deposer_annonce" href="deposerUneAnnonce">Déposer une annonce</a> 
+						<?php } else { ?>
+							<a id="dposer_annonce" href="formulaire_inscription">Déposer une annonce</a> 
+						<?php } ?>	</li>
+				<li><a href="offer">Consulter les annonces</a></li>
+				<li><a href="monCompte">Mon compte</a></li>
+				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">
 			<h4>En général</h4>
-			<p>Skillico est un site qui vous permet d’être rémunérer contre vos services. 
+			<p>Skillico est un site qui vous permet d’être rémunéré contre vos services. 
 Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 		</div>
 		<div class="grid_3">
