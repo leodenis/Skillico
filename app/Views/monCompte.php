@@ -115,10 +115,10 @@
 			<nav>
 				<ul class="menu" > 
 					<li>
-						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Acceuil</a>			  
+						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Accueil</a>			  
 					</li>
 					<li>
-						<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Deposer une annonce</a> 
+						<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
@@ -263,7 +263,7 @@
 		<h2>Mes services effectués</h2>
 		<?php foreach($getOfferRespondByUSerId as $getOfferRespondByUSerId):?>
 		     <div class="tab_part_right">
-				<img src="public/images/list/achat_immediat.jpg">
+				<img src="public/images/list/immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
 					<h3><?php echo $getOfferRespondByUSerId['title']; ?></h3><br>
@@ -284,7 +284,7 @@
 		<h2>Mes annonces postées</h2>
 		<?php foreach($getOfferByUSerId as $getOfferByUSerId):?>
 	        <div class="tab_part_right">
-				<img src="public/images/list/achat_immediat.jpg">
+				<img src="public/images/list/immediat.jpg">
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
 					<h3><?php echo $getOfferByUSerId['title']; ?></h3><br>
@@ -296,7 +296,7 @@
 					<?php
 						}
 					 ?>
-					 <?php if ($getOfferByUSerId['visibility'] == 3){ ?>
+					 <?php if ($getOfferByUSerId['payment'] == 1 ){ ?>
 						 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
 					 <?php }  ?>
 					 <?php 
@@ -333,7 +333,7 @@
 				</div>
 			</div>  
 				<div class="tab_part_right" id="noteOuverte">
-					<form action="offer/postAvis" method="post">
+					<form action="offer/postAvis/<?php echo $getOfferByUSerId['id_offer']; ?>" method="post">
 						<label>Commentaire sur la prestation :<input type="text" name="description" placeholder="Votre commentaire"/></label>
 						<label>Note sur 20 :<input type="text" name="note" placeholder="Votre note entre 0 et 20"/></label>
 						<input type="hidden" name="fk_id_users" value="<?php echo $getOfferByUSerId['fk_id_users_respond'];?>">
@@ -425,7 +425,7 @@
 	
 		<div class="grid_3">
 			<h4>Suivez-nous</h4>
-			<p>Nous sommes disponible sur les différents réseaux sociaux
+			<p>Nous sommes disponibles sur les différents réseaux sociaux
 				Rejoignez-nous !</p>
 				<!-- Social network -->
 			<ul class="social_small">
@@ -442,9 +442,9 @@
 			<ul class="arrow-dot">
 				<li><a href="#">Accueil</a></li>
 				<li><?php if(F3::get('SESSION.user')){ ?>
-							<a class="deposer_annonce" href="deposerUneAnnonce">Deposer une annonce</a> 
+							<a class="deposer_annonce" href="deposerUneAnnonce">Déposer une annonce</a> 
 						<?php } else { ?>
-							<a id="dposer_annonce" href="formulaire_inscription">Deposer une annonce</a> 
+							<a id="dposer_annonce" href="formulaire_inscription">Déposer une annonce</a> 
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
@@ -453,7 +453,7 @@
 		</div>
 		<div class="grid_3">
 			<h4>En général</h4>
-			<p>Skillico est un site qui vous permet d’être rémunérer contre vos services. 
+			<p>Skillico est un site qui vous permet d’être rémunéré contre vos services. 
 Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 		</div>
 		<div class="grid_3">

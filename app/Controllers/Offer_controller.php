@@ -28,6 +28,7 @@ class Offer_controller{
             }
             $offers = Offer::instance()->getOfferListe();
             $id=F3::get('SESSION.user');
+
             $InfoUser= User::instance()->infoUserCo($id[0]['id_users']);
             F3::set('InfoUser',$InfoUser);
             F3::set('offers',$offers);
@@ -138,7 +139,8 @@ class Offer_controller{
     }
 
     function postAvis(){
-        Offer::instance()->postAvis();
+        $idOffer=F3::get('PARAMS.IdOffer');
+        Offer::instance()->postAvis($idOffer);
         F3::reroute('/monCompte');
     }
 
