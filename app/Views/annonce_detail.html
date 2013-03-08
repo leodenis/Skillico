@@ -9,8 +9,7 @@
 	<![endif]-->
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-	<base href="<?php echo $BASE; ?>/" />
-	<?php header('Access-Control-Allow-Origin: *'); ?>
+    <base href="<?php echo $BASE; ?>/" />
 	<!-- CSS -->
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="public/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />	
@@ -39,7 +38,7 @@
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<script src="public/js/ajaxSearch.js"></script>	
 	<!-- node.js -->
-	<script src="http://skilico.eu01.aws.af.cm/socket.io/socket.io.js"></script>
+	<script src="http://localhost:1337/socket.io/socket.io.js"></script>
 
 </head>
 <body>
@@ -172,12 +171,12 @@
 			<div class="grid_3 nomargin detailOffreEnchereMenu" id="part_left">
 				<?php 
 				if($offer[0]['type']=='immediat'){
+					print_r($offer)
 				?>
 					<ul class="detailOffreMenu">
 						<li>Achat immédiat</li>
 						<li><p>Annonceur</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration Annonceur"><p><?php echo $offer[0]['login']; ?></p></span></li>
 						<li><p id="padding">Catégories</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration catégorie"><p>Menuiserie</p><span></li>
-						
 						<li><p>Date</p><span><img src="public/images/dummies/event.png" alt="pictogramme illustration Datr"><p>24/03/13</p></span></li>
 						<li><p>Rémunération</p><span><img src="public/images/dummies/price.png" alt="pictogramme illustration rémunération"><p><?php echo $offer[0]['price']; ?></p></span></li>
 						<li><p>Localisation</p><span><img src="public/images/dummies/location.png" alt="pictogramme illustration localisation"><p>Paris 12</p></span></li>
@@ -276,7 +275,6 @@
 						<?php } ?>	</li>
 				<li><a href="offer">Consulter les annonces</a></li>
 				<li><a href="monCompte">Mon compte</a></li>
-				<li><a href="conditions-generales-utilisation">Conditions Genérales d'Utilisation</a></li>
 			</ul>
 		</div>
 		<div class="grid_3">
@@ -321,7 +319,7 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 	        $("#oubliPass").slideToggle();
 	    });
 	});
-	var socket = io.connect('http://skilico.eu01.aws.af.cm');
+	var socket = io.connect('http://localhost:1337');
 	var idofferpage = <?php echo $offer[0]['id_offer'] ?>;
 	var user = <?php $id = F3::get('SESSION.user'); echo json_encode($id[0]);?>;
 	socket.on('decrementation',function(bids,idOffer){
@@ -336,10 +334,10 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 			}
 			$('input[name="price"]').val(bids[idOffer].price);
 		}
-	});
+	})
 	$('.encherir').click(function(){
 		socket.emit('bid',idofferpage,user);
-	});
+	})
 	</script>
 	</body>
 </html>
