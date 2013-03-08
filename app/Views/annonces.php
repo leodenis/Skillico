@@ -101,7 +101,7 @@
 					</li>
 					<li>
 						<?php if(F3::get('SESSION.user')){ ?>
-							<a class="<?php echo $BASE; ?>/deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
+							<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 						<?php } else { ?>
 
 							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 

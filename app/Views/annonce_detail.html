@@ -40,6 +40,19 @@
 	<!-- node.js -->
 	<!-- // <script src="http://localhost:1337/socket.io/socket.io.js"></script> -->
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#deposer_annonce").fancybox({
+			'width'				: '60%',
+			'height'			: '100%',
+			'autoScale'			: false,
+			'transitionIn'		: 'true',
+			'transitionOut'		: 'true',
+			'type'				: 'iframe'
+		});
+	})
+</script>
+
 </head>
 <body>
 
@@ -341,14 +354,6 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 			}, function(){
 		}, {enableHighAccuracy:true})
 
-		$("#deposer_annonce").fancybox({
-			'width'				: '60%',
-			'height'			: '100%',
-			'autoScale'			: false,
-			'transitionIn'		: 'true',
-			'transitionOut'		: 'true',
-			'type'				: 'iframe'
-		});
 	   
 	// var socket = io.connect('http://localhost:1337');
 	// var idofferpage = <?php echo $offer[0]['id_offer'] ?>;
