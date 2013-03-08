@@ -61,7 +61,6 @@ class Offer extends Prefab
 **/
     function getCategoryList(){
         $offercat = F3::get('dB')->exec("SELECT * FROM offer_cat");
-        $catList = $offerCat->find();
         return $catList;
     }
 
