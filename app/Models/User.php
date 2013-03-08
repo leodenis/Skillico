@@ -48,8 +48,7 @@ class User extends Prefab{
     @return array
 **/
 	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil){
-			$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
-	    	$recupMdpId->afind(array('login=?',$username));
+			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
             if (empty($recupMdpId)) {
 	            $image=new DB\SQL\Mapper(F3::get('dB'),'image');
@@ -70,14 +69,11 @@ class User extends Prefab{
 	 			$users->born=$born;
 	 			$users->city=$city;
 	 			$users->fk_id_image=$image->id_image;
-				$users->save(); 
-			
-				$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
-	    		return $recupMdpId->afind(array('login=?',$username));
+				$users->save(); // on sauvegarde
 
+				return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
             }else{
-           		$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
-	    		return $recupMdpId->afind(array('login=?',$username));
+           		return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
             }	
 	}
 

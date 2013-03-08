@@ -19,6 +19,7 @@
 				<p>Veillez à bien à remplir tous les champs obligatoires pour que votre annonce se publie correctement</p>
 			</div>
 		</div>
+
 		<div id="content">
 			<div id="content-form">
 				<form id="offerPost">
@@ -45,6 +46,7 @@
 								<option value="3">Longue durée</option><br/><br/>
 							</select><br/><br/>
 						</div>
+
 						<label> Type de vente</label><br/>
 						<div class="mon_select">
 							<input checked="yes" required style="font-size:1.2em;" type="radio" id="ma_radio" name="type_annonce" value="immediat"><label for="ma_radio">Achat immédiat</label>
@@ -59,6 +61,7 @@
 							<input name="seconds" type="number" min="0" max="59" value="0"> Seconds
 						</div>
 					</div>
+
 					<div class="info">
 						<h2>Adresse du service à rendre</h2>
 						<label for="adress">Adresse</label><br/>
@@ -71,6 +74,9 @@
 				        <ul id="list"></ul>
 				    </div>
 					</div>
+
+
+
 					<div class="info">
 						<h2>Rémunération</h2>
 						<label for="price">Montant de la rémunération</label><br/>
@@ -78,9 +84,11 @@
 						<p>Le montant de la rémunération comprend les frais fixes pour le service ainsi que le prix de l’achat du produit.
 						<br/>Exemple : vous souhaitez vous faire livrer un Mc Do 5.00 € pour le service + 7.40 € pour le produit = 12.40 €</p><br/><br/>
 					</div>
+
 					<div class="info_mentions" id="checkCondition">
 						<input required type="checkbox" name="conditions" id="conditions" value="conditions" /><label for="ma_mention">J’ai lu et j’accepte les conditions générales d’utilisation de <a href="">skillico.fr</a></label>
 					</div>
+
 					<div class="info_button">
 						<input type="submit" value="Publier" class="postuler">
 						<input type="button" value="Annuler" id="fancybox-close" class="postuler">
@@ -94,12 +102,16 @@
 	$('#fancybox-close').click(function(){
 		parent.$.fancybox.close();
 	})
+
 	$('input[value="enchere"]').click(function(){
 		$('#enchereSetUp').fadeIn();
 	})
 	$('input[value="immediat"]').click(function(){
 		$('#enchereSetUp').fadeOut();
 	})
+            
+        
+
     $('#offerPost').submit(function(event){
         event.preventDefault();
         if($('#conditions')[0].checked){
@@ -152,6 +164,8 @@
             $('#conditions').after('<span class="textError">Veuillez accepter les conditions d\'utilisation de Skillico.</span>')
         }
     })
+
+	
 </script>
 
 </body>

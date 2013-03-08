@@ -288,7 +288,8 @@
 				<div class="description2">
 					<img src="public/images/dummies/img.png">
 					<h3><?php echo $getOfferByUSerId['title']; ?></h3><br>
-					<p><?php echo $getOfferByUSerId['desciption']; ?></p>
+
+					<p><?php echo $getOfferByUSerId['description']; ?></p>
 					<?php 
 						if ($getOfferByUSerId['visibility'] == 1) {
 					?>
@@ -296,9 +297,7 @@
 					<?php
 						}
 					 ?>
-					 <?php if ($getOfferByUSerId['payment'] == 1 ){ ?>
-						 <input type="button" value="Noter la personne" class="postuler" id="openNote"/>
-					 <?php }  ?>
+	
 					 <?php 
 						if ($getOfferByUSerId['visibility'] == 2) {
 					?><a href="offer/validate/<?php echo $getOfferByUSerId['id_offer'];?>">
@@ -332,14 +331,15 @@
 					</ul>
 				</div>
 			</div>  
-				<div class="tab_part_right" id="noteOuverte">
-					<form action="offer/postAvis/<?php echo $getOfferByUSerId['id_offer']; ?>" method="post">
-						<label>Commentaire sur la prestation :<input type="text" name="description" placeholder="Votre commentaire"/></label>
+			<?php if ($getOfferByUSerId['payment'] == 1 ){ ?>
+					<form action="offer/postAvis/<?php echo $getOfferByUSerId['id_offer'];?>" method="post">
+						<label>Commentaire sur la prestation :
+						<input type="text" name="description" placeholder="Votre commentaire"/></label>
 						<label>Note sur 20 :<input type="text" name="note" placeholder="Votre note entre 0 et 20"/></label>
 						<input type="hidden" name="fk_id_users" value="<?php echo $getOfferByUSerId['fk_id_users_respond'];?>">
 						<input type="submit" value="Valider" class="postuler"/> 
 					</form>
-				</div>
+		     <?php }  ?>
         <?php endforeach; ?>
 
 
