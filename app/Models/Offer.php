@@ -207,7 +207,7 @@ class Offer extends Prefab
 **/
     function PaiementRecu($id){
         $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-        $filter = 'payment = 1 AND fk_id_users_respond='.$id;
+        $filter = 'payment = 2 AND fk_id_users_respond='.$id;
         $option = array(
             'group'=>NULL,
             'order'=>NULL
@@ -223,7 +223,7 @@ class Offer extends Prefab
 **/
     function PaiementDonnee($id){
         $offer =new DB\SQL\Mapper(F3::get('dB'),'offer');
-        $filter = 'payment = 1 AND fk_id_users_post='.$id;
+        $filter = 'payment = 2 AND fk_id_users_post='.$id;
         $option = array(
             'group'=>NULL,
             'order'=>NULL
@@ -254,11 +254,13 @@ class Offer extends Prefab
         $avis->copyFrom('POST'); 
         $avis->save();
 
+
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
         $offer->load(array('id_offer=?',$idOffer));
         $offer->payment=2;
         $offer->update(); 
     }
+
 
 /**
     Payment by paypal

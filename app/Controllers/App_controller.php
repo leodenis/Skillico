@@ -9,15 +9,6 @@ class App_controller{
     App Error
     @return void
 **/
-	function error()
-	{	
-		$id=F3::get('SESSION.user');
-	    $id=$id[0]['id_users'];
-		$User=new User();
-		$InfoUserCo=$User->infoUserCo($id);
-		F3::set('InfoUserCo',$InfoUserCo);
-		echo Views::instance()->render('404.html');	
-	}
 /**
     App home
     @return void

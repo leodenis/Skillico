@@ -141,7 +141,7 @@ class User_controller extends Prefab{
 
 		$userInscriptionFb=new User;
 		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil);
-		
+
 		F3::set('SESSION.user',$recupMdpId);
 		F3::reroute('/monCompte');
 

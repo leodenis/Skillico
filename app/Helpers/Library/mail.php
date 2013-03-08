@@ -12,7 +12,7 @@ class Mail extends Prefab{
     $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n"; 
     $headers .='Content-Transfer-Encoding: 8bit'; 
     $message ='<html><head><title>Bonjour</title></head><body>Voici votre nouveau mot de passe '.$password.'. Vous pouvez dès maintenant le changer dans votre espace</body></html>'; 
-    mail(''.$email.'', 'Sujet', $message, $headers);
+    mail(''.$email.'', 'Changement de mot de passe', $message, $headers);
   }
 
   function sendmailReclamation($subject,$email,$message,$user){
