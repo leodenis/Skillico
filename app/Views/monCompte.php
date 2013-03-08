@@ -290,6 +290,11 @@
 					<h3><?php echo $getOfferByUSerId['title']; ?></h3><br>
 
 					<p><?php echo $getOfferByUSerId['description']; ?></p>
+					
+					<?php if ($getOfferByUSerId['payment'] == 2 ){ ?>
+						<p><strong>Service fini et réalisé</strong></p>	
+		    		 <?php }  ?>
+
 					<?php 
 						if ($getOfferByUSerId['visibility'] == 1) {
 					?>
