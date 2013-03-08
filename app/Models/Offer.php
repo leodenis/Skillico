@@ -77,7 +77,6 @@ class Offer extends Prefab
                     'lat'=>'required',
                     'lng'=>'required',
                     'type'=>'required',
-                    'fk_id_offer_duration'=>'required',
                     'fk_id_offer_cat'=>'required',
                     'fk_id_users_post'=>'required'
             );
