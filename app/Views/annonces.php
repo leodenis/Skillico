@@ -214,7 +214,7 @@
 					<li><p>Type d'annonce</p></li>
 					<div id="cat_offer">
 						<?php foreach($cat_list as $cat): ?>
-							<input type="checkbox" id="check1" name="chk1" value="<?php echo $cat[0]['id']?>"/><label class="rad" for="check1" ><?php echo $cat[0]['title']?></label><br/>
+							<input type="checkbox" id="check1" name="chk1" value="<?php echo $cat['id']?>"/><label class="rad" for="check1" ><?php echo $cat['title']?></label><br/>
 						<?php endforeach; ?>
 					</div>
 
