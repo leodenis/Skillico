@@ -173,7 +173,6 @@ window.onload = function(){
 	}
 	document.getElementById('search2').onkeyup = function(){reqData()};
 	document.getElementById('search').onkeyup = function(){reqData()};
-	document.getElementById('slider-range').onmouseup = function(){reqData()};
 	document.getElementById('slider-range-max').onmouseup = function(){reqData()};
 	$('input').change(function(){reqData()});
 

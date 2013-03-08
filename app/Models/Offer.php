@@ -59,8 +59,7 @@ class Offer extends Prefab
     Get category list
     @return array
 **/
-    function getCategoryList(){ 
-        $catList=new DB\SQL\Mapper(F3::get('dB'),'offer_cat');
+    function getCategoryList(){ $catList=new DB\SQL\Mapper(F3::get('dB'),'offer_cat');
         return $catList->afind();
     }
 
@@ -77,6 +76,7 @@ class Offer extends Prefab
                     'lat'=>'required',
                     'lng'=>'required',
                     'type'=>'required',
+                    'fk_id_offer_duration'=>'required',
                     'fk_id_offer_cat'=>'required',
                     'fk_id_users_post'=>'required'
             );
