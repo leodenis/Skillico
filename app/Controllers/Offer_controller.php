@@ -26,10 +26,12 @@ class Offer_controller{
             if($page){
                 $offers = Offer::instance()->search($page);
             }
+            $cat_list = Offer::instance()->getCategoryList();
             $offers = Offer::instance()->getOfferListe();
             $id=F3::get('SESSION.user');
 
             $InfoUser= User::instance()->infoUserCo($id[0]['id_users']);
+            F3::set('cat_list',$cat_list);
             F3::set('InfoUser',$InfoUser);
             F3::set('offers',$offers);
             echo Views::instance()->render('annonces.php'); 

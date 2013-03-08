@@ -149,15 +149,6 @@ window.onload = function(){
 	search.cat = {};
 	var marker = {};
 
-	$( "#slider-range-max" ).slider({
-		range: "max",
-		min: 1,
-		max: 150,
-		value: 50,
-		slide: function( event, ui ) {
-			$( "#amount_diam" ).val( ui.value );
-		}
-	});
 	if (search.priceRange[0] == undefined && search.priceRange[1] == undefined) {
 		search.priceRange[0]=75;
 		search.priceRange[1]=300;

@@ -194,21 +194,6 @@
        <div id="mon_bouton"></div>
     </a>
 </div>
-<section id="tri">
-	<div class="row features">
-		<div class="grid_12 centered margintop15">
-			<div class="grid_3 nomargin">
-				
-			</div>
-			<div class="grid_8 nomargin" id="tri_top">
-				<span class="tri_bot"><p>Trier par :</p>
-						<input type="radio" name="order" value="distance">Distance
-						<input type="radio" name="order" value="price">Rémunération
-						<input type="radio" name="order" value="beggining">Durée
-				</span>
-
-			</div>
-</section>
 <section id="annonces">
 
 	<div class="row features">
@@ -217,11 +202,7 @@
 				<ul class="menuOffre" style="background-color:white;">
 					<li>Filtrer les annonces</li>
 					<li><p>Localisation</p><input type="text" id="search" name="search" onKeyUp="ajaxSearch();"/></li>
-					<li><p for="amount_diam">Diamètre d'action</p><input style="width:90%;" type="text" id="amount_diam" value="50"/></li>
-					<div id="slider-range-max"></div>
-
 					<li><p for="amout">Rémunération</p><input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" value=""/>
-										
 					<div id="slider-range"></div>
 					</li>		
 					<li><p>Type de vente</p></li>
@@ -232,8 +213,9 @@
 					</div>
 					<li><p>Type d'annonce</p></li>
 					<div id="cat_offer">
-						<input type="checkbox" id="check1" name="chk1" value="1"/><label class="rad" for="check1" >Service à la personne</label><br>
-						<input type="checkbox" id="check2" name="chk2" value="2"/><label class="rad" for="check2" >Plomberie</label><br>
+						<?php foreach($cat_list as $cat): ?>
+							<input type="checkbox" id="check1" name="chk1" value="<?php echo $cat[0]['id']?>"/><label class="rad" for="check1" ><?php echo $cat[0]['title']?></label><br/>
+						<?php endforeach; ?>
 					</div>
 
 				</ul>
