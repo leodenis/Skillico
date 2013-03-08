@@ -130,20 +130,36 @@ class Offer_controller{
         }
     }
     
+    /**
+    Paypal payment
+    @return void
+    **/
     function paypalSuccess(){
         F3::reroute('/monCompte');
     }
 
+    /**
+    Paypal annualtion
+    @return void
+    **/
     function paypalCancel(){
         F3::reroute('/monCompte');
     }
 
+    /**
+    Avis post
+    @return void
+    **/
     function postAvis(){
         $idOffer=F3::get('PARAMS.IdOffer');
         Offer::instance()->postAvis($idOffer);
         F3::reroute('/monCompte');
     }
 
+    /**
+    Do a reclamation
+    @return void
+    **/
     function reclamation(){
         switch(F3::get('VERB')){
             case 'GET':

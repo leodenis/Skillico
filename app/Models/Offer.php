@@ -31,7 +31,7 @@ class Offer extends Prefab
   **/
 	function getOfferDetails($idOffer){  
         $offer=new DB\SQL\Mapper(F3::get('dB'),'offer');
-        return $offer->afind(array('id_offer=?',$idOffer));
+        return $offer->exec('SELECT * FROM (offer AS O INNER JOIN users AS U ON O.fk_id_users_post = U.id_users) INNER JOIN offer_cat AS c ON  O.fk_id_offer_cat = c.id_offer_cat WHERE O.id_offer = '.$idOffer);
 	}
 
 /**
