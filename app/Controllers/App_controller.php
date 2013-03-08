@@ -48,8 +48,8 @@ class App_controller{
     @return void
 **/
 	function deposerUneAnnonce(){
-		$offercat = new Offer::instance()->getCategoryList();;
-		F3::set('cat_list',$offer);
+		// $offercat = new Offer::instance()->getCategoryList();;
+		// F3::set('cat_list',$offer);
 		echo Views::instance()->render('deposer.html');	
 	}
 /**
