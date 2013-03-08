@@ -60,7 +60,8 @@ class Offer extends Prefab
     @return array
 **/
     function getCategoryList(){
-        $catList = F3::get('dB')->exec("SELECT * FROM offer_cat");
+        $offre = new  new DB/SQL/Mapper(F3::get('dB'),'offer_cat');
+        $catList = $offre->exec("SELECT * FROM offer_cat");
         return $catList;
     }
 
