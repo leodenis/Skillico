@@ -19,7 +19,6 @@ class User_controller extends Prefab{
 				 $check=array(
 			      'login'=>'required',
 		   	      'password'=>'required',
-
 		   	      'password'=>'=password2',
 			      'email'=>'required',
 			      'name'=>'required',

@@ -101,14 +101,14 @@
 					</li>
 					<li>
 						<?php if(F3::get('SESSION.user')){ ?>
-							<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
+							<a class="<?php echo $BASE; ?>/deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 						<?php } else { ?>
 
 							<a id="dposer_annonce" href="formulaire_inscription"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 
 
-						<?php } ?>					</li>
-					
+						<?php } ?>					
+					</li>
 					<li class="selected">
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
 					</li>

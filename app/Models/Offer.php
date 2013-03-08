@@ -60,9 +60,9 @@ class Offer extends Prefab
     @return array
 **/
     function getCategoryList(){
-        $offerDuration = new DB/SQL/Mapper(F3::get('dB'),'offer_cat');
-        $durationList = $offerDuration->find();
-        return Views::instance()->toJson($durationList,array('id_offer_cat'=>'id_offer_cat','title'=>'title','description'=>'desccription','fk_id_image'=>'fk_id_image'));
+        $offerCat = new DB/SQL/Mapper(F3::get('dB'),'offer_cat');
+        $catList = $offerCat->find();
+        return $catList;
     }
 
 /**

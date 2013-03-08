@@ -32,11 +32,9 @@
 						<div class="mon_select">
 							<label for="cat_service">Catégorie de service</label><br/>
 							<select required id="cat_service" name="categorie">
-								<option value="1">Manutention</option>
-								<option value="2">Technologie</option>
-								<option value="alimentaire">Alimentaire</option>
-								<option value="prostitution">Prostitution</option>
-							</select><br/><br/>
+								<?php foreach($cat_list as $cat): ?>
+							<option value="<?php echo $cat[0]['id']?>"><?php echo $cat[0]['tite']?></option>
+								<?php endforeach; ?>
 						</div>
 						<div class="mon_select">
 							<label for="duration_service">Durée du service</label><br/>

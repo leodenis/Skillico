@@ -9,14 +9,14 @@ class App_controller{
     App Error
     @return void
 **/	
-	function error(){ 
-			$id=F3::get('SESSION.user');
-		    $id=$id[0]['id_users'];
-			$User=new User();
-			$InfoUserCo=$User->infoUserCo($id);
-			F3::set('InfoUserCo',$InfoUserCo);
-			echo Views::instance()->render('404.html');	
-		}
+	// function error(){ 
+	// 		$id=F3::get('SESSION.user');
+	// 	    $id=$id[0]['id_users'];
+	// 		$User=new User();
+	// 		$InfoUserCo=$User->infoUserCo($id);
+	// 		F3::set('InfoUserCo',$InfoUserCo);
+	// 		echo Views::instance()->render('404.html');	
+	// 	}
 /**
     App home
     @return void
@@ -48,14 +48,11 @@ class App_controller{
     @return void
 **/
 	function deposerUneAnnonce(){
+		$offer = new Offer();
+		$offercat = F3::get('dB')->exec("SELECT * FROM offer_cat");
+		F3::set('cat_list',$offer);
+		// Offer::instance()->getCategoryList();
 		echo Views::instance()->render('deposer.html');	
-	}
-/**
-    App enchereDetail
-    @return void
-**/
-	function enchereDetail(){
-		echo Views::instance()->render('enchere_detail.html');	
 	}
 /**
     App CGU

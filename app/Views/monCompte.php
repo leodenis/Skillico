@@ -118,7 +118,7 @@
 						<a href="<?php echo $BASE; ?>/"><img src="public/images/menu/home2.png">Accueil</a>			  
 					</li>
 					<li>
-						<a class="deposer_annonce" href="deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
+						<a class="deposer_annonce" href="<?php echo $BASE; ?>/deposerUneAnnonce"><img src="public/images/menu/DeposerAnnonce2.png">Déposer une annonce</a> 
 					</li>
 					<li>
 						<a href="offer"><img src="public/images/menu/Caddie2.png">Consulter</a>
