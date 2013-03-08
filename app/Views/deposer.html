@@ -33,7 +33,7 @@
 							<label for="cat_service">Catégorie de service</label><br/>
 							<select required id="cat_service" name="categorie">
 								<?php foreach($cat_list as $cat): ?>
-							<option value="<?php echo $cat[0]['id']?>"><?php echo $cat[0]['title']?></option>
+							<option value="<?php echo $cat['id']?>"><?php echo $cat['title']?></option>
 								<?php endforeach; ?>
 						</div>
 						<div class="mon_select">
