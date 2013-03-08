@@ -38,7 +38,7 @@
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<!-- // <script src="public/js/ajaxSearch.js"></script>	 -->
 	<!-- node.js -->
-	<!-- // <script src="http://localhost:1337/socket.io/socket.io.js"></script> -->
+	// <script src="http://localhost:1337/socket.io/socket.io.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -355,25 +355,25 @@ Vous aimez bricoler et aider ? Postulez aux annonces et soyez rémunéré</p>
 		}, {enableHighAccuracy:true})
 
 	   
-	// var socket = io.connect('http://localhost:1337');
-	// var idofferpage = <?php echo $offer[0]['id_offer'] ?>;
-	// var user = <?php $id = F3::get('SESSION.user'); echo json_encode($id[0]);?>;
-	// socket.on('decrementation',function(bids,idOffer){
-	// 	if(idOffer == idofferpage ){
-	// 		$('.histo').remove();
-	// 		$('.' + idOffer + ' .jj').html(bids[idOffer].days);
-	// 		$('.' + idOffer + ' .hh').html(bids[idOffer].hours);
-	// 		$('.' + idOffer + ' .mm').html(bids[idOffer].minutes);
-	// 		$('.' + idOffer + ' .ss').html(bids[idOffer].seconds);
-	// 		for(k in bids[idOffer].history){
-	// 			$('#histo').append('<tr class="histo"><td>'+bids[idOffer].history[k].name+'</td> <td>'+bids[idOffer].history[k].price+'€</td> <td>'+bids[idOffer].history[k].hour+'</td></tr>');
-	// 		}
-	// 		$('input[name="price"]').val(bids[idOffer].price);
-	// 	}
-	// })
-	// $('.encherir').click(function(){
-	// 	socket.emit('bid',idofferpage,user);
-	// })
+	var socket = io.connect('http://localhost:1337');
+	var idofferpage = <?php echo $offer[0]['id_offer'] ?>;
+	var user = <?php $id = F3::get('SESSION.user'); echo json_encode($id[0]);?>;
+	socket.on('decrementation',function(bids,idOffer){
+		if(idOffer == idofferpage ){
+			$('.histo').remove();
+			$('.' + idOffer + ' .jj').html(bids[idOffer].days);
+			$('.' + idOffer + ' .hh').html(bids[idOffer].hours);
+			$('.' + idOffer + ' .mm').html(bids[idOffer].minutes);
+			$('.' + idOffer + ' .ss').html(bids[idOffer].seconds);
+			for(k in bids[idOffer].history){
+				$('#histo').append('<tr class="histo"><td>'+bids[idOffer].history[k].name+'</td> <td>'+bids[idOffer].history[k].price+'€</td> <td>'+bids[idOffer].history[k].hour+'</td></tr>');
+			}
+			$('input[name="price"]').val(bids[idOffer].price);
+		}
+	})
+	$('.encherir').click(function(){
+		socket.emit('bid',idofferpage,user);
+	})
 	</script>
 <script>
 	(function(d, s, id) {

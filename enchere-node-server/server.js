@@ -1,9 +1,9 @@
 var http = require('http');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: '',
+	host:'localhost',
+	user:'root',
+	password:'',
 });
 connection.connect();
 
@@ -49,7 +49,9 @@ function decrementation(idOffer){
 		}
 		else if (bids[i].end != true && bids[i].seconds == 0 && bids[i].minutes == 0 && bids[i].hours == 0 && bids[i].days == 0) {
 			bids[i].end = true;
-			connection.query('UPDATE  `db457678616`.`offer` SET  `price` =  "'+bids[i].price+'", `visibility` =  "1", `fk_id_users_respond` = "'+bids[i].winnerId+'" WHERE  `offer`.`id_offer` ='+bids[i].id+';', function(err, rows, fields) {
+			console.log()
+			// connection.connect();
+			connection.query('UPDATE  `skillico`.`offer` SET  `price` =  "'+bids[i].price+'", `visibility` =  "1", `fk_id_users_respond` = "'+bids[i].winnerId+'" WHERE  `offer`.`id_offer` ='+bids[i].id+';', function(err, rows, fields) {
 			});
 			clearInterval(bids[i].interval);
 		}

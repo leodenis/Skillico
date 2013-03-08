@@ -209,7 +209,7 @@
 		<form action="user/edit" method="post" enctype="multipart/form-data">
 		<div class="box2">
 			<div id="profil-pic">
-			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="<?php echo $infoUserCo[0]['imageUser'];?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
+			<label id="upload"><span>Photo de profil</span><br/><br/><img style="width:150px;heigth:150px;" src="<?php echo $infoUserCo[0]['imageUser'].'?type=large';?>"/><br/><br/><input id="normal" type="file" name="image[]"></input></label><br/>
 			</div>       																						 
 			<div id="info3">
 					<?php 
@@ -402,9 +402,12 @@
 
 		</form>
 		<div class="contact-form-holder">
-				<h2>Formulaire de contact</h2>
-				<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
-					<select id="selectHide" name="subject">
+				<?php if (empty($RespondAndPosted)){
+				} else {?>
+					<h2>Formulaire de contact</h2>
+					<form method="POST" id="contact-form" name="contact-form" action="offer/reclamation">
+					
+					<select id="select" name="subject">
 						<?php foreach($RespondAndPosted as $RespondAndPosted):?>
 							<option><?php echo $RespondAndPosted['title'].' - '.$RespondAndPosted['price']; ?></option>
 					    <?php endforeach; ?>
@@ -414,6 +417,8 @@
 					<textarea name="message" id="message" cols="30" rows="10" placeholder="Taper votre message..."></textarea>
 					<input type="submit" id="postuler" name="send-btn" value="Envoyer" />
 				</form>
+				<?php } ?>
+				
 		    </div>
 	</div>
 				

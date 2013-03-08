@@ -3,18 +3,20 @@ class User extends Prefab{
 	function __construct(){
 
 	}
+	
+	function InfoDetails(){
+		// $info=new DB\SQL\Mapper(F3::get('dB'),'users');
+		// return $info->load(array('id_users=?','5'));
+		return $info = F3::get('dB')->exec("SELECT U.id_users,U.name,U.firstname,U.email,U.adress,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.name, I.extension FROM users U, image I WHERE U.fk_id_image = I.id_image AND U.id_users =2" );
 
-/**
-    Inscription
-    @param $password varchar
-    @param $born int
-    @return array
-**/
+
+	}
+
 	function inscription($password,$born){
 		   $img=Web::instance()->receive();
 				    if($img){
 				      $image=new DB\SQL\Mapper(F3::get('dB'),'image');
-				      $image->name='public/images/'.$img[0];
+				      $image->name=$img[0];
 				      $image->extension='.jpg';
 				      $image->save();
 				    }else{
@@ -25,28 +27,14 @@ class User extends Prefab{
 				    }
  				
  		
- 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); 
- 			$users->copyFrom('POST'); 
+ 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
+ 			$users->copyFrom('POST'); // on récupère le POST
  			$users->password=md5($password);
  			$users->born=$born;
  			$users->fk_id_image=$image->id_image;
-			$users->save(); 
+			$users->save(); // on sauvegarde
 	}
 
-/**
-    Inscription by FacebookConnect
-    @param $username varchar
-    @param $email varchar
-    @param $name varchar
-    @param $firstname varchar
-    @param $password varchar
-    @param $gender varchar
-    @param $city varchar
-    @param $born varchar
-    @param $imgProfil varchar
-    @return void
-    @return array
-**/
 	function inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil){
 			$recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$username."'");
 
@@ -77,66 +65,39 @@ class User extends Prefab{
             }	
 	}
 
-/**
-    Forget Password
-    @param $login varchar
-    @param $password varchar
-    @return void
-    @return array
-**/
 	function forgetpassword($login,$password){
 			$users=new DB\SQL\Mapper(F3::get('dB'),'users'); // Connexion à la table image
 	 		$users->load(array('login=?',$login));
 	 		$users->password=md5($password); // on récupère le POST
 			$users->update(); // on sauvegarde
-		   
-		    $log=new DB\SQL\Mapper(F3::get('dB'),'users');
-    		return $log->afind(array('login=?',$login));
 
+			return $log = F3::get('dB')->exec("SELECT email FROM users WHERE login = '".$login."'");
+
+			F3::reroute('/user');
 	}
 
-/**
-	Connexion
-    @param $login varchar
-    @param $password varchar
-    @return array
-**/
 	function connexion($login,$password){
-			$recupMdpId=new DB\SQL\Mapper(F3::get('dB'),'users');
-    		return $recupMdpId->afind(array('login=? and password=?',$login,$password));
+			return $recupMdpId = F3::get('dB')->exec("SELECT * FROM users WHERE login = '".$login."' AND password = '".$password."'");
 
 	}
-
-/**
-	Recover Information who is connect
-    @param $id int
-    @return array
-**/
 
 	function infoUserCo($id){
-			return $infoUserCo = F3::get('dB')->exec("SELECT U.id_users, U.login,U.name,U.firstname,U.email,U.adress,U.sexe,U.born,U.city,U.CP,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.id_image,I.name as imageUser, I.extension FROM users AS U INNER JOIN image AS I ON U.fk_id_image = I.id_image WHERE U.id_users ='".$id."'");
-	}
+			// return $infoUserCo = F3::get('dB')->exec("SELECT * FROM users WHERE id_users = '".$id."'");
+			return $infoUserCo = F3::get('dB')->exec("SELECT U.id_users, U.login,U.name,U.firstname,U.email,U.adress,U.sexe,U.born,U.city,U.CP,U.phone,U.date_creation,U.last_connection,U.level,U.name,I.id_image,I.name as imageUser, I.extension FROM users U, image I WHERE U.fk_id_image = I.id_image AND U.id_users ='".$id."'");
 
-/**
-	Recover user avis 
-    @param $idUser int
-    @return array
-**/
+	}
 
 	function avis($idUser){
-			$avisUser=new DB\SQL\Mapper(F3::get('dB'),'avis');
-    		return $avisUser->afind(array('fk_id_users=?',$idUser));
+		    $avis =new DB\SQL\Mapper(F3::get('dB'),'avis');
+            $filter = 'fk_id_users = '.$idUser;
+            $option = array(
+                'group'=>NULL,
+                'order'=>NULL
+ 
+            );
+            return $avisUser = $avis->afind($filter,$option);
+
 	}
-
-/**
-	Edit Information of the user
-    @param $id int
-    @param $id_image int
-    @param $password varchar
-    @param $born int
-    @return void
-**/
-
 	function EditInfoUser($id,$id_image,$password,$born){
 
 			$img=Web::instance()->receive();

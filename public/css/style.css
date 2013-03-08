@@ -721,12 +721,6 @@ header nav ul li {
 
 }
 
-#referencement{
-	margin: auto;
-	text-align: center;
-
-}
-
 #mdp{
 	width: auto;
 }
@@ -920,8 +914,6 @@ header nav ul li ul li:hover a {
 	  transition: all  0.3s ease;
 }
 
-
-
 header nav ul li ul li:hover {
 	border:none;
 }
@@ -953,7 +945,7 @@ header nav ul li ul li:hover ul li a {
 .boutonId span:nth-child(3){
 	float: right;
 	margin-right: 6px;
-	margin-top: -19px;
+	margin-top: -16px;
 }
 
 .boutonId span:nth-child(3) a{
@@ -1139,7 +1131,6 @@ span.tri_bot p{
 
 #mapDetail{
 	width: 97%;
-	height: 200px;
 }
 section#rechercher {
 	background-color: #9dd8f6;
@@ -1150,18 +1141,11 @@ section#monCompte {
 	padding: 20px 0px;
 }
 #position{
-	margin-left: 48%;
+	margin-left: 54%;
 	margin-top: -130px;
 	position: absolute;
 }
 
-#selectHide{
-	display: none;
-}
-
-div#part_identify img{
-	padding-left: 17px;
-}
 
 .detailOffre{
 	background-color: white;
@@ -1884,18 +1868,6 @@ form#comment .formfield input[type="submit"] {
 	background: #ffeceb;
 }
 
-#erreur{
-	text-align: center;
-}
-
-#erreurFond{
-	background: #E1ECF0;
-}
-
-#charteCentre{
-	text-align: center;
-	padding-top: 10px;
-}
 
 /* navigation */
 .navigation{

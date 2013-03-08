@@ -5,10 +5,13 @@ class User_controller extends Prefab{
 
 	}
 
-    /**
-    User inscription
-    @return void
-    **/
+	function homeUser(){ 
+     $User=new User();
+     $info=$User->InfoDetails();
+     F3::set('info',$info);
+ 	 echo Views::instance()->render('user.php');
+	}
+
 	function inscription(){
 
 		switch(F3::get('VERB')){
@@ -19,57 +22,49 @@ class User_controller extends Prefab{
 				 $check=array(
 			      'login'=>'required',
 		   	      'password'=>'required',
-		   	      'password'=>'=password2',
+		   	      'password2' => 'required',
 			      'email'=>'required',
 			      'name'=>'required',
 			      'firstname'=>'required',
 			      'adress'=>'required',
 			      'date_creation'=>'required',
 			      'last_connection'=>'required'
-			         			  
-
+			     
 			    );
-						
-			    $login=$_POST['login']; 
-			  
+				
+				// $id_image=$_POST['fk_id_image'];
+
+			    if ($_POST['password'] != $_POST['password2']) {
+			    	echo "Les mots de passes doivent être identiques! Veuillez recommercer";
+			    	return;
+			    }
+
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
-			    //     print_r($error);
-			    // die();
-			    
 			    if($error){
 			      F3::set('errorMsg',$error);
 			      echo Views::instance()->render('formulaireInscription.html');
+			      F3::reroute('/');
 			      return;
 			    }
-
 			    else{
 				    $days=$_POST['days'];
 			   		$month=$_POST['month'];
 			   		$years=$_POST['years'];
 			   		$born=$years.'-'.$month.'-'.$days;	
-
+			    	//Ajout dans la base de donnée			    	
 			    	$password=$_POST['password'];
 		   			$user=new User;
 		   			$user->inscription($password,$born);
-
-		   			$password=md5($password);
-		   			$userConnex=new User;
-		   			$recupMdpId=$userConnex->connexion($login,$password);
-		   			F3::set('SESSION.user',$recupMdpId);
-		   			F3::reroute('/monCompte');
+					F3::reroute('/');
 			    }
 			break;
 		}
 	   
 	}
-
-/**
-    User inscription
-    @return void
-**/
-
 	function inscriptionfb(){
 		require './app/Libraries/facebook.php';
+ 
+
 			$facebook = new Facebook(array(
 			'appId' => '340091096096955',
 			'secret' => 'd67a97f795f53caa019784e1d30cf49e',
@@ -140,17 +135,14 @@ class User_controller extends Prefab{
 
 		$userInscriptionFb=new User;
 		$recupMdpId=$userInscriptionFb->inscriptionfb($username,$email,$name,$firstname,$password,$gender,$city,$born,$imgProfil);
-
+		
 		F3::set('SESSION.user',$recupMdpId);
 		F3::reroute('/monCompte');
 
 
 	}
 
-    /**
-    User connexion
-    @return void
-    **/
+
 
 	function connexion(){
 
@@ -176,8 +168,15 @@ class User_controller extends Prefab{
 			      	F3::reroute('/');
 		   		}
 		   		else {
-
+		   			//Création Session
+		   			date_default_timezone_set('Europe/Paris');  
+		   			$date=date("Y-m-d H:i:s");
+		   			$id=2;
 		   			F3::set('SESSION.user',$recupMdpId);
+		   			//Récupération de l'id users afin de updater la last connexion
+
+
+
 		   			F3::reroute('/monCompte');
 		   		}
 			   
@@ -196,41 +195,43 @@ class User_controller extends Prefab{
 	   
 	}
 
-/**
-    User forgetpassword
-    @return void
-**/
-
 	function forgetpassword(){
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('index.html');
+				echo Views::instance()->render('forgetpassword.php');
 			break;
 			case 'POST':
 				 $check=array(
 			      'login'=>'required'
 			     
 			    );
+
+
 			    $error=Datas::instance()->check(F3::get('POST'),$check);
 			    if($error){
 			      F3::set('errorMsg',$error);
-				  echo Views::instance()->render('index.html');
+				  echo Views::instance()->render('forgetpassword.php');
 			      return;
 			    }
 			    else{
-			    	//préparation du mdp			
+			    	//préparation du mdp
+			    	
+					
 					$password = uniqid();
+					
 					//récup du log et appel du modèle
 			    	$login=$_POST['login'];
 		   			$user_log=new User;
 		   			$recupLog=$user_log->forgetpassword($login,$password);
-
+		 
+					
 		   			if ($recupLog == false) {
-		   				F3::reroute('/');
+		   			echo 'try again';
 		   			}
 					else{
 				
 						$email = $recupLog[0]['email'];
+									// F3::sendmail($password);
 						Mail::instance()->sendmail($password,$email);
 						F3::reroute('/');
 					}
@@ -240,10 +241,6 @@ class User_controller extends Prefab{
 
 	}
 
-/**
-    User monCompte
-    @return void
- **/
 	function monCompte(){
 		$id=F3::get('SESSION.user');
 	    $id=$id[0]['id_users'];
@@ -266,7 +263,6 @@ class User_controller extends Prefab{
 		$Offer=new Offer();
 		$PaiementRecu=$Offer->PaiementRecu($id);
 
-		//Récupérer paiement Donnee
 		$Offer=new Offer();
 		$PaiementDonnee=$Offer->PaiementDonnee($id);
 
@@ -287,12 +283,7 @@ class User_controller extends Prefab{
 
 	}
 
-/**
-    User edit
-    @return void
-**/	
-
-    function edit(){
+	function edit(){
 	    switch(F3::get('VERB')){
 	      case 'GET':
 	       	$id=F3::get('SESSION.user');
@@ -324,21 +315,10 @@ class User_controller extends Prefab{
 	    }
   	}
 
-/**
-    User deconnexion
-    @return void
-**/	
-
 	function deconnexion(){
 		F3::clear('SESSION.user');
 		F3::reroute('/');
 	}
-
-/**
-    User Delete
-    @return void
-**/	
-
 	function delete(){
 		$image=new DB\SQL\Mapper(F3::get('dB'),'image');
 		$image->load(array('id_image=1'));

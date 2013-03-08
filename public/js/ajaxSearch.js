@@ -176,24 +176,33 @@ window.onload = function(){
 	document.getElementById('slider-range').onmouseup = function(){reqData()};
 	$('input').change(function(){reqData()});
 
-	reqData();
+	// if(localStorage.getItem(localStorage.key('searchLast'))!=null){
+	// 	var datareqLoc = JSON.parse(localStorage.getItem(localStorage.key(1)));
+	// 	reqData(datareqLoc);
+	// }else{
+		reqData();
+	// }
 
 	function reqData(){
-		if(reqURL == null || (reqURL.search('=')+1) == 0){
-			search.searchBarre = document.getElementById('search2').value;
-		}else{
-			search.searchBarre = reqURL.substring((reqURL.search('=')+1),reqURL.length);
-			document.getElementById('search2').value = reqURL.substring((reqURL.search('=')+1),reqURL.length);
-			reqURL = null;
-		}
-		search.location = $('#search').value;
-		search.type = $('input[type="radio"][name="searchin"]:checked')[0].value;
-		search.order = $('input[type="radio"][name="order"]:checked')[0] != null ? $('input[type=radio][name=order]:checked')[0].value : null;
-
-		for(i=0;i<$('#cat_offer>input:checked').length;i++){
-			search.cat[i] = $('#cat_offer>input:checked')[i].value;
-		}	
-        console.log(search);
+		// if(datareqLoc!=null){
+		// 	search = datareqLoc;
+		// }else{
+			//Récupération des données
+			if(reqURL == null || (reqURL.search('=')+1) == 0){
+				search.searchBarre = document.getElementById('search2').value;
+			}else{
+				search.searchBarre = reqURL.substring((reqURL.search('=')+1),reqURL.length);
+				document.getElementById('search2').value = reqURL.substring((reqURL.search('=')+1),reqURL.length);
+				reqURL = null;
+			}
+			search.location = $('#search').value;
+			search.type = $('input[type="radio"][name="searchin"]:checked')[0].value;
+			search.order = $('input[type="radio"][name="order"]:checked')[0] != null ? $('input[type=radio][name=order]:checked')[0].value : null;
+			//Récupération des checkbox
+			for(i=0;i<$('#cat_offer input:checked').length;i++){
+				search.cat[i] = $('#cat_offer input:checked')[i].value;
+			}	
+		// }
 		$.ajax({
 			type: "POST",
 			url: "./offer/search",
@@ -203,8 +212,24 @@ window.onload = function(){
 			},
 			success:function(data){
 				$("#donneesAnnonces").html('');
-
 				if (data) {
+					// if(data[1] > 1){
+					// 	if(data[2] == null){
+					// 		$('.objpage').val(jQuery.param(search));
+					// 		$("#next_form").attr('action','offer-2');
+					// 		$('#previous_form').css('display','none');
+					// 	}
+					// 	else if(data[2]==data[1]){
+					// 		$('.objpage').val(jQuery.param(search));
+					// 		$("#next_form").css('display','none');
+					// 		$('#previous_form').attr('action','offer-'+(data[1]-1));
+					// 	}
+					// 	else{
+					// 		$('.objpage').val(jQuery.param(search));
+					// 		$("#next_form").attr('action','offer-'+(data[1]+1));
+					// 		$('#previous_form').attr('action','offer-'+(data[1]-1));
+					// 	}
+					// }
 					for(var j in marker){
 						marker[j].setMap(null);
 					}        	    

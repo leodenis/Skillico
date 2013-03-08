@@ -7,7 +7,9 @@
 
 	socket.on('newUser',function(userId){
 		userID = userId;
+		console.log(userID)
 	})
+		console.log(userID)
 	socket.on('newBid',function(idBid){
 		$('body').append('<div class="' + idBid + '" class="enchere"><p><span class="mm">MM</span>m<span class="ss">SS</span>s</p><input class="' + idBid + '" value="Encherir" type="submit"></div>');
 		$('input.' + idBid).click(function(){

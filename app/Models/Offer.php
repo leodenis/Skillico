@@ -77,7 +77,6 @@ class Offer extends Prefab
                     'lat'=>'required',
                     'lng'=>'required',
                     'type'=>'required',
-                    'fk_id_offer_duration'=>'required',
                     'fk_id_offer_cat'=>'required',
                     'fk_id_users_post'=>'required'
             );
@@ -128,6 +127,7 @@ class Offer extends Prefab
         $option = array(
             'group'=>NULL,
             'order'=>NULL
+
         );
         return $offerList = $offer->afind($filter,$option);
    }
@@ -146,6 +146,7 @@ class Offer extends Prefab
 
         );
         return $offerRespond = $offer->afind($filter,$option);
+        // return Views::instance()->toJson($offerList,array('id_offer'=>'id_offer', 'title'=>'title','description'=>'description','beginning'=>'beginning','ending'=>'ending','price'=>'price','lat'=>'lat','lng'=>'lng','bid'=>'bid','fk_id_offer_duration'=>'fk_id_offer_duration','fk_id_offer_cat'=>'fk_id_offer_cat','fk_id_users_post'=>'fk_id_users_post','fk_id_users_respond'=>'fk_id_users_respond'));
    }
 
 /**
@@ -160,16 +161,27 @@ class Offer extends Prefab
         if(isset($post) && $post != null){
             $sql .= $post['type'] == 'tous' ? '' : ' AND type = "'.$post['type'].'"';
             $sql .= isset($post['searchBarre']) && empty($post['searchBarre']) ? '' : ' AND o.title LIKE "%'.$post['searchBarre'].'%" OR o.description LIKE "%'.$post['searchBarre'].'%"'; 
+            $sql .= ' AND o.price BETWEEN '. $post['priceRange'][0] .' AND '. $post['priceRange'][1];
             if(isset($post['cat'])){
                 $sql .= ' AND';
                 for ($i=0; $i < count($post['cat']) ; $i++) { 
                     $sql .= $i == 0 ? ' o.fk_id_offer_cat = '.$post['cat'][$i] : ' OR o.fk_id_offer_cat = '.$post['cat'][$i];
                 }
             }
-            $sql .= ' AND o.price BETWEEN '. $post['priceRange'][0] .' AND '. $post['priceRange'][1];
         }
-        $sql .= ' ORDER BY id_offer DESC';
-        return array(F3::get('dB')->exec($sql),$post,$sql);
+        if(empty($post['order']) && isset($post['order'])){
+            $sql .= ' ORDER BY id_offer DESC';
+        }else{
+            $sql .= ' ORDER BY '.$post['order'].' AND id_offer DESC';
+        }
+        $nb_page = ceil(count(F3::get('dB')->exec($sql))/10);
+
+        // if($page){
+        //     $sql .= ' LIMIT 10 OFFSET '.$page;
+        // }else{
+        //     $sql .= ' LIMIT 0, 10';
+        // }
+        return array(F3::get('dB')->exec($sql),$nb_page,$page,$post,$sql);
     }
 
 /**
